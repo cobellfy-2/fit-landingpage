@@ -24,52 +24,55 @@
     </div>
   </header>
 
-  <section class="hero">
-    <h1>FORSCHUNGS-IT</h1>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Digitale Infrastruktur für klinische Forschung am Universitätsklinikum Augsburg</p>
-    <button class="button" id="scroll-to-services">Unsere Kernservices</button>
+  <!-- ================= PROJEKTANFRAGE ================= -->
+<section id="projekt" class="main style2">
+    <div class="container">
+        <header class="major">
+            <h2>Anfrage starten</h2>
+            <p>Schicken Sie uns eine unverbindliche Anfrage zu Ihrem Vorhaben.</p>
+        </header>
 
-  </section>
+        <form name="projekt" method="POST" data-netlify="true">
+            <div class="row gtr-uniform">
 
-  <section class="image-section">
-    <img src=".\images\haus.png" alt="Universitätsklinikum Augsburg Gebäude">
-  </section>
+                <!-- Name / Email -->
+                <div class="col-6 col-12-xsmall">
+                    <input type="text" name="vorname" placeholder="Vorname" required>
+                </div>
+                <div class="col-6 col-12-xsmall">
+                    <input type="text" name="nachname" placeholder="Nachname" required>
+                </div>
+                <div class="col-12">
+                    <input type="text" name="titel" placeholder="Titel (optional)">
+                </div>
+                <div class="col-12">
+                    <input type="email" name="email" placeholder="E-Mail" required>
+                </div>
 
-  <section class="services" id="services">
-    <h2>Unsere Kernservices</h2>
-    <p>
-      Infrastructure as a Service (IaaS) bietet Forschenden flexible und skalierbare IT-Ressourcen, 
-      die Datenspeicherung, Rechenleistung und Softwarelösungen effizient bereitstellen. 
-      Durch die Nutzung von IaaS lassen sich Projekte schneller umsetzen, Ressourcen optimal nutzen 
-      und kollaborative Forschung erleichtern.
-    </p>
+                <!-- Anfrage-Auswahl -->
+                <div class="col-12">
+                    <select id="anfragetyp" name="anfragetyp" required>
+                        <option value="" disabled selected>Art der Anfrage</option>
+                        <option value="fit-ad">FIT AD Useranlage</option>
+                        <option value="zertifikat">Zertifikatsaustellung</option>
+                        <option value="sonstiges">Sonstiges</option>
+                    </select>
+                </div>
 
-    <div class="service-cards">
-      <div class="card">
-        <img src=".\images\pic01.jpg" alt="FIT-Netz Onboarding">
-        <h3>FIT-Netz Onboarding</h3>
-        <p>Benutzeranlage, Geräteverwaltung, Berechtigungsmanagement</p>
-      </div>
+                <!-- DYNAMISCHE SEKTION -->
+                <div id="dynamisch"></div>
 
-      <div class="card">
-        <img src=".\images\pic01.jpg" alt="Datenhaltung & Infrastruktur">
-        <h3>Datenhaltung & Infrastruktur</h3>
-        <p>Sichere Speicherung und Verwaltung klinischer Forschungsdaten.</p>
-      </div>
+                <!-- Submit -->
+                <div class="col-12">
+                    <ul class="actions special">
+                        <li><button type="submit" class="button primary">Absenden</button></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
 
-      <div class="card">
-        <img src=".\images\pic02.jpg" alt="Studien- & Projektunterstützung">
-        <h3>Studien- & Projektunterstützung</h3>
-        <p>Wir begleiten Ihr Forschungsprojekt auf der technischen Seite.</p>
-      </div>
-
-      <div class="card">
-        <img src=".\images\pic03.jpg" alt="Software & Tools">
-        <h3>Software & Tools</h3>
-        <p>Bereitstellung und Anpassung von Analyse- und Visualisierungstools.</p>
-      </div>
-      
-  </section>
 
   <footer>
     <p>© 2025 Universitätsklinikum Augsburg</p>

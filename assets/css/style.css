@@ -64,7 +64,7 @@ nav a:hover {
 .image-section {
   background-color: white; /* Hintergrund weiß */
   text-align: center; /* Bild zentrieren */
-  padding: 20px; /* etwas Abstand zum Rand */
+  padding: 80px; /* etwas Abstand zum Rand */
 }
 
 .image-section img {
@@ -212,4 +212,18 @@ button:hover {
   background-color: #888;
 }
 
+/* Connector (grauer Strich zwischen Button und Bild) */
+.connector {
+  position: absolute;
+  height: 2px;                 /* Strichhöhe */
+  background: #bdbdbd;         /* graue Farbe */
+  z-index: 9999;
+  pointer-events: none;
+  transform-origin: 0 50%;     /* Drehpunkt links mittig */
+  transition: width 0.12s, transform 0.12s, left 0.12s, top 0.12s;
+}
+/* kleine Styles zur Sicherstellung, dass der Body als Bezug funktioniert */
+html, body {
+  min-height: 100%;
+}
 
