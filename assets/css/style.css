@@ -49,7 +49,7 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 7.0rem;
   font-weight: 800;
   margin-bottom: 10px;
 }
@@ -75,6 +75,13 @@ nav a:hover {
   border-radius: 4px;
 }
 
+.image-left .text-big {
+  max-width: 400px; /* Größe links */
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 15px 12px;
+}
 
 /* ===== Services ===== */
 .services {
@@ -125,7 +132,7 @@ nav a:hover {
 .card h3 {
   margin-bottom: 10px;
   font-size: 1.1rem;
-  color: #0073cf;
+  color: #155582;
 }
 
 /* ===== Footer ===== */
@@ -146,7 +153,7 @@ footer {
 }
 
 .footer-links a {
-  color: #0073cf;
+  color: #155582;
   text-decoration: none;
 }
 
@@ -227,3 +234,109 @@ html, body {
   min-height: 100%;
 }
 
+/* ===================== FORMULAR STYLES ===================== */
+/* Einheitliche Inputs */
+#projekt input,
+#projekt select,
+#projekt textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+
+  background: #ffffff;             
+  border: 1px solid #d0d0d0;       /* dünnerere Linie */
+  border-radius: 10px;              /* schön rund */
+
+  outline: none;
+  transition: 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Hover */
+#projekt input:hover,
+#projekt select:hover,
+#projekt textarea:hover {
+  background: #e2e2e2;
+}
+
+/* Fokus → moderne blaue Glow-Linie */
+#projekt input:focus,
+#projekt select:focus,
+#projekt textarea:focus {
+  border-color: #155582;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 123, 255, 0.15);
+}
+
+/* Labels etwas moderner */
+#projekt label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Weniger Abstand zwischen Inputs */
+.row > * {
+  margin-bottom: 10px;
+}
+
+
+/* Labels über den Inputs */
+#projekt label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #000;
+}
+
+/* Einheitliche Felder */
+#projekt label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #000;
+  display: block;
+}
+
+/* ===================== GRID LAYOUT ===================== */
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* Spaltenbreiten */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Seiten-Wrapper: Abstand links/rechts + zentrierte Max-Breite */
+.site-inner {
+  max-width: 1800px;     /* gewünschte Lese/Breite */
+  margin: 0 auto;        /* zentrieren */
+  padding: 0 24px;       /* Abstand links/rechts */
+  box-sizing: border-box;
+}
+
+/* kleinerer Abstand auf Mobilgeräten */
+@media (max-width: 900px) {
+  .site-inner { padding: 0 16px; }
+}

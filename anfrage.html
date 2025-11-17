@@ -25,54 +25,65 @@
   </header>
 
   <!-- ================= PROJEKTANFRAGE ================= -->
+<div class="site-inner">
 <section id="projekt" class="main style2">
-    <div class="container">
-        <header class="major">
-            <h2>Anfrage starten</h2>
-            <p>Schicken Sie uns eine unverbindliche Anfrage zu Ihrem Vorhaben.</p>
-        </header>
+  <div class="container">
+    <header class="major">
+      <h2>Anfrage starten</h2>
+      <p>Schicken Sie uns eine unverbindliche Anfrage zu Ihrem Vorhaben.</p>
+    </header>
 
-        <form name="projekt" method="POST" data-netlify="true">
-            <div class="row gtr-uniform">
+    <form name="projekt" method="POST" data-netlify="true">
+      <div class="row gtr-uniform">
 
-                <!-- Name / Email -->
-                <div class="col-6 col-12-xsmall">
-                    <input type="text" name="vorname" placeholder="Vorname" required>
-                </div>
-                <div class="col-6 col-12-xsmall">
-                    <input type="text" name="nachname" placeholder="Nachname" required>
-                </div>
-                <div class="col-12">
-                    <input type="text" name="titel" placeholder="Titel (optional)">
-                </div>
-                <div class="col-12">
-                    <input type="email" name="email" placeholder="E-Mail" required>
-                </div>
+        <!-- Erste Zeile: 3 Spalten -->
+        <div class="col-4 col-12-xsmall">
+          <label>Vorname</label>
+          <input type="text" name="vorname" placeholder="Vorname" required>
+        </div>
 
-                <!-- Anfrage-Auswahl -->
-                <div class="col-12">
-                    <select id="anfragetyp" name="anfragetyp" required>
-                        <option value="" disabled selected>Art der Anfrage</option>
-                        <option value="fit-ad">FIT AD Useranlage</option>
-                        <option value="zertifikat">Zertifikatsaustellung</option>
-                        <option value="sonstiges">Sonstiges</option>
-                    </select>
-                </div>
+        <div class="col-4 col-12-xsmall">
+          <label>Name</label>
+          <input type="text" name="nachname" placeholder="Name" required>
+        </div>
 
-                <!-- DYNAMISCHE SEKTION -->
-                <div id="dynamisch"></div>
+        <div class="col-4 col-12-xsmall">
+          <label>Titel</label>
+          <input type="text" name="titel" placeholder="Titel (optional)">
+        </div>
 
-                <!-- Submit -->
-                <div class="col-12">
-                    <ul class="actions special">
-                        <li><button type="submit" class="button primary">Absenden</button></li>
-                    </ul>
-                </div>
-            </div>
-        </form>
-    </div>
+        <!-- Zweite Zeile: 2 Spalten -->
+        <div class="col-6 col-12-xsmall">
+          <label>E-Mail</label>
+          <input type="email" name="email" placeholder="E-Mail" required>
+        </div>
+
+        <div class="col-6 col-12-xsmall">
+          <label>Art der Anfrage</label>
+          <select id="anfragetyp" name="anfragetyp" required>
+            <option value="" disabled selected>--select--</option>
+            <option value="fit-ad">FIT AD Useranlage</option>
+            <option value="zertifikat">Zertifikatsaustellung</option>
+            <option value="sonstiges">Sonstiges</option>
+          </select>
+        </div>
+
+        <!-- Dynamische Sektion - erscheint darunter -->
+        <div id="dynamisch" class="col-12"></div>
+
+        <!-- Submit -->
+        <div class="col-12" style="margin-top: 30px;">
+          <ul class="actions special">
+            <li><button type="submit" class="button primary">Absenden</button></li>
+          </ul>
+        </div>
+
+      </div>
+    </form>
+  </div>
 </section>
-
+</div>
+<!-- ================= ENDE PROJEKTANFRAGE ================= -->
 
   <footer>
     <p>© 2025 Universitätsklinikum Augsburg</p>
@@ -82,7 +93,7 @@
           Universitätsklinikum Augsburg<br>
           Stenglinstraße 2, 86156 Augsburg, Deutschland<br>
           Tel.: +49 0000<br>
-          E-Mail: <a href="mailto:gitnb@uka-augsburg.de">gitnb@uka-augsburg.de</a>
+          E-Mail: <a href="mailto:gibtsnet@uk-augsburg.de">gibtsnet@uk-augsburg.de
         </p>
       </div>
       <div class="footer-links">
@@ -160,5 +171,119 @@
       });
     })();
   </script>
+  <script>
+document.getElementById("anfragetyp").addEventListener("change", function () {
+    const dyn = document.getElementById("dynamisch");
+    const typ = this.value;
+
+    dyn.innerHTML = ""; // Reset
+
+    /* ===================== FIT AD USERANLAGE ===================== */
+    if (typ === "fit-ad") {
+        dyn.innerHTML = `
+            <div class="row">
+
+                <div class="col-6 col-12-xsmall">
+                    <label>Abteilung</label>
+                    <select name="abteilung" required>
+                        <option value="" disabled selected>Bitte wählen…</option>
+                        <option value="id">ID</option>
+                        <option value="epi">EPI</option>
+                        <option value="umwelt">Umweltmedizin</option>
+                    </select>
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <label>Berechtigungsart</label>
+                    <select name="berechtigung" required>
+                        <option value="" disabled selected>Bitte wählen…</option>
+                        <option value="lesen">Leserechte</option>
+                        <option value="schreiben">Schreibrechte</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label>PKZ (optional)</label>
+                    <input type="text" name="pkz" placeholder="PKZ">
+                </div>
+
+            </div>
+        `;
+    }
+
+    /* ===================== ZERTIFIKAT ===================== */
+    if (typ === "zertifikat") {
+        dyn.innerHTML = `
+            <div class="row">
+
+                <div class="col-12">
+                    <label>Art der Ausstellung</label>
+                    <select id="zert-art" name="zert_art" required>
+                        <option disabled selected>Bitte wählen…</option>
+                        <option value="neu">Neu</option>
+                        <option value="verlaengerung">Verlängerung</option>
+                    </select>
+                </div>
+
+                <div id="zert-details" class="col-12"></div>
+
+                <div class="col-12" style="color:#666;font-size:0.9em;">
+                    Hinweis: Private Schlüssel werden von uns generiert. Fremdschlüssel werden nicht akzeptiert.
+                </div>
+
+            </div>
+        `;
+
+        document.getElementById("zert-art").addEventListener("change", function () {
+            const details = document.getElementById("zert-details");
+
+            if (this.value === "neu") {
+                details.innerHTML = `
+                    <div class="row">
+                        <div class="col-6 col-12-xsmall">
+                            <label>Hostname</label>
+                            <input type="text" name="hostname" required>
+                        </div>
+
+                        <div class="col-6 col-12-xsmall">
+                            <label>Zertifikatstyp</label>
+                            <select name="cert_typ" required>
+                                <option disabled selected>Bitte wählen…</option>
+                                <option value="intern">Intern</option>
+                                <option value="extern">Extern</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (this.value === "verlaengerung") {
+                details.innerHTML = `
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Hostname</label>
+                            <input type="text" name="hostname" required>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    }
+
+    /* ===================== SONSTIGES ===================== */
+    if (typ === "sonstiges") {
+        dyn.innerHTML = `
+            <div class="row">
+                <div class="col-12">
+                    <label>Beschreibung</label>
+                    <textarea name="kommentar" required placeholder="Ihr Anliegen…"></textarea>
+                </div>
+            </div>
+        `;
+    }
+});
+</script>
+
 </body>
 </html>
