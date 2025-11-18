@@ -15,10 +15,10 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Serviceanfrage</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="main-page.html">Home</a></li>
+          <li><a href="anfrage.html">Serviceanfrage</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="about-us.html">About Us</a></li>
         </ul>
       </nav>
     </div>
@@ -286,6 +286,107 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
         `;
     }
 });
+</script>
+
+<!-- Modal: Bestätigen / Download Vorschau -->
+<div id="confirmModal" class="modal-overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" aria-label="Schließen" type="button">&times;</button>
+    <h3 id="modalTitle">Bist du zufrieden mit deinen Eingaben?</h3>
+    <div class="modal-content">
+      <pre id="modalText" tabindex="0"></pre>
+    </div>
+    <div class="modal-actions">
+      <button id="downloadBtn" class="button primary" type="button">Download</button>
+      <button id="closeBtn" class="button" type="button">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const form = document.querySelector('form[name="projekt"]');
+    const modal = document.getElementById('confirmModal');
+    const modalText = document.getElementById('modalText');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const closeX = document.querySelector('.modal-close');
+
+    if (!form || !modal) return;
+
+    function gatherFormData(f) {
+      const lines = [];
+      const elements = Array.from(f.elements).filter(el => el.name && !el.disabled);
+
+      elements.forEach(el => {
+        let value = '';
+        if (el.type === 'checkbox') value = el.checked ? 'Ja' : 'Nein';
+        else if (el.type === 'radio') { if (el.checked) value = el.value; else return; }
+        else value = el.value || '';
+
+        // Friendly label: try to find a preceding label text
+        let label = el.getAttribute('name');
+        const lab = f.querySelector('label[for="' + el.id + '"]');
+        if (lab) label = lab.textContent.trim();
+        else if (el.parentElement) {
+          const p = el.parentElement.querySelector('label');
+          if (p) label = p.textContent.trim();
+        }
+
+        lines.push(label + ': ' + value);
+      });
+
+      return lines.join('\n');
+    }
+
+    function showModal(text) {
+      modalText.textContent = text;
+      modal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      modalText.focus();
+    }
+
+    function hideModal() {
+      modal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const txt = gatherFormData(form);
+      showModal(txt);
+    });
+
+    
+
+      if (closeBtn) closeBtn.addEventListener('click', hideModal);
+      if (closeX) closeX.addEventListener('click', hideModal);
+
+      // Klick auf Overlay (außerhalb des Dialogs) soll Modal schließen
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) hideModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hasAttribute('hidden')) hideModal();
+      });
+
+    if (downloadBtn) downloadBtn.addEventListener('click', function () {
+      const content = modalText.textContent || '';
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const now = new Date();
+      const stamp = now.toISOString().slice(0,19).replace(/[:T]/g,'-');
+      a.href = url;
+      a.download = 'anfrage-' + stamp + '.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      hideModal();
+    });
+  })();
 </script>
 
 </body>

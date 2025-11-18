@@ -400,6 +400,79 @@ body {
     margin-top: 10px;
 }
 
+/* ===== Modal / Popup ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 24px;
+}
+
+/* Ensure elements with the `hidden` attribute are not displayed (explicit author rule) */
+.modal-overlay[hidden] {
+  display: none !important;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-content pre {
+  white-space: pre-wrap;
+  background: #f7f7f7;
+  padding: 14px;
+  border-radius: 8px;
+  max-height: 360px;
+  overflow: auto;
+  font-family: inherit;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* Ensure primary button stands out in modal */
+.modal .button.primary {
+  background-color: #155582;
+  color: #fff;
+  border-color: #155582;
+  padding: 10px 18px;
+}
+
+.modal .button {
+  padding: 9px 16px;
+}
+
 .faq-answer p {
     margin: 0;
     line-height: 1.6;
@@ -413,4 +486,15 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Entferne Aufzählungszeichen bei Aktions-Listen (z.B. Formular-Buttons) */
+.actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.actions li {
+  display: inline-block;
+  margin-right: 8px;
 }
