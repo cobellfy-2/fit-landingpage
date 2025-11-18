@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forschungs-IT | Universitätsklinikum Augsburg</title>
+  <link rel="stylesheet" href=".\assets\css\style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src=".\images\logo.png" alt="Forschungs-IT Universitätsklinikum Augsburg">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Serviceanfrage</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="image-left">
+    <img src="./images/text-big.png" alt="Text Big" class="text-big">
+    </div>
+  </header>
+  <section class="faq-section">
+    <h2>Häufig gestellte Fragen</h2>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            1. Was ist die ForschungsIT (FIT)?
+            <span class="faq-icon">−</span>
+        </button>
+        <div class="faq-answer open">
+            <p>
+                Die FIT ist die zentrale Einheit am Universitätsklinikum Augsburg, 
+                die Wissenschaftlerinnen und Wissenschaftler bei der Nutzung 
+                digitaler Forschungslösungen unterstützt.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            2. Wer kann die Dienste der FIT nutzen?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                Die FIT richtet sich an Forschende, Mitarbeitende und Projektpartner 
+                im Umfeld des UKA und der Universität Augsburg.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            3. Wie kann ich Anfragen an die FIT stellen?
+            <span class="faq-icon">−</span>
+        </button>
+        <div class="faq-answer open">
+            <p>
+                Nutzen Sie dazu unser zentrales Anfrageformular: 
+                <a href="#">hier</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            4. Welche Services bietet die FIT an?
+            <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+            <p>
+                Die FIT bietet Infrastruktur, Datenservices, Projektunterstützung 
+                und Softwarelösungen für die Forschung.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+  <footer>
+    <p>© 2025 Universitätsklinikum Augsburg</p>
+    <div class="footer-info">
+      <div>
+        <p><strong>Adresse:</strong><br>
+          Universitätsklinikum Augsburg<br>
+          Stenglinstraße 2, 86156 Augsburg, Deutschland<br>
+          Tel.: +49 0000<br>
+          E-Mail: <a href="mailto:gibtsnet@uk-augsburg.de">gibtsnet@uk-augsburg.de</a>
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Impressum</a> | <a href="#">Kontakt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const questions = document.querySelectorAll(".faq-question");
+
+    questions.forEach(q => {
+        q.addEventListener("click", () => {
+            const parent = q.parentElement;
+            const answer = parent.querySelector(".faq-answer");
+            const icon = q.querySelector(".faq-icon");
+
+            answer.classList.toggle("open");
+
+            if (answer.classList.contains("open")) {
+                icon.textContent = "−";
+            } else {
+                icon.textContent = "+";
+            }
+        });
+    });
+</script>
+</body>
+</html>
