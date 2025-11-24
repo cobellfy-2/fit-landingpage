@@ -136,40 +136,91 @@ nav a:hover {
 }
 
 /* ===== Footer ===== */
-footer {
-  background: #f2f2f2;
-  text-align: center;
-  padding: 20px;
-  margin-top: 50px;
-  border-top: 1px solid #ccc;
+/* ===== Footer: full-width border + zentriert + grau hinterlegt ===== */
+footer.footer {
+  width: 100%;
+  background: #f2f4f6;            /* grauer Footer-Hintergrund */
+  border-top: 1px solid #dcdcdc;  /* durchgehender Border über die ganze Seite */
+  box-sizing: border-box;
 }
 
-.footer-info {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  font-size: 0.9rem;
+/* Inhalt im Footer zentriert halten (max-width, zentriert)
+   Die sichtbare Border liegt am Footer-Element und verläuft über die ganze Seite. */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;                /* zentriert den Inhalt */
+  padding: 32px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
 }
 
-.footer-links a {
+.footer-section h4 {
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+.footer-section p, .footer-section li {
+  color: #444;
+  font-size: 0.95rem;
+}
+.footer-section .icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
   color: #155582;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-section ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.footer-section a {
+  color: #333;
   text-decoration: none;
 }
+.footer-section a:hover { text-decoration: underline; }
 
-.footer-links a:hover {
-  text-decoration: underline;
+.footer .social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
 }
 
-@media (max-width: 768px) {
-  .service-cards {
-    flex-direction: column;
+/* Footer bottom: sitzt unterhalb der .footer-container, Text mittig, keine zusätzliche Border */
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  color: #666;
+  background: transparent;
+  border-top: none;
+  box-sizing: border-box;
+}
+
+/* Responsive: stapeln auf kleinen Bildschirmen */
+@media (max-width: 840px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .footer-section { padding-bottom: 12px; }
+}
+  /* Restore horizontal navbar layout */
+  .navbar {
+    flex-direction: row;
     align-items: center;
   }
-  .navbar {
-    flex-direction: column;
-  }
-}
+
 
 /* ===== Allgemeine Schrift ===== */
 body {
@@ -498,3 +549,16 @@ a:hover {
   display: inline-block;
   margin-right: 8px;
 }
+
+/* Light stripe above the bottom copyright line and ensure it's centered on its own row */
+.footer-bottom {
+  display: block;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,0.06); /* heller Strich */
+  padding-top: 12px; /* Abstand zwischen Strich und Text */
+  margin-top: 0; /* keine extra Lücke zusätzlich */
+  text-align: center; /* Text mittig */
+  color: #666;
+  box-sizing: border-box;
+}
+
