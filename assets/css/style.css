@@ -402,7 +402,7 @@ html, body {
 .site-inner {
   max-width: 1800px;     /* gewünschte Lese/Breite */
   margin: 0 auto;        /* zentrieren */
-  padding: 0 24px;       /* Abstand links/rechts */
+  padding: 50px 24px;       /* Abstand links/rechts */
   box-sizing: border-box;
 }
 
@@ -567,6 +567,16 @@ a:hover {
 .actions li {
   display: inline-block;
   margin-right: 8px;
+}
+
+/* Increase list indentation (stronger indent to the right) */
+ul, ol {
+  padding-left: 40px;
+  margin-left: 0;
+}
+
+ul li, ol li {
+  margin-bottom: 8px;
 }
 
 /* Light stripe above the bottom copyright line and ensure it's centered on its own row */
