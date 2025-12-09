@@ -37,7 +37,7 @@
 
 Nach Eingabe aller Details klicken Sie auf „Download“, um eine automatisch generierte Anfragedatei zu erhalten.
 
-Anschließend kopieren Sie den text laden ihn als Ihnhalt Ihres Tickets im KIX-System hoch.
+Anschließend kopieren Sie den Text und laden ihn als Ihnhalt Ihres Tickets im KIX-System hoch.
 
 So stellen Sie sicher, dass Ihre Anfrage vollständig ist und von uns schnell und zielgerichtet bearbeitet werden kann.</p>
     </header>
@@ -214,19 +214,28 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
                     <label>Abteilung</label>
                     <select name="abteilung" required>
                         <option value="" disabled selected>Bitte wählen…</option>
-                        <option value="id">ID</option>
-                        <option value="epi">EPI</option>
-                        <option value="umwelt">Umweltmedizin</option>
+                        <option value="2med">2.Med</option>
+                        <option value="biobank">Biobank</option>
+                        <option value="cds">CDS</option>
+                        <option value="cds-saficu">CDS-SAFICU</option>
+                        <option value="idm">IDM</option>
+                        <option value="ilm-mikrobiologie">ILM - Mikrobiologie</option>
+                        <option value="inlet">INLET</option>
+                        <option value="mediz">MeDiz</option>
+                        <option value="pathologie">Pathologie</option>
+                        <option value="nuk">NUK</option>
+                        <option value="radiologie">Radiologie</option>
+                        <option value="alps">ALPS</option>
+                        <option value="mvb">MVB</option>
+                        <option value="anästhesie">Anästhesie</option>
+                        <option value="umweltmedizin">Umweltmedizin</option>
                     </select>
                 </div>
 
                 <div class="col-6 col-12-xsmall">
-                    <label>Berechtigungsart</label>
+                    <label>Berechtigung auf einen Fileshare</label>
                     <select name="berechtigung" required>
-                        <option value="" disabled selected>Bitte wählen…</option>
-                        <option value="lesen">Leserechte</option>
-                        <option value="schreiben">Schreibrechte</option>
-                        <option value="admin">Admin</option>
+                        <option value="" disabled selected>Fileshare(optional)</option>
                     </select>
                 </div>
 
