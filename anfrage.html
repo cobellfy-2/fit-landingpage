@@ -211,32 +211,22 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
             <div class="row">
 
                 <div class="col-6 col-12-xsmall">
+                    <label>Bereich</label>
+                    <select id="abteilungGroup" required>
+                      <option value="" disabled selected>Bitte wählen…</option>
+                    </select>
+
                     <label>Abteilung</label>
-                    <select name="abteilung" required>
-                        <option value="" disabled selected>Bitte wählen…</option>
-                        <option value="2med">2.Med</option>
-                        <option value="biobank">Biobank</option>
-                        <option value="cds">CDS</option>
-                        <option value="cds-saficu">CDS-SAFICU</option>
-                        <option value="idm">IDM</option>
-                        <option value="ilm-mikrobiologie">ILM - Mikrobiologie</option>
-                        <option value="inlet">INLET</option>
-                        <option value="mediz">MeDiz</option>
-                        <option value="pathologie">Pathologie</option>
-                        <option value="nuk">NUK</option>
-                        <option value="radiologie">Radiologie</option>
-                        <option value="alps">ALPS</option>
-                        <option value="mvb">MVB</option>
-                        <option value="anästhesie">Anästhesie</option>
-                        <option value="umweltmedizin">Umweltmedizin</option>
+                    <select id="abteilungSelect" name="abteilung" required disabled>
+                      <option value="" disabled selected>Bitte zuerst Bereich wählen…</option>
                     </select>
                 </div>
 
                 <div class="col-6 col-12-xsmall">
                     <label>Berechtigung auf einen Fileshare</label>
-                    <select name="berechtigung" required>
+                    <input name="berechtigung">
                         <option value="" disabled selected>Fileshare(optional)</option>
-                    </select>
+                    </iput>
                 </div>
 
                 <div class="col-12">
@@ -246,6 +236,9 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
 
             </div>
         `;
+        
+        // ✅ JETZT existiert das Select → jetzt befüllen
+        setupAbteilungenTwoStep();
     }
 
     /* ===================== ZERTIFIKAT ===================== */
@@ -422,5 +415,162 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
   })();
 </script>
 
+<script>
+async function loadAbteilungenGrouped() {
+  const select = document.getElementById("abteilungSelect");
+  if (!select) return;
+
+  const res = await fetch("./abteilungen.json", { cache: "no-store" });
+  if (!res.ok) throw new Error("Konnte abteilungen.json nicht laden: " + res.status);
+
+  const json = await res.json();
+  const rows = Array.isArray(json?.data) ? json.data : [];
+
+  // alte Gruppen/Optionen (außer Platzhalter) löschen
+  Array.from(select.children).forEach(ch => {
+    if (!(ch.tagName === "OPTION" && ch.disabled)) ch.remove();
+  });
+
+  const groups = new Map(); // label -> optgroup
+
+  for (const row of rows) {
+    // dein Format: ["id","name"]
+    let id = normalize(row?.[0]);
+    let name = normalize(row?.[1]);
+    if (!id || !name) continue;
+
+    // ID am Anfang aus Name entfernen
+    if (name.startsWith(id)) name = name.slice(id.length).trim();
+    name = name.replace(/^\s*-\s*/, "").trim();
+
+    const label = categoryFor(id, name);
+
+    if (!groups.has(label)) {
+      const og = document.createElement("optgroup");
+      og.label = label;
+      groups.set(label, og);
+      select.appendChild(og);
+    }
+
+    const opt = document.createElement("option");
+    opt.value = id;          // ID bleibt value
+    opt.textContent = name;  // Anzeige ohne ID
+    groups.get(label).appendChild(opt);
+  }
+}
+
+// call after you render the select (bei dir nach dyn.innerHTML=...)
+// loadAbteilungenGrouped();
+</script>
+<script>
+function normalize(s) {
+  return String(s ?? "")
+    .replace(/\uFEFF/g, "")
+    .replace(/\x00/g, "")
+    .trim();
+}
+
+function cleanDisplayName(id, name) {
+  let n = normalize(name);
+  const i = normalize(id);
+  if (n.startsWith(i)) n = n.slice(i.length).trim();
+  return n.replace(/^\s*-\s*/, "").trim();
+}
+
+// ✅ HIER definierst du deine Obergruppen-Logik
+function categoryFor(id, displayName) {
+  const cu = id.toUpperCase();
+
+  if (cu.startsWith("9FL")) return "Lehrstühle";
+
+  const m = cu.match(/^(\d+)/);
+  if (m) {
+    const n = parseInt(m[1], 10);
+    if (n >= 80 && n < 100) return "MIT";
+    if (n >= 801 && n < 806 ) return "MIT";
+    if (n >= 200 && n < 300) return "Pflege";
+    if (n >= 300 && n < 304) return "Anästhesiologie";
+    if (n == 601) return "Anästhesiologie";
+    if(n >= 304 && n < 310) return "Palliativmedizin";
+    if (n == 320) return "Institut f. Laboratoriumsmed./Mikrob./Umwelth.";
+    if (n == 330) return "Institut für Digitale Medizin (IDM)";
+    if (n == 375) return "Institut für Humangenetik";
+    if (n == 310) return "MVZ Nuklearmed. und Strahlenklinik";
+    if (n == 690) return "Physiotherapie und Ergotherapie";
+    if (n == 340) return "Klinik f. Diagnostische Radiologie u. Neurorad.";
+    if (n == 350) return "Klinik für Strahlentherapie";
+    if (n == 360) return "Klinik für Nuklearmedizin";
+    if (n == 390) return "Institut für Pathologie und molekulare Diagnostik";
+    if (n >= 400 && n < 500) return "Chirurgisches Zentrum";
+    if (n == 550) return "Neurologie"
+    if (n >= 500 && n < 550) return "Allgemeinmedizinische Akutpraxis (AMAP)";
+    if(n >= 630 && n < 632) return "Zentrale Notaufnahme";
+    if (n >= 700 && n < 800) return "Kinderklinik";
+    if (n >= 800 && n < 900) return "MedizinCampus Süd";
+  }
+  return "Weitere";
+}
+
+async function setupAbteilungenTwoStep() {
+  const groupSel = document.getElementById("abteilungGroup");
+  const deptSel  = document.getElementById("abteilungSelect");
+  if (!groupSel || !deptSel) return;
+
+  const res = await fetch("./abteilungen.json", { cache: "no-store" });
+  if (!res.ok) throw new Error("Konnte abteilungen.json nicht laden: " + res.status);
+  const json = await res.json();
+  const rows = Array.isArray(json?.data) ? json.data : [];
+
+  // Map: groupLabel -> [{id, name}]
+  const groups = new Map();
+
+  for (const row of rows) {
+    if (!Array.isArray(row) || row.length < 2) continue;
+
+    const id = normalize(row[0]);
+    const rawName = normalize(row[1]);
+    if (!id || !rawName) continue;
+
+    const displayName = cleanDisplayName(id, rawName);
+    const groupLabel = categoryFor(id, displayName);
+
+    if (!groups.has(groupLabel)) groups.set(groupLabel, []);
+    groups.get(groupLabel).push({ id, name: displayName });
+  }
+
+  // Bereiche befüllen (alphabetisch)
+  const groupLabels = Array.from(groups.keys()).sort((a,b)=>a.localeCompare(b, "de"));
+  groupSel.querySelectorAll("option:not([disabled])").forEach(o => o.remove());
+  for (const label of groupLabels) {
+    const opt = document.createElement("option");
+    opt.value = label;
+    opt.textContent = label;
+    groupSel.appendChild(opt);
+  }
+
+  // abteilung kann gewählt werden, sobald bereich gewählt wurde → Untergruppen laden
+  groupSel.addEventListener("change", () => {
+    const label = groupSel.value;
+
+    // reset dept
+    deptSel.innerHTML = `<option value="" disabled selected>Bitte wählen…</option>`;
+    deptSel.disabled = false;
+
+    const items = (groups.get(label) ?? []).slice()
+      .sort((a,b)=>a.name.localeCompare(b.name, "de"));
+
+    for (const item of items) {
+      const opt = document.createElement("option");
+      opt.value = item.id;      // was gesendet wird
+      opt.textContent = item.name; // was angezeigt wird
+      deptSel.appendChild(opt);
+    }
+  });
+
+  // initial state
+  deptSel.disabled = true;
+}
+
+</script>
 </body>
 </html>
