@@ -1,0 +1,616 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 400;
+  min-height: 100%;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, Inter;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Großer Header ===== */
+h1 {
+  font-family: Outfit, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+/* ===== Kleinere Header ===== */
+h2,
+h3,
+h4 {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+/* ===== Fließtext ===== */
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007aff; /* Apple-blau */
+  text-decoration: none;
+}
+
+/* Entferne Aufzählungszeichen bei Aktions-Listen (z.B. Formular-Buttons) */
+.actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Increase list indentation (stronger indent to the right) */
+ul,
+ol {
+  padding-left: 40px;
+  margin-left: 0;
+}
+
+ul li,
+ol li {
+  margin-bottom: 8px;
+}
+
+.actions li {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* SUBPAGEHEADER */
+.subpage-header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #05a, #08d);
+  color: white;
+}
+
+.subpage-header h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.subpage-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ===== Buttons ===== */
+button {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  letter-spacing: 3.75px; /* Abstand zwischen Buchstaben */
+  background-color: #fff;
+  color: #000;
+  padding: 20px 35px;
+  border: 2px solid #999; /* grauer Rahmen */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover-Effekt */
+button:hover {
+  background-color: #888;
+}
+
+/* Connector (grauer Strich zwischen Button und Bild) */
+.connector {
+  position: absolute;
+  height: 2px; /* Strichhöhe */
+  background: #bdbdbd; /* graue Farbe */
+  z-index: 9999;
+  pointer-events: none;
+  transform-origin: 0 50%; /* Drehpunkt links mittig */
+  transition:
+    width 0.12s,
+    transform 0.12s,
+    left 0.12s,
+    top 0.12s;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: #fff;
+  border-bottom: 2px solid #c6d5e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  flex-direction: row;
+}
+
+.logo img {
+  height: 80px; /* ~20% größer */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  text-align: center;
+  padding: 30px 20px;
+  background: #fff;
+}
+
+.hero h1 {
+  font-size: 7rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #666;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* ===== Image Section ===== */
+.image-section {
+  background-color: white; /* Hintergrund weiß */
+  text-align: center; /* Bild zentrieren */
+  padding: 80px; /* etwas Abstand zum Rand */
+}
+
+.image-section img {
+  width: 80%;
+  height: auto;
+  display: inline-block; /* zentriert mit text-align */
+  border: 2px solid #ccc; /* schmaler grauer Rahmen */
+  border-radius: 4px;
+}
+
+.image-left .text-big {
+  max-width: 400px; /* Größe links */
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 15px 12px;
+}
+
+/* ===== Services ===== */
+.services {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.services h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.services p {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  color: #555;
+}
+
+.service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.card {
+  background: #f5f5f5;
+  border-radius: 8px;
+  width: 280px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  display: block;
+  width: 250px;
+  height: 200px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+/* Kleinere Karten auf Mobilgeräten: etwas kompakteres Seitenverhältnis */
+@media (width <= 600px) {
+  .card img {
+    aspect-ratio: 4/3;
+  }
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #155582;
+}
+
+/* ===== Footer ===== */
+
+/* ===== Footer: full-width border + zentriert + grau hinterlegt ===== */
+footer.footer {
+  width: 100%;
+  background: #f2f4f6; /* grauer Footer-Hintergrund */
+  border-top: 1px solid #dcdcdc; /* durchgehender Border über die ganze Seite */
+  box-sizing: border-box;
+}
+
+/* Inhalt im Footer zentriert halten (max-width, zentriert)
+   Die sichtbare Border liegt am Footer-Element und verläuft über die ganze Seite. */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto; /* zentriert den Inhalt */
+  padding: 32px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.footer-section h4 {
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+.footer-section p,
+.footer-section li {
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.footer-section .icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+  color: #155582;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.footer-section a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #155582;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer .social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+/* Footer bottom: sitzt unterhalb der .footer-container, Text mittig, keine zusätzliche Border */
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  color: #666;
+  background: transparent;
+  box-sizing: border-box;
+  display: block;
+  border-top: 1px solid rgb(0 0 0 / 6%); /* heller Strich */
+  padding-top: 12px; /* Abstand zwischen Strich und Text */
+  margin-top: 0; /* keine extra Lücke zusätzlich */
+}
+
+/* Responsive: stapeln auf kleinen Bildschirmen */
+@media (width <= 840px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .footer-section {
+    padding-bottom: 12px;
+  }
+}
+
+/* ===================== FORMULAR STYLES ===================== */
+
+/* Einheitliche Inputs */
+#projekt input,
+#projekt select,
+#projekt textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+  background: #fff;
+  border: 1px solid #d0d0d0; /* dünnerere Linie */
+  border-radius: 10px; /* schön rund */
+  outline: none;
+  transition: 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Hover */
+#projekt input:hover,
+#projekt select:hover,
+#projekt textarea:hover {
+  background: #e2e2e2;
+}
+
+/* Fokus → moderne blaue Glow-Linie */
+#projekt input:focus,
+#projekt select:focus,
+#projekt textarea:focus {
+  border-color: #155582;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgb(59 123 255 / 15%);
+}
+
+/* Labels etwas moderner */
+#projekt label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Weniger Abstand zwischen Inputs */
+.row > * {
+  margin-bottom: 10px;
+}
+
+/* ===================== GRID LAYOUT ===================== */
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* Spaltenbreiten */
+.col-1 {
+  grid-column: span 1;
+}
+
+.col-2 {
+  grid-column: span 2;
+}
+
+.col-3 {
+  grid-column: span 3;
+}
+
+.col-4 {
+  grid-column: span 4;
+}
+
+.col-5 {
+  grid-column: span 5;
+}
+
+.col-6 {
+  grid-column: span 6;
+}
+
+.col-7 {
+  grid-column: span 7;
+}
+
+.col-8 {
+  grid-column: span 8;
+}
+
+.col-9 {
+  grid-column: span 9;
+}
+
+.col-10 {
+  grid-column: span 10;
+}
+
+.col-11 {
+  grid-column: span 11;
+}
+
+.col-12 {
+  grid-column: span 12;
+}
+
+/* Mobile */
+@media (width <= 800px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Seiten-Wrapper: Abstand links/rechts + zentrierte Max-Breite */
+.site-inner {
+  max-width: 1800px; /* gewünschte Lese/Breite */
+  margin: 0 auto; /* zentrieren */
+  padding: 50px 24px; /* Abstand links/rechts */
+  box-sizing: border-box;
+}
+
+/* kleinerer Abstand auf Mobilgeräten */
+@media (width <= 900px) {
+  .site-inner {
+    padding: 0 16px;
+  }
+}
+
+.faq-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.faq-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.faq-item {
+  border-top: 1px solid #e5e5e5;
+  padding: 15px 0;
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-icon {
+  font-size: 26px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.faq-answer.open {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+/* ===== Modal / Popup ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 45%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 24px;
+}
+
+/* Ensure elements with the `hidden` attribute are not displayed (explicit author rule) */
+.modal-overlay[hidden] {
+  display: none !important;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 20%);
+  box-sizing: border-box;
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-content pre {
+  white-space: pre-wrap;
+  background: #f7f7f7;
+  padding: 14px;
+  border-radius: 8px;
+  max-height: 360px;
+  overflow: auto;
+  font-family: inherit;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* Ensure primary button stands out in modal */
+.modal .button.primary {
+  background-color: #155582;
+  color: #fff;
+  border-color: #155582;
+  padding: 10px 18px;
+}
+
+.modal .button {
+  padding: 9px 16px;
+}
+
+.faq-answer p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 17px;
+}

@@ -49,7 +49,7 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size: 7.0rem;
+  font-size: 7rem;
   font-weight: 800;
   margin-bottom: 10px;
 }
@@ -57,7 +57,7 @@ nav a:hover {
 .hero p {
   color: #666;
   margin-bottom: 20px;
-  text-align:left;
+  text-align: left;
 }
 
 /* ===== Image Section ===== */
@@ -113,7 +113,7 @@ nav a:hover {
   border-radius: 8px;
   width: 280px;
   padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
@@ -147,8 +147,8 @@ nav a:hover {
 /* ===== Footer: full-width border + zentriert + grau hinterlegt ===== */
 footer.footer {
   width: 100%;
-  background: #f2f4f6;            /* grauer Footer-Hintergrund */
-  border-top: 1px solid #dcdcdc;  /* durchgehender Border über die ganze Seite */
+  background: #f2f4f6; /* grauer Footer-Hintergrund */
+  border-top: 1px solid #dcdcdc; /* durchgehender Border über die ganze Seite */
   box-sizing: border-box;
 }
 
@@ -156,7 +156,7 @@ footer.footer {
    Die sichtbare Border liegt am Footer-Element und verläuft über die ganze Seite. */
 .footer-container {
   max-width: 1200px;
-  margin: 0 auto;                /* zentriert den Inhalt */
+  margin: 0 auto; /* zentriert den Inhalt */
   padding: 32px 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -168,7 +168,8 @@ footer.footer {
   margin-bottom: 16px;
   font-size: 1rem;
 }
-.footer-section p, .footer-section li {
+.footer-section p,
+.footer-section li {
   color: #444;
   font-size: 0.95rem;
 }
@@ -195,7 +196,9 @@ footer.footer {
   color: #333;
   text-decoration: none;
 }
-.footer-section a:hover { text-decoration: underline; }
+.footer-section a:hover {
+  text-decoration: underline;
+}
 
 .footer .social a {
   display: inline-flex;
@@ -221,14 +224,15 @@ footer.footer {
     grid-template-columns: 1fr;
     text-align: left;
   }
-  .footer-section { padding-bottom: 12px; }
-}
-  /* Restore horizontal navbar layout */
-  .navbar {
-    flex-direction: row;
-    align-items: center;
+  .footer-section {
+    padding-bottom: 12px;
   }
-
+}
+/* Restore horizontal navbar layout */
+.navbar {
+  flex-direction: row;
+  align-items: center;
+}
 
 /* ===== Allgemeine Schrift ===== */
 body {
@@ -240,22 +244,22 @@ body {
 
 /* SUBPAGEHEADER */
 .subpage-header {
-    text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, #0055aa, #0088dd);
-    color: white;
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #0055aa, #0088dd);
+  color: white;
 }
 
 .subpage-header h1 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 2.4rem;
-    font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2.4rem;
+  font-weight: 700;
 }
 
 .subpage-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 /* ===== Großer Header ===== */
 h1 {
@@ -267,7 +271,9 @@ h1 {
 }
 
 /* ===== Kleinere Header ===== */
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   margin-top: 1.5rem;
@@ -284,8 +290,8 @@ button {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   letter-spacing: 3.75px; /* Abstand zwischen Buchstaben */
-  background-color:  #fff;
-  color: #000; 
+  background-color: #fff;
+  color: #000;
   padding: 20px 35px;
   border: 2px solid #999; /* grauer Rahmen */
   cursor: pointer;
@@ -300,15 +306,20 @@ button:hover {
 /* Connector (grauer Strich zwischen Button und Bild) */
 .connector {
   position: absolute;
-  height: 2px;                 /* Strichhöhe */
-  background: #bdbdbd;         /* graue Farbe */
+  height: 2px; /* Strichhöhe */
+  background: #bdbdbd; /* graue Farbe */
   z-index: 9999;
   pointer-events: none;
-  transform-origin: 0 50%;     /* Drehpunkt links mittig */
-  transition: width 0.12s, transform 0.12s, left 0.12s, top 0.12s;
+  transform-origin: 0 50%; /* Drehpunkt links mittig */
+  transition:
+    width 0.12s,
+    transform 0.12s,
+    left 0.12s,
+    top 0.12s;
 }
 /* kleine Styles zur Sicherstellung, dass der Body als Bezug funktioniert */
-html, body {
+html,
+body {
   min-height: 100%;
 }
 
@@ -322,9 +333,9 @@ html, body {
   font-size: 16px;
   font-family: Inter, sans-serif;
 
-  background: #ffffff;             
-  border: 1px solid #d0d0d0;       /* dünnerere Linie */
-  border-radius: 10px;              /* schön rund */
+  background: #ffffff;
+  border: 1px solid #d0d0d0; /* dünnerere Linie */
+  border-radius: 10px; /* schön rund */
 
   outline: none;
   transition: 0.2s ease;
@@ -360,7 +371,6 @@ html, body {
   margin-bottom: 10px;
 }
 
-
 /* Labels über den Inputs */
 #projekt label {
   display: block;
@@ -386,18 +396,42 @@ html, body {
 }
 
 /* Spaltenbreiten */
-.col-1  { grid-column: span 1; }
-.col-2  { grid-column: span 2; }
-.col-3  { grid-column: span 3; }
-.col-4  { grid-column: span 4; }
-.col-5  { grid-column: span 5; }
-.col-6  { grid-column: span 6; }
-.col-7  { grid-column: span 7; }
-.col-8  { grid-column: span 8; }
-.col-9  { grid-column: span 9; }
-.col-10 { grid-column: span 10; }
-.col-11 { grid-column: span 11; }
-.col-12 { grid-column: span 12; }
+.col-1 {
+  grid-column: span 1;
+}
+.col-2 {
+  grid-column: span 2;
+}
+.col-3 {
+  grid-column: span 3;
+}
+.col-4 {
+  grid-column: span 4;
+}
+.col-5 {
+  grid-column: span 5;
+}
+.col-6 {
+  grid-column: span 6;
+}
+.col-7 {
+  grid-column: span 7;
+}
+.col-8 {
+  grid-column: span 8;
+}
+.col-9 {
+  grid-column: span 9;
+}
+.col-10 {
+  grid-column: span 10;
+}
+.col-11 {
+  grid-column: span 11;
+}
+.col-12 {
+  grid-column: span 12;
+}
 
 /* Mobile */
 @media (max-width: 800px) {
@@ -408,81 +442,85 @@ html, body {
 
 /* Seiten-Wrapper: Abstand links/rechts + zentrierte Max-Breite */
 .site-inner {
-  max-width: 1800px;     /* gewünschte Lese/Breite */
-  margin: 0 auto;        /* zentrieren */
-  padding: 50px 24px;       /* Abstand links/rechts */
+  max-width: 1800px; /* gewünschte Lese/Breite */
+  margin: 0 auto; /* zentrieren */
+  padding: 50px 24px; /* Abstand links/rechts */
   box-sizing: border-box;
 }
 
 /* kleinerer Abstand auf Mobilgeräten */
 @media (max-width: 900px) {
-  .site-inner { padding: 0 16px; }
+  .site-inner {
+    padding: 0 16px;
+  }
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #fff;
-    margin: 0;
-    padding: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
 }
 
 .faq-section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
 .faq-section h2 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 25px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
 .faq-item {
-    border-top: 1px solid #e5e5e5;
-    padding: 15px 0;
+  border-top: 1px solid #e5e5e5;
+  padding: 15px 0;
 }
 
 .faq-item:last-child {
-    border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .faq-question {
-    width: 100%;
-    background: none;
-    border: none;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: left;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .faq-icon {
-    font-size: 26px;
-    font-weight: 400;
-    margin-left: 10px;
+  font-size: 26px;
+  font-weight: 400;
+  margin-left: 10px;
 }
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .faq-answer.open {
-    max-height: 500px;
-    margin-top: 10px;
+  max-height: 500px;
+  margin-top: 10px;
 }
 
 /* ===== Modal / Popup ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -502,7 +540,7 @@ body {
   background: #ffffff;
   border-radius: 14px;
   padding: 22px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 
@@ -552,18 +590,18 @@ body {
 }
 
 .faq-answer p {
-    margin: 0;
-    line-height: 1.6;
-    font-size: 17px;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 17px;
 }
 
 a {
-    color: #007aff; /* Apple-blau */
-    text-decoration: none;
+  color: #007aff; /* Apple-blau */
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Entferne Aufzählungszeichen bei Aktions-Listen (z.B. Formular-Buttons) */
@@ -578,12 +616,14 @@ a:hover {
 }
 
 /* Increase list indentation (stronger indent to the right) */
-ul, ol {
+ul,
+ol {
   padding-left: 40px;
   margin-left: 0;
 }
 
-ul li, ol li {
+ul li,
+ol li {
   margin-bottom: 8px;
 }
 
@@ -591,11 +631,10 @@ ul li, ol li {
 .footer-bottom {
   display: block;
   width: 100%;
-  border-top: 1px solid rgba(0,0,0,0.06); /* heller Strich */
+  border-top: 1px solid rgba(0, 0, 0, 0.06); /* heller Strich */
   padding-top: 12px; /* Abstand zwischen Strich und Text */
   margin-top: 0; /* keine extra Lücke zusätzlich */
   text-align: center; /* Text mittig */
   color: #666;
   box-sizing: border-box;
 }
-
