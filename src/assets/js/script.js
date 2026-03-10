@@ -87,7 +87,11 @@
       const deptSel = document.getElementById("abteilungSelect");
       if (!groupSel || !deptSel) return;
 
-      fetch("./abteilungen.json", { cache: "no-store" })
+      const abteilungenUrl = new URL(
+        "../data/abteilungen.json",
+        (document.currentScript && document.currentScript.src) || location.href,
+      ).href;
+      fetch(abteilungenUrl, { cache: "no-store" })
         .then((res) => {
           if (!res.ok)
             throw new Error(
