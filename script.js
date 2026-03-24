@@ -1,0 +1,277 @@
+//skripte Main-Page
+    (function () {
+      const btn = document.getElementById('scroll-to-services');
+      const target = document.getElementById('services');
+      if (btn && target) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    })();
+
+    // Erzeugt / aktualisiert eine div.connector, die von der Unterseite des Buttons
+    // zur Oberseite des Bildes verbindet. Läuft bei Laden, Scroll und Resize.
+    (function () {
+      function ensureConnector() {
+        let c = document.querySelector('.connector');
+        if (!c) {
+          c = document.createElement('div');
+          c.className = 'connector';
+          document.body.appendChild(c);
+        }
+        return c;
+      }
+
+      function updateConnector() {
+        const btn = document.querySelector('.hero .button');
+        const img = document.querySelector('.image-section img');
+        if (!btn || !img) return;
+
+        const rectBtn = btn.getBoundingClientRect();
+        const rectImg = img.getBoundingClientRect();
+
+        // Start an der Unterkante des Buttons (mittig)
+        const startX = rectBtn.left + rectBtn.width / 2 + window.scrollX;
+        const startY = rectBtn.bottom + window.scrollY;
+        // Ende an der Oberkante des Bildes (mittig)
+        const endX = rectImg.left + rectImg.width / 2 + window.scrollX;
+        const endY = rectImg.top + window.scrollY;
+
+        const dx = endX - startX;
+        const dy = endY - startY;
+        const length = Math.hypot(dx, dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+        const conn = ensureConnector();
+        conn.style.width = length + 'px';
+        conn.style.left = startX + 'px';
+        // damit die Linie genau an startY zentriert ist, höhe halb abziehen
+        const connHeight = parseFloat(getComputedStyle(conn).height) || 2;
+        conn.style.top = (startY - connHeight / 2) + 'px';
+        conn.style.transform = 'rotate(' + angle + 'deg)';
+      }
+
+      // initial + bei Resize/Scroll (debounced kurz)
+      let timeout;
+      function scheduleUpdate() {
+        clearTimeout(timeout);
+        timeout = setTimeout(updateConnector, 50);
+      }
+
+      window.addEventListener('load', updateConnector);
+      window.addEventListener('resize', scheduleUpdate);
+      window.addEventListener('scroll', scheduleUpdate);
+      document.querySelectorAll('.image-section img').forEach(img => {
+        if (!img.complete) img.addEventListener('load', scheduleUpdate);
+      });
+    })();
+
+//skripte Anfragen-Page
+
+document.getElementById("anfragetyp").addEventListener("change", function () {
+    const dyn = document.getElementById("dynamisch");
+    const typ = this.value;
+
+    dyn.innerHTML = ""; // Reset
+
+    /* ===================== FIT AD USERANLAGE ===================== */
+    if (typ === "fit-ad") {
+        dyn.innerHTML = `
+            <div class="row">
+
+                <div class="col-6 col-12-xsmall">
+                    <label>Abteilung</label>
+                    <select name="abteilung" required>
+                        <option value="" disabled selected>Bitte wählen…</option>
+                        <option value="2med">2.Med</option>
+                        <option value="biobank">Biobank</option>
+                        <option value="cds">CDS</option>
+                        <option value="cds-saficu">CDS-SAFICU</option>
+                        <option value="idm">IDM</option>
+                        <option value="ilm-mikrobiologie">ILM - Mikrobiologie</option>
+                        <option value="inlet">INLET</option>
+                        <option value="mediz">MeDiz</option>
+                        <option value="pathologie">Pathologie</option>
+                        <option value="nuk">NUK</option>
+                        <option value="radiologie">Radiologie</option>
+                        <option value="alps">ALPS</option>
+                        <option value="mvb">MVB</option>
+                        <option value="anästhesie">Anästhesie</option>
+                        <option value="umweltmedizin">Umweltmedizin</option>
+                    </select>
+                </div>
+
+                <div class="col-6 col-12-xsmall">
+                    <label>Berechtigung auf einen Fileshare</label>
+                    <select name="berechtigung" required>
+                        <option value="" disabled selected>Fileshare(optional)</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label>PKZ (optional)</label>
+                    <input type="text" name="pkz" placeholder="PKZ">
+                </div>
+
+            </div>
+        `;
+    }
+
+    /* ===================== ZERTIFIKAT ===================== */
+    if (typ === "zertifikat") {
+        dyn.innerHTML = `
+            <div class="row">
+
+                <div class="col-12">
+                    <label>Art der Ausstellung</label>
+                    <select id="zert-art" name="zert_art" required>
+                        <option disabled selected>Bitte wählen…</option>
+                        <option value="neu">Neu</option>
+                        <option value="verlaengerung">Verlängerung</option>
+                    </select>
+                </div>
+
+                <div id="zert-details" class="col-12"></div>
+
+                <div class="col-12" style="color:#666;font-size:0.9em;">
+                    Hinweis: Private Schlüssel werden von uns generiert. Fremdschlüssel werden nicht akzeptiert.
+                </div>
+
+            </div>
+        `;
+
+        document.getElementById("zert-art").addEventListener("change", function () {
+            const details = document.getElementById("zert-details");
+
+            if (this.value === "neu") {
+                details.innerHTML = `
+                    <div class="row">
+                        <div class="col-6 col-12-xsmall">
+                            <label>Hostname</label>
+                            <input type="text" name="hostname" required>
+                        </div>
+
+                        <div class="col-6 col-12-xsmall">
+                            <label>Zertifikatstyp</label>
+                            <select name="cert_typ" required>
+                                <option disabled selected>Bitte wählen…</option>
+                                <option value="intern">Intern</option>
+                                <option value="extern">Extern</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (this.value === "verlaengerung") {
+                details.innerHTML = `
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Hostname</label>
+                            <input type="text" name="hostname" required>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    }
+
+    /* ===================== SONSTIGES ===================== */
+    if (typ === "sonstiges") {
+        dyn.innerHTML = `
+            <div class="row">
+                <div class="col-12">
+                    <label>Beschreibung</label>
+                    <textarea name="kommentar" required placeholder="Ihr Anliegen…"></textarea>
+                </div>
+            </div>
+        `;
+    }
+});
+
+
+
+  (function () {
+    const form = document.querySelector('form[name="projekt"]');
+    const modal = document.getElementById('confirmModal');
+    const modalText = document.getElementById('modalText');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const closeX = document.querySelector('.modal-close');
+
+    if (!form || !modal) return;
+
+    function gatherFormData(f) {
+      const lines = [];
+      const elements = Array.from(f.elements).filter(el => el.name && !el.disabled);
+
+      elements.forEach(el => {
+        let value = '';
+        if (el.type === 'checkbox') value = el.checked ? 'Ja' : 'Nein';
+        else if (el.type === 'radio') { if (el.checked) value = el.value; else return; }
+        else value = el.value || '';
+
+        // Friendly label: try to find a preceding label text
+        let label = el.getAttribute('name');
+        const lab = f.querySelector('label[for="' + el.id + '"]');
+        if (lab) label = lab.textContent.trim();
+        else if (el.parentElement) {
+          const p = el.parentElement.querySelector('label');
+          if (p) label = p.textContent.trim();
+        }
+
+        lines.push(label + ': ' + value);
+      });
+
+      return lines.join('\n');
+    }
+
+    function showModal(text) {
+      modalText.textContent = text;
+      modal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      modalText.focus();
+    }
+
+    function hideModal() {
+      modal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const txt = gatherFormData(form);
+      showModal(txt);
+    });
+
+    
+
+      if (closeBtn) closeBtn.addEventListener('click', hideModal);
+      if (closeX) closeX.addEventListener('click', hideModal);
+
+      // Klick auf Overlay (außerhalb des Dialogs) soll Modal schließen
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) hideModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hasAttribute('hidden')) hideModal();
+      });
+
+    if (downloadBtn) downloadBtn.addEventListener('click', function () {
+      const content = modalText.textContent || '';
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const now = new Date();
+      const stamp = now.toISOString().slice(0,19).replace(/[:T]/g,'-');
+      a.href = url;
+      a.download = 'anfrage-' + stamp + '.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      hideModal();
+    });
+  })();
