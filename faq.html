@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!-- allgemeine Konfiguration -->
+ <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Kopfzeile mit Navigation -->
   <header>
     <div class="navbar">
       <div class="logo">
@@ -26,6 +28,8 @@
     <img src="./images/text-big.png" alt="Text Big" class="text-big">
     </div>
   </header>
+
+  <!-- FAQ-Boxen -->
   <section class="faq-section">
     <h2>Häufig gestellte Fragen</h2>
 
@@ -84,7 +88,7 @@
 
 </section>
 
-
+  <!-- Fußzeile mit Kontaktdaten -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-section">
@@ -119,25 +123,7 @@
       © 2025 Universitätsklinikum Augsburg
     </div>
   </footer>
-
-  <script>
-    const questions = document.querySelectorAll(".faq-question");
-
-    questions.forEach(q => {
-        q.addEventListener("click", () => {
-            const parent = q.parentElement;
-            const answer = parent.querySelector(".faq-answer");
-            const icon = q.querySelector(".faq-icon");
-
-            answer.classList.toggle("open");
-
-            if (answer.classList.contains("open")) {
-                icon.textContent = "−";
-            } else {
-                icon.textContent = "+";
-            }
-        });
-    });
-</script>
+<!-- Skripte mit einbinden-->
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 //skripte Main-Page
+
+// Button crollt zu Services
     (function () {
       const btn = document.getElementById('scroll-to-services');
       const target = document.getElementById('services');
@@ -67,15 +69,24 @@
       });
     })();
 
+
 //skripte Anfragen-Page
 
+//verschiedene Eingabemöglichkeiten je nach Typ der Anfrage
 document.getElementById("anfragetyp").addEventListener("change", function () {
     const dyn = document.getElementById("dynamisch");
     const typ = this.value;
 
     dyn.innerHTML = ""; // Reset
-
+    
     /* ===================== FIT AD USERANLAGE ===================== */
+    /* Berechtigung auf einen Fileshare BOX
+    <div class="col-6 col-12-xsmall">
+                    <label>Berechtigung auf einen Fileshare</label>
+                    <select name="berechtigung" required>
+                        <option value="" disabled selected>Fileshare(optional)</option>
+                    </select>
+                </div>*/
     if (typ === "fit-ad") {
         dyn.innerHTML = `
             <div class="row">
@@ -102,14 +113,9 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
                     </select>
                 </div>
 
-                <div class="col-6 col-12-xsmall">
-                    <label>Berechtigung auf einen Fileshare</label>
-                    <select name="berechtigung" required>
-                        <option value="" disabled selected>Fileshare(optional)</option>
-                    </select>
-                </div>
+                
 
-                <div class="col-12">
+                <div class="col-6 col-12-xsmall">
                     <label>PKZ (optional)</label>
                     <input type="text" name="pkz" placeholder="PKZ">
                 </div>
@@ -191,7 +197,7 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
 });
 
 
-
+//Modal erstellen
   (function () {
     const form = document.querySelector('form[name="projekt"]');
     const modal = document.getElementById('confirmModal');
@@ -202,6 +208,7 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
 
     if (!form || !modal) return;
 
+    //Daten sammeln
     function gatherFormData(f) {
       const lines = [];
       const elements = Array.from(f.elements).filter(el => el.name && !el.disabled);
@@ -227,6 +234,7 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
       return lines.join('\n');
     }
 
+    //Modal anzeigen
     function showModal(text) {
       modalText.textContent = text;
       modal.removeAttribute('hidden');
@@ -234,6 +242,7 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
       modalText.focus();
     }
 
+    //Modal verstecken
     function hideModal() {
       modal.setAttribute('hidden', '');
       document.body.style.overflow = '';
@@ -258,7 +267,8 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && !modal.hasAttribute('hidden')) hideModal();
       });
-
+    
+    //Modal downloaden
     if (downloadBtn) downloadBtn.addEventListener('click', function () {
       const content = modalText.textContent || '';
       const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
@@ -275,3 +285,26 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
       hideModal();
     });
   })();
+
+  // Skript Datenhaltung & Infrastruktur
+
+  // FAQ Boxen öffnen und schließen
+    console.log("FAQ JS geladen");
+    const questions = document.querySelectorAll(".faq-question");
+
+    questions.forEach(q => {
+        q.addEventListener("click", () => {
+            const parent = q.parentElement;
+            const answer = parent.querySelector(".faq-answer");
+            const icon = q.querySelector(".faq-icon");
+
+            answer.classList.toggle("open");
+
+            if (answer.classList.contains("open")) {
+                icon.textContent = "−";
+            } else {
+                icon.textContent = "+";
+            }
+        });
+    });
+

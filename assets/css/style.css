@@ -1,3 +1,4 @@
+/* === Allgemein ===*/
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +7,14 @@
 }
 
 body {
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }
 
 /* ===== Navbar ===== */
@@ -206,13 +212,15 @@ footer.footer {
 
 /* Footer bottom: sitzt unterhalb der .footer-container, Text mittig, keine zusätzliche Border */
 .footer-bottom {
-  width: 100%;
-  text-align: center;
-  padding: 14px 20px;
-  color: #666;
-  background: transparent;
-  border-top: none;
-  box-sizing: border-box;
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #666;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(0,0,0,0.06); /* heller Strich */
+    padding-top: 12px; /* Abstand zwischen Strich und Text */
+    margin-top: 0;
+    background: transparent;
 }
 
 /* Responsive: stapeln auf kleinen Bildschirmen */
@@ -228,15 +236,6 @@ footer.footer {
     flex-direction: row;
     align-items: center;
   }
-
-
-/* ===== Allgemeine Schrift ===== */
-body {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  background-color: white;
-  color: #333;
-}
 
 /* SUBPAGEHEADER */
 .subpage-header {
@@ -348,11 +347,13 @@ html, body {
 }
 
 /* Labels etwas moderner */
+/* Labels über den Inputs */
 #projekt label {
-  font-weight: 600;
-  font-size: 15px;
-  color: #333;
-  margin-bottom: 6px;
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    color: #000;
+    margin-bottom: 6px;
 }
 
 /* Weniger Abstand zwischen Inputs */
@@ -360,22 +361,6 @@ html, body {
   margin-bottom: 10px;
 }
 
-
-/* Labels über den Inputs */
-#projekt label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #000;
-}
-
-/* Einheitliche Felder */
-#projekt label {
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #000;
-  display: block;
-}
 
 /* ===================== GRID LAYOUT ===================== */
 
@@ -419,12 +404,7 @@ html, body {
   .site-inner { padding: 0 16px; }
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #fff;
-    margin: 0;
-    padding: 0;
-}
+/* FAQ Teil */
 
 .faq-section {
     max-width: 900px;
@@ -587,15 +567,5 @@ ul li, ol li {
   margin-bottom: 8px;
 }
 
-/* Light stripe above the bottom copyright line and ensure it's centered on its own row */
-.footer-bottom {
-  display: block;
-  width: 100%;
-  border-top: 1px solid rgba(0,0,0,0.06); /* heller Strich */
-  padding-top: 12px; /* Abstand zwischen Strich und Text */
-  margin-top: 0; /* keine extra Lücke zusätzlich */
-  text-align: center; /* Text mittig */
-  color: #666;
-  box-sizing: border-box;
-}
+
 
