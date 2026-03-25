@@ -66,6 +66,14 @@ nav a:hover {
   text-align:left;
 }
 
+/* Vergrößert nur den Button in der Hero-Section */
+.hero .button {
+  padding: 25px 50px;       /* Erster Wert: oben/unten, zweiter Wert: links/rechts */
+  font-size: 1.2rem;        /* Macht die Schrift im Button größer */
+  letter-spacing: 4px;      /* Verstärkt den edlen Look durch weiteren Zeichenabstand */
+  border-width: 3px;        /* Macht den Rahmen passend zur Größe etwas dicker */
+}
+
 /* ===== Image Section ===== */
 .image-section {
   background-color: white; /* Hintergrund weiß */
