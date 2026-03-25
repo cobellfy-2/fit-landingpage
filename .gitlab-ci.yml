@@ -1,0 +1,41 @@
+stages:          # Reihenfolge der Pipeline-Stages
+  - build
+  - test
+  - deploy
+
+# --------------------------
+# Build Stage
+# --------------------------
+build_job:
+  stage: build
+  image: alpine:latest      # leichte Linux-Umgebung für Builds
+  script:
+    - echo "=== Build Stage ==="
+    - mkdir -p build
+    - echo "Build Output" > build/output.txt
+  artifacts:                # Dateien für nächste Stages sichern
+    paths:
+      - build/
+
+# --------------------------
+# Test Stage
+# --------------------------
+test_job:
+  stage: test
+  image: alpine:latest
+  script:
+    - echo "=== Test Stage ==="
+    - if [ -f build/output.txt ]; then echo "Test Passed"; else echo "Test Failed"; exit 1; fi
+
+# --------------------------
+# Deployment Stage
+# --------------------------
+deploy_job:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "=== Deploy Stage ==="
+    - echo "Deploying build..."
+    - cat build/output.txt
+  only:
+    - main    # Deployment nur auf main-Branch
