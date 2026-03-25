@@ -554,19 +554,12 @@ ul li, ol li {
   margin-bottom: 8px;
 }
 
-
-/* Stil About us Page */
-
-/* Seiten-Wrapper: Abstand links/rechts + zentrierte Max-Breite */
+/* Stil Elemente Unterseiten */
 .site-inner {
-  max-width: 1800px;     /* gewünschte Lese/Breite */
-  margin: 0 auto;        /* zentrieren */
-  padding: 50px 24px;       /* Abstand links/rechts */
+  max-width: 1800px;     
+  margin: 0 auto;        
+  padding: 50px 24px;       
   box-sizing: border-box;
-}
-
-.site-inner > p {
-    margin-left: 70px;
 }
 
 /* kleinerer Abstand auf Mobilgeräten */
@@ -574,6 +567,52 @@ ul li, ol li {
   .site-inner { padding: 0 16px; }
 }
 
+/* About us Page */
+
+/* Skaliert den gesamten Inhalt der About-Sektion sauber in allen Browsern */
+.about-fit {
+    /* 1. Zoom für Chrome, Safari und Edge */
+    zoom: 1.05; 
+
+    /* 2. Transform für Firefox und als moderner Standard */
+    -moz-transform: scale(1.05); 
+    transform: scale(1.05); /* Das ist die "standard property", die gefehlt hat */
+
+    /* 3. Festlegen des Ursprungs der Skalierung */
+    -moz-transform-origin: top center;
+    transform-origin: top center; /* Das ist die Standard-Property für den Ursprung */
+}
+
+/* Seiten-Wrapper: Abstand links/rechts + zentrierte Max-Breite */
+.about-fit .site-inner-ab {
+  max-width: 1800px;     /* gewünschte Lese/Breite */
+  margin: 0 auto;        /* zentrieren */
+  padding: 50px 24px;       /* Abstand links/rechts */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.about-fit .site-inner > p {
+    text-align: left;
+    max-width: 1000px;         /* Breite exakt wie der Karten-Slider */
+    margin: 40px auto 30px auto; /* Mehr Abstand nach unten für mehr "Luft" */
+    
+    font-size: 20px;          /* Größere Schrift wirkt hochwertiger */
+    line-height: 1.8;         /* Großzügiger Zeilenabstand für bessere Lesbarkeit */
+    letter-spacing: 0.2px;    /* Minimaler Abstand zwischen Buchstaben für Eleganz */
+    color: #444;              /* Ein dunkles Grau wirkt weicher als hartes Schwarz */
+}
+
+/* Zentriert die "UNSER TEAM"-Überschrift auf der About-Seite */
+.about-fit .team-section h2 {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.team-section {
+    padding-bottom: 60px; /* Erzeugt Platz vor dem Footer */
+    text-align: center;
+}
 
 /* Container für den gesamten Slider inkl. Pfeile */
         .slider-wrapper {
@@ -582,7 +621,8 @@ ul li, ol li {
             width: 100%;
             padding: 0 ;
             margin: 0 ; 
-            justify-content: flex-start;
+            justify-content: center;
+            margin-top: 40px;
         }
 
         /* Container für die Karten (blendend den Scrollbalken aus) */
@@ -708,5 +748,3 @@ ul li, ol li {
         .nav-btn:hover {
             color: #00569d;
         }
-
-
