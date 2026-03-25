@@ -1,6 +1,6 @@
 //skripte Main-Page
 
-// Button crollt zu Services
+// Button scrollt zu Services
     (function () {
       const btn = document.getElementById('scroll-to-services');
       const target = document.getElementById('services');
@@ -73,7 +73,9 @@
 //skripte Anfragen-Page
 
 //verschiedene Eingabemöglichkeiten je nach Typ der Anfrage
-document.getElementById("anfragetyp").addEventListener("change", function () {
+const anfrageTyp = document.getElementById("anfragetyp");
+if (anfrageTyp) {
+    anfrageTyp.addEventListener("change", function () {
     const dyn = document.getElementById("dynamisch");
     const typ = this.value;
 
@@ -195,6 +197,7 @@ document.getElementById("anfragetyp").addEventListener("change", function () {
         `;
     }
 });
+}
 
 
 //Modal erstellen
