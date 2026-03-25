@@ -311,3 +311,33 @@ if (anfrageTyp) {
         });
     });
 
+
+    //Skript About-Us Seite
+
+    // 1. Logik für das Scrollen mit den Pfeilen
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Um wie viel Pixel soll pro Klick gescrollt werden? (Kartenbreite + Abstand)
+        const scrollAmount = 245; 
+
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        // 2. Logik für den "Kontaktieren" Button
+        function kontaktAktion(name) {
+            // HIER KANNST DU DEINE LOGIK EINFÜGEN!
+            // Zum Beispiel:
+            // - Ein Pop-up (Modal) öffnen
+            // - Auf ein Kontaktformular weiterleiten: window.location.href = "/kontakt?mitarbeiter=" + name;
+            // - Ein E-Mail-Fenster öffnen: window.location.href = "mailto:info@firma.de?subject=Anfrage an " + name;
+            
+            // Momentan zeigt es nur eine Alert-Box an, damit du siehst, dass es funktioniert:
+            alert("Du hast auf 'Kontaktieren' geklickt für: " + name + ".\n\nHier kannst du im Code (JavaScript) einstellen, was als nächstes passieren soll.");
+        }
