@@ -622,6 +622,10 @@ ul li, ol li {
     text-align: center;
 }
 
+.team-section h2{
+    font-size: 30px;
+}
+
 /* Container für den gesamten Slider inkl. Pfeile */
         .slider-wrapper {
             display: flex;
@@ -705,7 +709,7 @@ ul li, ol li {
         .card-about-us-content {
             position: relative;
             z-index: 2;
-            padding: 15px 15px 25px 15px;
+            padding: 15px 15px 0px 15px;
             display: flex;
             flex-direction: column;
             flex-grow: 1; /* Sorgt dafür, dass dieser Bereich die Karte nach unten ausfüllt */
@@ -713,13 +717,13 @@ ul li, ol li {
 
         .card-about-us-content h3 {
             margin: 10px 0 5px 0;
-            font-size: 15px;
+            font-size: 19px;
             color: #333333;
         }
 
         .card-about-us-content p {
             margin: 0 0 20px 0;
-            font-size: 13px;
+            font-size: 16px;
             color: #888888;
         }
 

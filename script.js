@@ -89,7 +89,7 @@ if (anfrageTyp) {
                         <option value="" disabled selected>Fileshare(optional)</option>
                     </select>
                 </div>*/
-    if (typ === "fit-ad") {
+    if (typ === "Zugang ins Forschungsnetz") {
         dyn.innerHTML = `
             <div class="row">
 
@@ -97,7 +97,7 @@ if (anfrageTyp) {
                     <label>Abteilung</label>
                     <select name="abteilung" required>
                         <option value="" disabled selected>Bitte wählen…</option>
-                        <option value="2med">2.Med</option>
+                        <option value="2.Med">2.Med</option>
                         <option value="biobank">Biobank</option>
                         <option value="cds">CDS</option>
                         <option value="cds-saficu">CDS-SAFICU</option>
@@ -122,77 +122,6 @@ if (anfrageTyp) {
                     <input type="text" name="pkz" placeholder="PKZ">
                 </div>
 
-            </div>
-        `;
-    }
-
-    /* ===================== ZERTIFIKAT ===================== */
-    if (typ === "zertifikat") {
-        dyn.innerHTML = `
-            <div class="row">
-
-                <div class="col-12">
-                    <label>Art der Ausstellung</label>
-                    <select id="zert-art" name="zert_art" required>
-                        <option disabled selected>Bitte wählen…</option>
-                        <option value="neu">Neu</option>
-                        <option value="verlaengerung">Verlängerung</option>
-                    </select>
-                </div>
-
-                <div id="zert-details" class="col-12"></div>
-
-                <div class="col-12" style="color:#666;font-size:0.9em;">
-                    Hinweis: Private Schlüssel werden von uns generiert. Fremdschlüssel werden nicht akzeptiert.
-                </div>
-
-            </div>
-        `;
-
-        document.getElementById("zert-art").addEventListener("change", function () {
-            const details = document.getElementById("zert-details");
-
-            if (this.value === "neu") {
-                details.innerHTML = `
-                    <div class="row">
-                        <div class="col-6 col-12-xsmall">
-                            <label>Hostname</label>
-                            <input type="text" name="hostname" required>
-                        </div>
-
-                        <div class="col-6 col-12-xsmall">
-                            <label>Zertifikatstyp</label>
-                            <select name="cert_typ" required>
-                                <option disabled selected>Bitte wählen…</option>
-                                <option value="intern">Intern</option>
-                                <option value="extern">Extern</option>
-                            </select>
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (this.value === "verlaengerung") {
-                details.innerHTML = `
-                    <div class="row">
-                        <div class="col-12">
-                            <label>Hostname</label>
-                            <input type="text" name="hostname" required>
-                        </div>
-                    </div>
-                `;
-            }
-        });
-    }
-
-    /* ===================== SONSTIGES ===================== */
-    if (typ === "sonstiges") {
-        dyn.innerHTML = `
-            <div class="row">
-                <div class="col-12">
-                    <label>Beschreibung</label>
-                    <textarea name="kommentar" required placeholder="Ihr Anliegen…"></textarea>
-                </div>
             </div>
         `;
     }
@@ -292,7 +221,6 @@ if (anfrageTyp) {
   // Skript Datenhaltung & Infrastruktur
 
   // FAQ Boxen öffnen und schließen
-    console.log("FAQ JS geladen");
     const questions = document.querySelectorAll(".faq-question");
 
     questions.forEach(q => {
@@ -314,12 +242,11 @@ if (anfrageTyp) {
 
     //Skript About-Us Seite
 
-    // 1. Logik für das Scrollen mit den Pfeilen
+    // Logik für das Scrollen mit den Pfeilen
         const carousel = document.getElementById('carousel');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
-        // Um wie viel Pixel soll pro Klick gescrollt werden? (Kartenbreite + Abstand)
         const scrollAmount = 245; 
 
         nextBtn.addEventListener('click', () => {
@@ -330,14 +257,4 @@ if (anfrageTyp) {
             carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
 
-        // 2. Logik für den "Kontaktieren" Button
-        function kontaktAktion(name) {
-            // HIER KANNST DU DEINE LOGIK EINFÜGEN!
-            // Zum Beispiel:
-            // - Ein Pop-up (Modal) öffnen
-            // - Auf ein Kontaktformular weiterleiten: window.location.href = "/kontakt?mitarbeiter=" + name;
-            // - Ein E-Mail-Fenster öffnen: window.location.href = "mailto:info@firma.de?subject=Anfrage an " + name;
-            
-            // Momentan zeigt es nur eine Alert-Box an, damit du siehst, dass es funktioniert:
-            alert("Du hast auf 'Kontaktieren' geklickt für: " + name + ".\n\nHier kannst du im Code (JavaScript) einstellen, was als nächstes passieren soll.");
-        }
+
