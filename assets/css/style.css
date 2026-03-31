@@ -6,6 +6,12 @@
   font-family: "Helvetica", Arial, sans-serif;
 }
 
+html, body {
+  height: 100%; /* Wichtig, damit 100vh eine Basis hat */
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -14,7 +20,9 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
 }
 
 /* ===== Navbar ===== */
@@ -245,6 +253,76 @@ footer.footer {
     align-items: center;
   }
 
+/* ===== dark Footer ===== */
+footer.footer-dark {
+  flex-shrink: 0; /* Verhindert das Stauchen des Footers */
+    background-color: #155581; /* Das spezifische Dunkelblau aus dem Bild */
+    color: #ffffff;
+    padding: 60px 0 20px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr; /* Drei Spalten Layout */
+    gap: 40px;
+    padding: 0 50px;
+}
+
+.footer-section h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-transform: none;
+}
+
+.footer-section p, 
+.footer-section ul li, 
+.footer-section a {
+    color: #ffffff !important;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+/* Logo Anpassung */
+.footer-logo {
+    max-width: 250px;
+    height: auto;
+}
+
+/* Copyright unten rechts */
+.footer-bottom-right {
+    text-align: right;
+    padding: 20px 50px 0 0;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* Mobile Optimierung */
+@media (max-width: 840px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-bottom-right {
+        text-align: center;
+        padding-right: 0;
+    }
+}
+
 /* SUBPAGEHEADER */
 .subpage-header {
     text-align: center;
@@ -453,6 +531,10 @@ html, body {
     margin-top: 10px;
 }
 
+.main-content, .site-inner {
+    flex: 1 0 auto; /* Nimmt allen verfügbaren Platz ein */
+}
+
 /* ===== Modal / Popup ===== */
 .modal-overlay {
   position: fixed;
@@ -564,6 +646,7 @@ ul li, ol li {
 
 /* Stil Elemente Unterseiten */
 .site-inner {
+  flex: 1 0 auto;
   max-width: 1800px;     
   margin: 0 auto;        
   padding: 50px 24px;       
@@ -593,7 +676,7 @@ ul li, ol li {
 
 /* Seiten-Wrapper: Abstand links/rechts + zentrierte Max-Breite */
 .about-fit .site-inner-ab {
-  max-width: 1800px;     /* gewünschte Lese/Breite */
+  max-width: 1900px;     /* gewünschte Lese/Breite */
   margin: 0 auto;        /* zentrieren */
   padding: 50px 24px;       /* Abstand links/rechts */
   box-sizing: border-box;
@@ -609,6 +692,7 @@ ul li, ol li {
     line-height: 1.8;         /* Großzügiger Zeilenabstand für bessere Lesbarkeit */
     letter-spacing: 0.2px;    /* Minimaler Abstand zwischen Buchstaben für Eleganz */
     color: #444;              /* Ein dunkles Grau wirkt weicher als hartes Schwarz */
+    
 }
 
 /* Zentriert die "UNSER TEAM"-Überschrift auf der About-Seite */
@@ -760,3 +844,81 @@ ul li, ol li {
         .nav-btn:hover {
             color: #00569d;
         }
+
+        /* ===== CTA Banner ===== */
+      .cta-banner {
+    background-color: #f1f4f7; /* Hellgrauer Hintergrund aus dem Bild */
+    padding: 20px 0;
+    width: 100%;
+    margin: 40px 0 100px;
+}
+
+.cta-container {
+    max-width: 1100px; /* Zentrierter Inhaltsbereich */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.cta-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Der vertikale blaue Strich links */
+.cta-blue-line {
+    width: 10px;
+    height: 150px;
+    background-color: #00569d; /* UKA Blau */
+    border-radius: 10px;
+}
+
+.cta-text h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    text-align: left;
+}
+
+.cta-text p {
+    margin: 5px 0 0 0;
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+}
+
+/* Der lila Button rechts */
+.btn-purple {
+    background-color: #6b2d77; /* Dunkles Lila aus dem Screenshot */
+    color: white !important;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 15px; /* Stark abgerundet */
+    font-weight: 600;
+    font-size: 18px;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-purple:hover {
+    background-color: #55245f;
+    text-decoration: none;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 800px) {
+    .cta-container {
+        flex-direction: column;
+        gap: 25px;
+        text-align: left;
+        align-items: flex-start;
+    }
+    .cta-button-wrapper {
+        width: 100%;
+        text-align: center;
+    }
+}

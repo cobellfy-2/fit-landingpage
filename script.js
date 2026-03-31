@@ -119,9 +119,8 @@ if (anfrageTyp) {
 
                 <div class="col-6 col-12-xsmall">
                     <label>PKZ (optional)</label>
-                    <input type="text" name="pkz" placeholder="PKZ">
+                    <input type="text" name="pkz" placeholder="PKZ" maxlength="5" pattern="\d{5}" inputmode="numeric" title="Die PKZ muss genau 5 Ziffern enthalten.">
                 </div>
-
             </div>
         `;
     }
@@ -258,3 +257,9 @@ if (anfrageTyp) {
         });
 
 
+      // Exportiere die Funktion NUR, wenn Node.js/Jest läuft.
+      // Im normalen Browser wird dieser Block einfach ignoriert.
+      // jede öffentliche Funktion muss hier eingefügt werden um getestet zu werden
+      if (typeof module !== 'undefined' && module.exports) {
+         module.exports = {  };
+        }
