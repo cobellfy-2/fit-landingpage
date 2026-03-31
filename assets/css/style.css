@@ -256,7 +256,7 @@ footer.footer {
 /* ===== dark Footer ===== */
 footer.footer-dark {
   flex-shrink: 0; /* Verhindert das Stauchen des Footers */
-    background-color: #155581; /* Das spezifische Dunkelblau aus dem Bild */
+    background-color: #155581; 
     color: #ffffff;
     padding: 60px 0 20px 0;
     font-family: 'Inter', sans-serif;

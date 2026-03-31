@@ -98,20 +98,20 @@ if (anfrageTyp) {
                     <select name="abteilung" required>
                         <option value="" disabled selected>Bitte wählen…</option>
                         <option value="2.Med">2.Med</option>
-                        <option value="biobank">Biobank</option>
-                        <option value="cds">CDS</option>
-                        <option value="cds-saficu">CDS-SAFICU</option>
-                        <option value="idm">IDM</option>
-                        <option value="ilm-mikrobiologie">ILM - Mikrobiologie</option>
-                        <option value="inlet">INLET</option>
-                        <option value="mediz">MeDiz</option>
-                        <option value="pathologie">Pathologie</option>
-                        <option value="nuk">NUK</option>
-                        <option value="radiologie">Radiologie</option>
-                        <option value="alps">ALPS</option>
-                        <option value="mvb">MVB</option>
-                        <option value="anästhesie">Anästhesie</option>
-                        <option value="umweltmedizin">Umweltmedizin</option>
+                        <option value="Biobank">Biobank</option>
+                        <option value="CDS">CDS</option>
+                        <option value="CDS-SAFICU">CDS-SAFICU</option>
+                        <option value="IDM">IDM</option>
+                        <option value="ILM-Mikrobiologie">ILM - Mikrobiologie</option>
+                        <option value="INLET">INLET</option>
+                        <option value="MeDiz">MeDiz</option>
+                        <option value="Pathologie">Pathologie</option>
+                        <option value="NUK">NUK</option>
+                        <option value="Radiologie">Radiologie</option>
+                        <option value="ALPS">ALPS</option>
+                        <option value="MVB">MVB</option>
+                        <option value="Anästhesie">Anästhesie</option>
+                        <option value="Umweltmedizin">Umweltmedizin</option>
                     </select>
                 </div>
 
