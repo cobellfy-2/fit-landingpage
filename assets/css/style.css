@@ -6,6 +6,11 @@
   font-family: "Helvetica", Arial, sans-serif;
 }
 
+html {
+    /* Reserviert den Platz für die Scrollbar, damit der Inhalt nicht springt */
+    scrollbar-gutter: stable; 
+}
+
 html,
 body {
   height: 100%;
@@ -290,7 +295,7 @@ footer.footer-dark {
   /* Verhindert das Stauchen des Footers */
   background-color: #155581;
   color: #ffffff;
-  padding: 60px 0 20px 0;
+  padding: 20px 0 20px 0;
   font-family: 'Inter', sans-serif;
 }
 
@@ -569,7 +574,8 @@ body {
 .faq-section h2 {
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 25px;
+  margin-bottom: 75px;
+  text-align: center;
 }
 
 .faq-item {
@@ -579,6 +585,14 @@ body {
 
 .faq-item:last-child {
   border-bottom: 1px solid #e5e5e5;
+}
+
+/* Farbe der Frage ändern, wenn die Antwort offen ist */
+.faq-item:has(.faq-answer.open) .faq-question {
+  color: #6b2d77 !important;
+  /* Dein gewünschtes Blau */
+  transition: color 0.3s ease;
+  /* Weicher Übergang */
 }
 
 .faq-question {
@@ -593,6 +607,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #00569d;
 }
 
 .faq-icon {
@@ -608,7 +623,7 @@ body {
 }
 
 .faq-answer.open {
-  max-height: 500px;
+  /*max-height: 500px;*/
   margin-top: 10px;
 }
 
