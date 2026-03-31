@@ -13,7 +13,7 @@ run-tests:
   # 1. Wann soll die Pipeline starten?
   # Hier definieren wir, dass es beim Push auf "main" oder bei Merge Requests läuft
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "Branch-Mathis"'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
   # 2. Was soll die Pipeline tun?
