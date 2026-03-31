@@ -1,32 +1,27 @@
-name: Jest CI Pipeline
+# Schritt B: Installiere eine Node.js Umgebung auf dem Server
+# In GitLab machen wir das, indem wir direkt ein fertiges Node-Docker-Image laden
+image: node:20
 
-# 1. Wann soll die Pipeline starten?
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# Definiere die Phasen (Stages) deiner Pipeline
+stages:
+  - test
 
-# 2. Was soll die Pipeline tun?
-jobs:
-  run-tests:
-    runs-on: ubuntu-latest
+# Definiere den Job
+run-tests:
+  stage: test
+  
+  # 1. Wann soll die Pipeline starten?
+  # Hier definieren wir, dass es beim Push auf "main" oder bei Merge Requests läuft
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
-    steps:
-    # Schritt A: Lade den aktuellen Code aus dem Repository herunter
-    - name: Code auschecken
-      uses: actions/checkout@v4
-
-    # Schritt B: Installiere eine Node.js Umgebung auf dem Server
-    - name: Node.js einrichten
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x' # Wähle die Version, die dein Projekt nutzt
-
+  # 2. Was soll die Pipeline tun?
+  script:
+    # Schritt A (Code auschecken) passiert in GitLab vollautomatisch im Hintergrund!
+    
     # Schritt C: Installiere alle in der package.json definierten Pakete
-    - name: Abhängigkeiten installieren
-      run: npm ci
-
+    - npm ci
+    
     # Schritt D: Führe Jest aus
-    - name: Jest Tests ausführen
-      run: npm test -- --ci --coverage
+    - npm test -- --ci --coverage
