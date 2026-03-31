@@ -1,7 +1,7 @@
 {
-  "name": "FIT-Landingpage",
+  "name": "fit-landingpage",
   "version": "1.0.0",
-  "description": "Landingpage der Forschungs-IT",
+  "description": "fit-landingpage",
   "scripts": {
     "test": "jest"
   },
