@@ -1,0 +1,11 @@
+{
+  "name": "FIT-Landingpage",
+  "version": "1.0.0",
+  "description": "Landingpage der Forschungs-IT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}

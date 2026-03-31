@@ -1,41 +1,32 @@
-stages:          # Reihenfolge der Pipeline-Stages
-  - build
-  - test
-  - deploy
+name: Jest CI Pipeline
 
-# --------------------------
-# Build Stage
-# --------------------------
-build_job:
-  stage: build
-  image: alpine:latest      # leichte Linux-Umgebung für Builds
-  script:
-    - echo "=== Build Stage ==="
-    - mkdir -p build
-    - echo "Build Output" > build/output.txt
-  artifacts:                # Dateien für nächste Stages sichern
-    paths:
-      - build/
+# 1. Wann soll die Pipeline starten?
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-# --------------------------
-# Test Stage
-# --------------------------
-test_job:
-  stage: test
-  image: alpine:latest
-  script:
-    - echo "=== Test Stage ==="
-    - if [ -f build/output.txt ]; then echo "Test Passed"; else echo "Test Failed"; exit 1; fi
+# 2. Was soll die Pipeline tun?
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
 
-# --------------------------
-# Deployment Stage
-# --------------------------
-deploy_job:
-  stage: deploy
-  image: alpine:latest
-  script:
-    - echo "=== Deploy Stage ==="
-    - echo "Deploying build..."
-    - cat build/output.txt
-  only:
-    - main    # Deployment nur auf main-Branch
+    steps:
+    # Schritt A: Lade den aktuellen Code aus dem Repository herunter
+    - name: Code auschecken
+      uses: actions/checkout@v4
+
+    # Schritt B: Installiere eine Node.js Umgebung auf dem Server
+    - name: Node.js einrichten
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x' # Wähle die Version, die dein Projekt nutzt
+
+    # Schritt C: Installiere alle in der package.json definierten Pakete
+    - name: Abhängigkeiten installieren
+      run: npm ci
+
+    # Schritt D: Führe Jest aus
+    - name: Jest Tests ausführen
+      run: npm test -- --ci --coverage
