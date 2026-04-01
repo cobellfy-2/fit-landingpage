@@ -7,8 +7,14 @@
 }
 
 html {
-    /* Reserviert den Platz für die Scrollbar, damit der Inhalt nicht springt */
-    scrollbar-gutter: stable; 
+  /* Reserviert den Platz für die Scrollbar, damit der Inhalt nicht springt */
+  scrollbar-gutter: stable;
+}
+
+/* Dieser Container sorgt dafür, dass der Footer nach unten gedrückt wird */
+main {
+  flex: 1 0 auto;
+  /* Nimmt den gesamten verfügbaren Platz ein */
 }
 
 html,
@@ -478,9 +484,10 @@ body {
 #projekt input:focus,
 #projekt select:focus,
 #projekt textarea:focus {
-  border-color: #155582;
+  border-color: #6b2d77;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(59, 123, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(108, 36, 121, 0.2);
+  /* Weicher lila Schatten */
 }
 
 /* Labels etwas moderner */
@@ -633,6 +640,70 @@ body {
   /* Nimmt allen verfügbaren Platz ein */
 }
 
+/* ===== Anfrage Seite ===== */
+
+/* Styling für den Einleitungstext unter "Anfrage starten" */
+#projekt header.major h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+/* Info Text */
+#projekt header.major >p{
+    text-align: left;
+  max-width: 1100px;
+  /* Breite exakt wie der Karten-Slider */
+  margin: 10px auto 10px auto;
+  /* Mehr Abstand nach unten für mehr "Luft" */
+
+  font-size: 20px;
+  /* Größere Schrift wirkt hochwertiger */
+  line-height: 1.8;
+  /* Großzügiger Zeilenabstand für bessere Lesbarkeit */
+  letter-spacing: 0.1px;
+  /* Minimaler Abstand zwischen Buchstaben für Eleganz */
+  color: #444;
+  /* Ein dunkles Grau wirkt weicher als hartes Schwarz */
+}
+#projekt head
+/* reduziert extra abstand */
+.site-inner:has(#projekt) {
+  padding-top: 35px; /* Verringert das riesige Standard-Padding von 50px */
+}
+
+/* lila button */
+.button.primary {
+  background-color: #6C2479;
+  /* Lila Farbe aus dem Bild */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  /* Leicht abgerundete Ecken */
+  padding: 15px 30px;
+  /* Vertikales und horizontales Padding */
+  width: 100%;
+  /* Volle Breite */
+  max-width: 400px;
+  /* Optionale maximale Breite, damit er nicht zu riesig wird */
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  /* Für Zentrierung notwendig */
+  margin: 0 auto;
+  /* Zentriert den Button horizontal */
+}
+
+/* Hover-Effekt */
+.button.primary:hover {
+  background-color: #551c60;
+  /* Etwas dunkleres Lila beim Drüberfahren */
+}
+
 /* ===== Modal / Popup ===== */
 .modal-overlay {
   position: fixed;
@@ -696,7 +767,7 @@ body {
 
 /* Ensure primary button stands out in modal */
 .modal .button.primary {
-  background-color: #155582;
+  background-color: #6C2479;
   color: #fff;
   border-color: #155582;
   padding: 10px 18px;
@@ -705,6 +776,22 @@ body {
 .modal .button {
   padding: 9px 16px;
 }
+
+/* Überschreibt das helle Blau vom Browser-Autofill (Chrome, Edge, Safari) */
+#projekt input:-webkit-autofill,
+#projekt input:-webkit-autofill:hover, 
+#projekt input:-webkit-autofill:focus, 
+#projekt input:-webkit-autofill:active {
+    /* Setzt den Hintergrund auf Weiß (durch einen inneren Schatten) */
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+    
+    /* Behält die schwarze/dunkelgraue Textfarbe bei */
+    -webkit-text-fill-color: #333 !important; 
+    
+    /* Verhindert, dass das Blau auch nur für eine Millisekunde aufblitzt */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 
 .faq-answer p {
   margin: 0;
