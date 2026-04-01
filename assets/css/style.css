@@ -1,4 +1,4 @@
-/* === Allgemein ===*/
+/*!=== Allgemein ===!*/
 * {
   margin: 0;
   padding: 0;
@@ -6,12 +6,12 @@
   font-family: "Helvetica", Arial, sans-serif;
 }
 
+/* Reserviert den Platz für die Scrollbar, damit der Inhalt nicht springt */
 html {
-  /* Reserviert den Platz für die Scrollbar, damit der Inhalt nicht springt */
   scrollbar-gutter: stable;
 }
 
-/* Dieser Container sorgt dafür, dass der Footer nach unten gedrückt wird */
+/* Footer unten am Bildschirm */
 main {
   flex: 1 0 auto;
   /* Nimmt den gesamten verfügbaren Platz ein */
@@ -25,6 +25,7 @@ body {
   padding: 0;
 }
 
+/* Body-Element */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -38,7 +39,20 @@ body {
   flex-direction: column
 }
 
+/* Aussehen Links */
+a {
+  color: #007aff;
+  /* Apple-blau */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
 /* ===== Navbar ===== */
+/* Definition Klasse */
 .navbar {
   background: #fff;
   border-bottom: 2px solid #c6d5e1;
@@ -48,78 +62,37 @@ body {
   padding: 15px 50px;
 }
 
-.logo img {
-  height: 80px;
-  /* ~20% größer */
+/* Restore horizontal navbar layout */
+.navbar {
+  flex-direction: row;
+  align-items: center;
 }
 
+/* Größe Logo */
+.logo img {
+  height: 80px;
+}
+
+/* Navigationsmöglichkeiten Container*/
 nav ul {
   list-style: none;
   display: flex;
   gap: 25px;
 }
 
+/* einzelne Auswahlmöglichkeiten */
 nav a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
 }
 
+/*Hovereffekt*/
 nav a:hover {
   color: #155582;
 }
 
-/* ===== Hero Section ===== */
-.hero {
-  text-align: center;
-  padding: 30px 20px;
-  background: #fff;
-}
-
-.hero h1 {
-  font-size: 7.0rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  color: #666;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* Vergrößert nur den Button in der Hero-Section */
-.hero .button {
-  padding: 25px 50px;
-  /* Erster Wert: oben/unten, zweiter Wert: links/rechts */
-  font-size: 1.2rem;
-  /* Macht die Schrift im Button größer */
-  letter-spacing: 4px;
-  /* Verstärkt den edlen Look durch weiteren Zeichenabstand */
-  border-width: 3px;
-  /* Macht den Rahmen passend zur Größe etwas dicker */
-}
-
-/* ===== Image Section ===== */
-.image-section {
-  background-color: white;
-  /* Hintergrund weiß */
-  text-align: center;
-  /* Bild zentrieren */
-  padding: 80px;
-  /* etwas Abstand zum Rand */
-}
-
-.image-section img {
-  width: 80%;
-  height: auto;
-  display: inline-block;
-  /* zentriert mit text-align */
-  border: 2px solid #ccc;
-  /* schmaler grauer Rahmen */
-  border-radius: 4px;
-}
-
+/* Image Forschungs-IT */
 .image-left .text-big {
   max-width: 400px;
   /* Größe links */
@@ -129,24 +102,77 @@ nav a:hover {
   padding: 15px 12px;
 }
 
+/* ==== Main Page ==== */
+
+/* ===== Hero Section ===== */
+/* Definition Klasse */
+.hero {
+  text-align: center;
+  padding: 30px 20px;
+  background: #fff;
+}
+
+/* große Überschrift */
+.hero h1 {
+  font-size: 7.0rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* Unterüberschrift */
+.hero p {
+  color: #666;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Button */
+.hero .button {
+  padding: 25px 50px;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  border-width: 3px;
+}
+
+/* großes Bild */
+.image-section {
+  background-color: white;
+  text-align: center;
+  padding: 80px;
+
+}
+
+.image-section img {
+  width: 80%;
+  height: auto;
+  display: inline-block;
+  border: 2px solid #ccc;
+  /* schmaler grauer Rahmen */
+  border-radius: 4px;
+}
+
 /* ===== Services ===== */
+/* Definition Section */
 .services {
   text-align: center;
   padding: 50px 20px;
   background-color: #fff;
 }
 
+/* Überschrift */
 .services h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
 
+/* Info-Text */
 .services p {
   max-width: 900px;
   margin: 0 auto 40px;
   color: #555;
 }
 
+/* Def. division Service-Karten */
 .service-cards {
   display: flex;
   flex-wrap: wrap;
@@ -154,6 +180,7 @@ nav a:hover {
   gap: 25px;
 }
 
+/* eigentliche Service-Karten */
 .card {
   background: #f5f5f5;
   border-radius: 8px;
@@ -163,10 +190,12 @@ nav a:hover {
   transition: transform 0.2s ease;
 }
 
+/* Hover-Effekt */
 .card:hover {
   transform: translateY(-5px);
 }
 
+/* Image auf Karte */
 .card img {
   display: block;
   width: 250px;
@@ -183,6 +212,7 @@ nav a:hover {
   }
 }
 
+/* Überschrift auf Karte */
 .card h3 {
   margin-bottom: 10px;
   font-size: 1.1rem;
@@ -190,112 +220,8 @@ nav a:hover {
 }
 
 /* ===== Footer ===== */
-/* ===== Footer: full-width border + zentriert + grau hinterlegt ===== */
-footer.footer {
-  width: 100%;
-  background: #f2f4f6;
-  /* grauer Footer-Hintergrund */
-  border-top: 1px solid #dcdcdc;
-  /* durchgehender Border über die ganze Seite */
-  box-sizing: border-box;
-}
 
-/* Inhalt im Footer zentriert halten (max-width, zentriert)
-   Die sichtbare Border liegt am Footer-Element und verläuft über die ganze Seite. */
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  /* zentriert den Inhalt */
-  padding: 32px 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  align-items: start;
-}
-
-.footer-section h4 {
-  margin-bottom: 16px;
-  font-size: 1rem;
-}
-
-.footer-section p,
-.footer-section li {
-  color: #444;
-  font-size: 0.95rem;
-}
-
-.footer-section .icon {
-  display: inline-flex;
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
-  vertical-align: middle;
-  color: #155582;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-section ul li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.footer-section a {
-  color: #333;
-  text-decoration: none;
-}
-
-.footer-section a:hover {
-  text-decoration: underline;
-}
-
-.footer .social a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 0;
-}
-
-/* Footer bottom: sitzt unterhalb der .footer-container, Text mittig, keine zusätzliche Border */
-.footer-bottom {
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: #666;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  /* heller Strich */
-  padding-top: 12px;
-  /* Abstand zwischen Strich und Text */
-  margin-top: 0;
-  background: transparent;
-}
-
-/* Responsive: stapeln auf kleinen Bildschirmen */
-@media (max-width: 840px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-
-  .footer-section {
-    padding-bottom: 12px;
-  }
-}
-
-/* Restore horizontal navbar layout */
-.navbar {
-  flex-direction: row;
-  align-items: center;
-}
-
-/* ===== dark Footer ===== */
+/* Def. Footer Klasse */
 footer.footer-dark {
   flex-shrink: 0;
   /* Verhindert das Stauchen des Footers */
@@ -305,6 +231,7 @@ footer.footer-dark {
   font-family: 'Inter', sans-serif;
 }
 
+/* Def. Container */
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -315,6 +242,7 @@ footer.footer-dark {
   padding: 0 50px;
 }
 
+/* Überschrift */
 .footer-section h4 {
   color: #ffffff;
   font-size: 1.1rem;
@@ -323,6 +251,7 @@ footer.footer-dark {
   text-transform: none;
 }
 
+/* Informationen */
 .footer-section p,
 .footer-section ul li,
 .footer-section a {
@@ -332,11 +261,13 @@ footer.footer-dark {
   text-decoration: none;
 }
 
+/* Liste */
 .footer-section ul {
   list-style: none;
   padding: 0;
 }
 
+/* Hovereffekt */
 .footer-section a:hover {
   text-decoration: underline;
 }
@@ -369,6 +300,7 @@ footer.footer-dark {
 }
 
 /* SUBPAGEHEADER */
+/* Def. Klasse */
 .subpage-header {
   text-align: center;
   padding: 30px 20px;
@@ -376,6 +308,7 @@ footer.footer-dark {
   color: white;
 }
 
+/* Überschrift */
 .subpage-header h1 {
   text-align: center;
   margin-bottom: 10px;
@@ -383,6 +316,7 @@ footer.footer-dark {
   font-weight: 700;
 }
 
+/* Info-Text */
 .subpage-header p {
   font-size: 1.1rem;
   opacity: 0.9;
@@ -444,12 +378,6 @@ button:hover {
   transform-origin: 0 50%;
   /* Drehpunkt links mittig */
   transition: width 0.12s, transform 0.12s, left 0.12s, top 0.12s;
-}
-
-/* kleine Styles zur Sicherstellung, dass der Body als Bezug funktioniert */
-html,
-body {
-  min-height: 100%;
 }
 
 /* ===================== FORMULAR STYLES ===================== */
@@ -571,13 +499,14 @@ body {
 }
 
 /* FAQ Teil */
-
+/* Def. Klasse */
 .faq-section {
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
+/* Überschrift */
 .faq-section h2 {
   font-size: 32px;
   font-weight: 700;
@@ -585,11 +514,13 @@ body {
   text-align: center;
 }
 
+/* FAQ-Item: Parent-Element */
 .faq-item {
   border-top: 1px solid #e5e5e5;
   padding: 15px 0;
 }
 
+/* Child-Element */
 .faq-item:last-child {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -602,6 +533,7 @@ body {
   /* Weicher Übergang */
 }
 
+/* Frage */
 .faq-question {
   width: 100%;
   background: none;
@@ -617,27 +549,36 @@ body {
   color: #00569d;
 }
 
+/* Auf/ ZU Symbol */
 .faq-icon {
   font-size: 26px;
   font-weight: 400;
   margin-left: 10px;
 }
 
+/* Antwort */
 .faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+/* Text Antwort */
+.faq-answer p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 17px;
+}
+
+/* Abstand offen */
 .faq-answer.open {
-  /*max-height: 500px;*/
   margin-top: 10px;
 }
 
+/* Nimmt allen verfügbaren Platz ein */
 .main-content,
 .site-inner {
   flex: 1 0 auto;
-  /* Nimmt allen verfügbaren Platz ein */
 }
 
 /* ===== Anfrage Seite ===== */
@@ -652,59 +593,48 @@ body {
 }
 
 /* Info Text */
-#projekt header.major >p{
-    text-align: left;
+#projekt header.major>p {
+  text-align: left;
   max-width: 1100px;
-  /* Breite exakt wie der Karten-Slider */
   margin: 10px auto 10px auto;
-  /* Mehr Abstand nach unten für mehr "Luft" */
-
   font-size: 20px;
-  /* Größere Schrift wirkt hochwertiger */
   line-height: 1.8;
-  /* Großzügiger Zeilenabstand für bessere Lesbarkeit */
   letter-spacing: 0.1px;
-  /* Minimaler Abstand zwischen Buchstaben für Eleganz */
   color: #444;
-  /* Ein dunkles Grau wirkt weicher als hartes Schwarz */
 }
+
 #projekt head
+
 /* reduziert extra abstand */
 .site-inner:has(#projekt) {
-  padding-top: 35px; /* Verringert das riesige Standard-Padding von 50px */
+  padding-top: 35px;
+  /* Verringert das riesige Standard-Padding von 50px */
 }
 
 /* lila button */
 .button.primary {
   background-color: #6C2479;
-  /* Lila Farbe aus dem Bild */
   color: white;
   border: none;
   border-radius: 8px;
-  /* Leicht abgerundete Ecken */
   padding: 15px 30px;
-  /* Vertikales und horizontales Padding */
   width: 100%;
-  /* Volle Breite */
   max-width: 400px;
-  /* Optionale maximale Breite, damit er nicht zu riesig wird */
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: block;
-  /* Für Zentrierung notwendig */
   margin: 0 auto;
-  /* Zentriert den Button horizontal */
 }
 
 /* Hover-Effekt */
 .button.primary:hover {
   background-color: #551c60;
-  /* Etwas dunkleres Lila beim Drüberfahren */
 }
 
 /* ===== Modal / Popup ===== */
+/* Def. Klasse */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -721,6 +651,7 @@ body {
   display: none !important;
 }
 
+/* Def. Unterklasse */
 .modal {
   position: relative;
   width: 100%;
@@ -732,22 +663,13 @@ body {
   box-sizing: border-box;
 }
 
+/* Frage: Bist du zufrieden */
 .modal h3 {
   margin-top: 0;
   margin-bottom: 12px;
 }
 
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-}
-
+/* Grauer Kasten für Vorschau*/
 .modal-content pre {
   white-space: pre-wrap;
   background: #f7f7f7;
@@ -758,6 +680,7 @@ body {
   font-family: inherit;
 }
 
+/* Kasten für Aktionen */
 .modal-actions {
   display: flex;
   gap: 10px;
@@ -773,42 +696,27 @@ body {
   padding: 10px 18px;
 }
 
+/* Close-button */
 .modal .button {
   padding: 9px 16px;
 }
 
-/* Überschreibt das helle Blau vom Browser-Autofill (Chrome, Edge, Safari) */
+/* Überschreibt das helle Blau vom Browser-Autofill (Chrome, Edge, Safari) wenn etwas in Feld geschrieben*/
 #projekt input:-webkit-autofill,
-#projekt input:-webkit-autofill:hover, 
-#projekt input:-webkit-autofill:focus, 
+#projekt input:-webkit-autofill:hover,
+#projekt input:-webkit-autofill:focus,
 #projekt input:-webkit-autofill:active {
-    /* Setzt den Hintergrund auf Weiß (durch einen inneren Schatten) */
-    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
-    
-    /* Behält die schwarze/dunkelgraue Textfarbe bei */
-    -webkit-text-fill-color: #333 !important; 
-    
-    /* Verhindert, dass das Blau auch nur für eine Millisekunde aufblitzt */
-    transition: background-color 5000s ease-in-out 0s;
+  /* Setzt den Hintergrund auf Weiß (durch einen inneren Schatten) */
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+
+  /* Behält die schwarze/dunkelgraue Textfarbe bei */
+  -webkit-text-fill-color: #333 !important;
+
+  /* Verhindert, dass das Blau auch nur für eine Millisekunde aufblitzt */
+  transition: background-color 5000s ease-in-out 0s;
 }
 
-
-.faq-answer p {
-  margin: 0;
-  line-height: 1.6;
-  font-size: 17px;
-}
-
-a {
-  color: #007aff;
-  /* Apple-blau */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
+/* Listen Formatierungen */
 /* Entferne Aufzählungszeichen bei Aktions-Listen (z.B. Formular-Buttons) */
 .actions {
   list-style: none;
@@ -853,65 +761,52 @@ ol li {
 
 /* Skaliert den gesamten Inhalt der About-Sektion sauber in allen Browsern */
 .about-fit {
-  /* 1. Zoom für Chrome, Safari und Edge */
+  /* Zoom für Chrome, Safari und Edge */
   zoom: 1.05;
 
-  /* 2. Transform für Firefox und als moderner Standard */
+  /* Transform für Firefox und als moderner Standard */
   -moz-transform: scale(1.05);
   transform: scale(1.05);
-  /* Das ist die "standard property", die gefehlt hat */
-
-  /* 3. Festlegen des Ursprungs der Skalierung */
+  /* Festlegen des Ursprungs der Skalierung */
   -moz-transform-origin: top center;
   transform-origin: top center;
-  /* Das ist die Standard-Property für den Ursprung */
 }
 
-/* Seiten-Wrapper: Abstand links/rechts + zentrierte Max-Breite */
+/* Seiten-Wrapper */
 .about-fit .site-inner-ab {
   max-width: 1900px;
-  /* gewünschte Lese/Breite */
   margin: 0 auto;
-  /* zentrieren */
   padding: 50px 24px;
-  /* Abstand links/rechts */
   box-sizing: border-box;
   text-align: center;
 }
 
+/* Info-Text */
 .about-fit .site-inner>p {
   text-align: left;
   max-width: 1000px;
-  /* Breite exakt wie der Karten-Slider */
   margin: 40px auto 30px auto;
-  /* Mehr Abstand nach unten für mehr "Luft" */
-
   font-size: 20px;
-  /* Größere Schrift wirkt hochwertiger */
   line-height: 1.8;
-  /* Großzügiger Zeilenabstand für bessere Lesbarkeit */
   letter-spacing: 0.2px;
-  /* Minimaler Abstand zwischen Buchstaben für Eleganz */
   color: #444;
-  /* Ein dunkles Grau wirkt weicher als hartes Schwarz */
-
 }
 
-/* Zentriert die "UNSER TEAM"-Überschrift auf der About-Seite */
+/* Zentriert die "UNSER TEAM"-Überschrift */
 .about-fit .team-section h2 {
   text-align: center;
   margin-bottom: 0px;
+  font-size: 30px;
+
 }
 
+/* Team Sektion */
 .team-section {
   padding-bottom: 60px;
   /* Erzeugt Platz vor dem Footer */
   text-align: center;
 }
 
-.team-section h2 {
-  font-size: 30px;
-}
 
 /* Container für den gesamten Slider inkl. Pfeile */
 .slider-wrapper {
@@ -932,17 +827,14 @@ ol li {
   scroll-behavior: smooth;
   padding: 20px 10px;
   flex-grow: 1;
-
-  /* DIESE ZEILE HINZUFÜGEN: Exakt Platz für 4 Karten + 3 Lücken */
   max-width: 977px;
-
-  /* Versteckt den Scrollbalken */
   scrollbar-width: none;
   /* Firefox */
   -ms-overflow-style: none;
   /* IE and Edge */
 }
 
+/* entfernt Scrollbar */
 .carousel-container::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari, Opera */
@@ -967,7 +859,6 @@ ol li {
 /* Der blaue obere Bereich */
 .card-about-us-top {
   background-color: #00569d;
-  /* Das spezifische Blau aus deinem Bild */
   height: 100px;
   width: 100%;
   position: absolute;
@@ -976,31 +867,29 @@ ol li {
   z-index: 1;
 }
 
-/* Der Container für das Profilbild */
+/* Der Container Profilbild */
 .profile-img-wrapper {
   position: relative;
   z-index: 2;
   margin-top: 35px;
-  /* Schiebt das Bild nach unten, damit es überlappt */
   width: 130px;
   height: 130px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
   border: 5px solid #ffffff;
-  /* Weißer Rand um das Bild */
   background-color: #ffffff;
   overflow: hidden;
 }
 
-/* Das eigentliche Bild */
+/* eigentliches Bild */
 .profile-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Der untere Textbereich */
+/* unterer Textbereich */
 .card-about-us-content {
   position: relative;
   z-index: 2;
@@ -1008,34 +897,20 @@ ol li {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* Sorgt dafür, dass dieser Bereich die Karte nach unten ausfüllt */
 }
 
+/* Name Card */
 .card-about-us-content h3 {
   margin: 10px 0 5px 0;
   font-size: 19px;
   color: #333333;
 }
 
+/* Beschreibung Mitarbeiter */
 .card-about-us-content p {
   margin: 0 0 20px 0;
   font-size: 16px;
   color: #888888;
-}
-
-/* Der Kontakt-Button */
-.btn-contact {
-  background-color: #00569d;
-  color: white;
-  border: none;
-  padding: 8px 25px;
-  border-radius: 20px;
-  /* Macht den Button abgerundet */
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: auto;
 }
 
 .btn-contact:hover {
@@ -1044,6 +919,7 @@ ol li {
 }
 
 /* Die Navigationspfeile */
+
 .nav-btn {
   background: none;
   border: none;
@@ -1055,11 +931,13 @@ ol li {
   transition: color 0.3s;
 }
 
+/* Hovereffekt */
 .nav-btn:hover {
   color: #00569d;
 }
 
 /* ===== CTA Banner ===== */
+/* Def. Klasse */
 .cta-banner {
   background-color: #f1f4f7;
   /* Hellgrauer Hintergrund aus dem Bild */
@@ -1068,6 +946,7 @@ ol li {
   margin: 40px 0 100px;
 }
 
+/* Container */
 .cta-container {
   max-width: 1100px;
   /* Zentrierter Inhaltsbereich */
@@ -1078,6 +957,7 @@ ol li {
   padding: 0 50px;
 }
 
+/* Wrapper */
 .cta-content-wrapper {
   display: flex;
   align-items: center;
@@ -1093,6 +973,7 @@ ol li {
   border-radius: 10px;
 }
 
+/* Frage: Noch nicht gefunden, was Sie suchen */
 .cta-text h3 {
   margin: 0;
   font-size: 22px;
@@ -1101,6 +982,7 @@ ol li {
   text-align: left;
 }
 
+/* Antwort: "Stellen Sie uns eine Serviceanfrage! */
 .cta-text p {
   margin: 5px 0 0 0;
   font-size: 18px;
@@ -1108,7 +990,7 @@ ol li {
   text-align: left;
 }
 
-/* Der lila Button rechts */
+/* lila Button */
 .btn-purple {
   background-color: #6b2d77;
   /* Dunkles Lila aus dem Screenshot */
@@ -1123,6 +1005,7 @@ ol li {
   white-space: nowrap;
 }
 
+/* Hovereffekt */
 .btn-purple:hover {
   background-color: #55245f;
   text-decoration: none;
