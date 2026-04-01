@@ -266,11 +266,3 @@ nextBtn.addEventListener('click', () => {
 prevBtn.addEventListener('click', () => {
   carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 });
-
-
-// Exportiere die Funktion NUR, wenn Node.js/Jest läuft.
-// Im normalen Browser wird dieser Block einfach ignoriert.
-// jede öffentliche Funktion muss hier eingefügt werden um getestet zu werden
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {};
-}
