@@ -215,7 +215,7 @@
               <input type="text" name="berechtigung" placeholder="Fileshare (optional)">
             </div>
             
-            <div class="col-12" style="margin-top: 1.5rem;">
+            <div class="col-12">
               <label>PKZ (optional)</label>
               <input type="text" name="pkz" placeholder="PKZ">
             </div>
