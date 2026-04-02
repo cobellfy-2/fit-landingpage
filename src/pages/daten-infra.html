@@ -1,114 +1,129 @@
-<!-- allgemeine Konfiguration -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forschungs-IT | Universitätsklinikum Augsburg</title>
-  <link rel="stylesheet" href=".\assets\css\style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap"
-    rel="stylesheet">
-</head>
-
-<body>
-  <!-- Kopfzeile mit Navigation -->
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <a href="index.html">
-          <img src=".\images\logo.png" alt="Forschungs-IT Universitätsklinikum Augsburg">
-        </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forschungs-IT | Universitätsklinikum Augsburg</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <img
+            src="../assets/images/logo.png"
+            alt="Forschungs-IT Universitätsklinikum Augsburg"
+          />
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="anfrage.html">Serviceanfrage</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+          </ul>
+        </nav>
       </div>
-      <nav>
+      <div class="image-left">
+        <img src="../assets/images/text-big.png" alt="Text Big" class="text-big" />
+      </div>
+    </header>
+    <section class="subpage-header">
+      <h1>Unsere Infrastrukturservices im Überblick</h1>
+      <p>
+        Wir stellen eine zuverlässige, skalierbare Infrastruktur zur Verfügung,
+        damit Forschungsdaten und Anwendungen im FIT-Netz sicher, performant und
+        jederzeit verfügbar bleiben.
+      </p>
+    </section>
+
+    <section class="text-section">
+      <div class="site-inner">
+        <h2>Archiv- &amp; Langzeitspeicher</h2>
+        <p>
+          Wir unterstützen Sie bei der nachhaltigen und sicheren Speicherung von
+          Forschungsdaten.
+        </p>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="anfrage.html">Serviceanfrage</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="about-us.html">About Us</a></li>
+          <li>Bereitstellung von Archiv-Speicher</li>
+          <li>
+            Langfristige Forschungsdatenspeicherung nach Backup- und
+            Datenschutzkonzept
+          </li>
         </ul>
-      </nav>
-    </div>
-    <div class="image-left">
-      <img src="./images/text-big.png" alt="Text Big" class="text-big">
-    </div>
-  </header>
-  <!-- Balken: Datenhaltung & Infrastruktur mit Erklärung-->
-  <section class="subpage-header">
-    <h1>Datenhaltung &amp; Infrastruktur</h1>
-    <p>Wir stellen eine zuverlässige, skalierbare Infrastruktur zur Verfügung, damit Forschungsdaten
-      und Anwendungen im FIT-Netz sicher, performant und jederzeit verfügbar bleiben.</p>
-  </section>
 
-  <!-- Info text -->
-  <section class="text-section">
-    <div class="site-inner">
-
-      <h2>Archiv- &amp; Langzeitspeicher</h2>
-      <p>
-        Wir unterstützen Sie bei der nachhaltigen und sicheren Speicherung von Forschungsdaten.
-      </p>
-      <ul>
-        <li>Bereitstellung von Archiv-Speicher</li>
-        <li>Langfristige Forschungsdatenspeicherung nach Backup- und Datenschutzkonzept</li>
-      </ul>
-
-      <h2>Hochperformanter Flash-Speicher</h2>
-      <p>
-        Für rechenintensive Analyseworkloads stellen wir schnellen Speicher mit hoher I/O-Performance bereit.
-      </p>
-      <ul>
-        <li>Optimiertes Storage für zeitkritische Analysen</li>
-      </ul>
-
-      <h2>Server- &amp; Compute-Ressourcen (IaaS)</h2>
-      <p>
-        Flexible Rechenressourcen für Forschungsprojekte – schnell verfügbar und professionell betrieben.
-      </p>
-      <ul>
-        <li>Abfrage und Erhebung technischer Anforderungen (CPU, RAM, GPU, Storage)</li>
-        <li>Physische Integration der Maschinen in das FIT-Netz</li>
-        <li>Bereitstellung von virtuellen Maschinen, Container-Hosting und GPU-Compute</li>
-        <li>Einrichtung von Netzwerkfreigaben und Vergabe von notwendigen Hardwarelizenzen</li>
-      </ul>
-
-      <h2>Monitoring &amp; Patch-Management</h2>
-      <p>
-        Automatisierte Betriebsprozesse gewährleisten eine jederzeit verfügbare Forschungsinfrastruktur.
-      </p>
-      <ul>
-        <li>Monitoring der zentralen Systeme</li>
-        <li>Regelmäßige Updates und Sicherheitspatches</li>
-        <li>Bearbeitung und Nachverfolgung von Störungsfällen</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Fußzeile mit Kontaktdaten -->
-  <footer class="footer-dark">
-    <div class="footer-container">
-      <div class="footer-section logo-section">
-        <img src="./images/logo-white.png" alt="UKA Logo" class="footer-logo">
-      </div>
-
-      <div class="footer-section">
-        <h4>Universitätsklinikum Augsburg</h4>
-        <p>Stenglinstraße 2<br>861565 Augsburg, Deutschland</p>
-        <p>+49 821 400-01</p>
-      </div>
-
-      <div class="footer-section">
-        <h4>Rechtliches</h4>
+        <h2>Hochperformanter Flash-Speicher</h2>
+        <p>
+          Für rechenintensive Analyseworkloads stellen wir schnellen Speicher
+          mit hoher I/O-Performance bereit.
+        </p>
         <ul>
-          <li><a href="https://www.uk-augsburg.de/impressum">Impressum</a></li>
+          <li>Optimiertes Storage für zeitkritische Analysen</li>
+          <li>Geeignet für Machine Learning und Bildverarbeitung</li>
+        </ul>
+
+        <h2>Server- &amp; Compute-Ressourcen (IaaS / PaaS)</h2>
+        <p>
+          Flexible Rechen- und Plattformressourcen für Forschungsprojekte –
+          schnell verfügbar und professionell betrieben.
+        </p>
+        <ul>
+          <li>
+            Abfrage und Erhebung technischer Anforderungen (CPU, RAM, GPU,
+            Storage)
+          </li>
+          <li>Physische Integration der Maschinen in das FIT-Netz</li>
+          <li>
+            Bereitstellung von virtuellen Maschinen, Container-Hosting und
+            GPU-Compute
+          </li>
+          <li>
+            Einrichtung von Netzwerkfreigaben und Vergabe von notwendigen
+            Hardwarelizenzen
+          </li>
+        </ul>
+
+        <h2>Monitoring &amp; Patch-Management</h2>
+        <p>
+          Automatisierte Betriebsprozesse gewährleisten eine jederzeit
+          verfügbare Forschungsinfrastruktur.
+        </p>
+        <ul>
+          <li>Monitoring der zentralen Systeme</li>
+          <li>Regelmäßige Updates und Sicherheitspatches</li>
+          <li>Bearbeitung und Nachverfolgung von Störungsfällen</li>
         </ul>
       </div>
-    </div>
+    </section>
 
-    <div class="footer-bottom-right">
-      © 2026 Universitätsklinikum Augsburg
-    </div>
-  </footer>
+     <!-- Fußzeile mit Kontaktdaten -->
+    <footer class="footer-dark">
+        <div class="footer-container">
+            <div class="footer-section logo-section">
+                <img src="..\assets/images/logo-white.png" alt="UKA Logo" class="footer-logo">
+            </div>
+
+            <div class="footer-section">
+                <h4>Universitätsklinikum Augsburg</h4>
+                <p>Stenglinstraße 2<br>861565 Augsburg, Deutschland</p>
+                <p>+49 821 400-01</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="https://www.uk-augsburg.de/impressum">Impressum</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-right">
+            © 2026 Universitätsklinikum Augsburg
+        </div>
+    </footer>
+    <script src="..\assets\js\script.js"></script>
 </body>
-
-</html>

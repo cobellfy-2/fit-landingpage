@@ -1,0 +1,2 @@
+[MASTER]
+ignore=node_modules,venv,.venv,__pycache__
