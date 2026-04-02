@@ -1,197 +1,151 @@
-<!doctype html>
+<!-- allgemeine Konfiguration -->
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forschungs-IT | Universitätsklinikum Augsburg</title>
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forschungs-IT | Universitätsklinikum Augsburg</title>
+  <link rel="stylesheet" href="..\assets\css\style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+    <!-- Kopfzeile mit Navigation -->
     <header>
-      <div class="navbar">
-        <div class="logo">
-          <img
-            src="../assets/images/logo.png"
-            alt="Forschungs-IT Universitätsklinikum Augsburg"
-          />
-        </div>
-        <nav>
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="anfrage.html">Serviceanfrage</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="about-us.html">About Us</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <div class="image-left">
-      <img src="../assets/images/text-big.png" alt="Text Big" class="text-big" />
-    </div>
-
-    <!-- ================= PROJEKTANFRAGE ================= -->
-    <div class="site-inner">
-      <section id="projekt" class="main style2">
-        <div class="container">
-          <header class="major">
-            <h2>Anfrage starten</h2>
-            <p>
-              Bitte füllen Sie alle relevanten Felder vollständig aus und geben
-              Sie uns möglichst genaue Informationen zu Ihrem benötigtem
-              Service. Nach Eingabe aller Details klicken Sie auf „Download“, um
-              eine automatisch generierte Anfragedatei zu erhalten. Anschließend
-              kopieren Sie den Text und laden ihn als Ihnhalt Ihres Tickets im
-              KIX-System hoch. So stellen Sie sicher, dass Ihre Anfrage
-              vollständig ist und von uns schnell und zielgerichtet bearbeitet
-              werden kann.
-            </p>
-          </header>
-
-          <form name="projekt" method="POST" data-netlify="true">
-            <div class="row gtr-uniform">
-              <!-- Erste Zeile: 3 Spalten -->
-              <div class="col-4 col-12-xsmall">
-                <label>Vorname</label>
-                <input
-                  type="text"
-                  name="vorname"
-                  placeholder="Vorname"
-                  required
-                />
-              </div>
-
-              <div class="col-4 col-12-xsmall">
-                <label>Name</label>
-                <input
-                  type="text"
-                  name="nachname"
-                  placeholder="Name"
-                  required
-                />
-              </div>
-
-              <div class="col-4 col-12-xsmall">
-                <label>Titel</label>
-                <input
-                  type="text"
-                  name="titel"
-                  placeholder="Titel (optional)"
-                />
-              </div>
-
-              <!-- Zweite Zeile: 2 Spalten -->
-              <div class="col-6 col-12-xsmall">
-                <label>E-Mail</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="E-Mail"
-                  required
-                />
-              </div>
-
-              <div class="col-6 col-12-xsmall">
-                <label>Art der Anfrage</label>
-                <select id="anfragetyp" name="anfragetyp" required>
-                  <option value="" disabled selected>--select--</option>
-                  <option value="fit-ad">neuen Benutzer erstellen</option>
-                  <option value="zertifikat">Zertifikatsaustellung</option>
-                  <option value="sonstiges">Sonstiges</option>
-                </select>
-              </div>
-
-              <!-- Dynamische Sektion - erscheint darunter -->
-              <div id="dynamisch" class="col-12"></div>
-
-              <!-- Submit -->
-              <div class="col-12" style="margin-top: 30px">
-                <ul class="actions special">
-                  <li>
-                    <button type="submit" class="button primary">
-                      Download
-                    </button>
-                  </li>
-                </ul>
-              </div>
+        <div class="navbar">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="..\assets\images\logo.png" alt="Forschungs-IT Universitätsklinikum Augsburg">
+                </a>
             </div>
-          </form>
+            <nav>
+                <ul>
+                    <li><a href="..\index.html">Home</a></li>
+                    <li><a href="..\pages\anfrage.html">Serviceanfrage</a></li>
+                    <li><a href="..\pages\faq.html">FAQ</a></li>
+                    <li><a href="..\pages\about-us.html">About Us</a></li>
+                </ul>
+            </nav>
         </div>
-      </section>
-    </div>
-    <!-- ================= ENDE PROJEKTANFRAGE ================= -->
-
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h4>Universitätsklinikum Augsburg</h4>
-          <p>
-            <span class="icon"
-              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.21-2.94 6.44-5 8.88C9.94 15.44 7 11.21 7 9z"
-                />
-                <circle cx="12" cy="9" r="2.5" /></svg>
-            </span>
-            Stenglinstraße 2<br />86156 Augsburg, Deutschland
-          </p>
-
-
+        <div class="image-left">
+            <img src="..\assets\images/text-big.png" alt="Text Big" class="text-big">
         </div>
+    </header>
+  <!-- ================= PROJEKTANFRAGE ================= -->
+  <div class="site-inner">
+    <section id="projekt" class="main style2">
+      <div class="container">
+        <header class="major">
+          <h2>Anfrage starten</h2>
+          <p>Bitte füllen Sie alle relevanten Felder vollständig aus und geben Sie uns möglichst genaue Informationen zu
+            Ihrem benötigtem Service.</p>
 
-        <div class="footer-section">
-          <h4>Rechtliches</h4>
-          <ul>
-            <li>
-              <span class="icon"
-                ><svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 00-2 2v16l6-3 6 3V8z" /></svg></span
-              ><a href="https://www.uk-augsburg.de/impressum">Impressum</a>
-            </li>
-            <li>
-              <span class="icon"
-                ><svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M21 8V7l-3 2-2-1-4 3v6h10V8zM3 7v13h10v-6L9 9l-2 1L3 7z"
-                  /></svg></span
-              ><a href="#">Datenschutz</a>
-            </li>
-          </ul>
-        </div>
+          <p>Nach Eingabe aller Details klicken Sie auf „Download“, um eine automatisch generierte Anfragedatei zu
+            erhalten.
+          </P>
+          <P>
+            Anschließend kopieren Sie den Text und laden ihn als Ihnhalt Ihres Tickets im KIX-System hoch.
+            So stellen Sie sicher, dass Ihre Anfrage vollständig ist und von uns schnell und zielgerichtet bearbeitet
+            werden kann.<br><br></p>
+        </header>
 
+        <form name="projekt" method="POST" data-netlify="true">
+          <div class="row gtr-uniform">
 
+            <!-- Erste Zeile: 3 Spalten -->
+            <div class="col-4 col-12-xsmall">
+              <label>Vorname</label>
+              <input type="text" name="vorname" placeholder="Vorname" required>
+            </div>
+
+            <div class="col-4 col-12-xsmall">
+              <label>Nachname</label>
+              <input type="text" name="nachname" placeholder="Nachname" required>
+            </div>
+
+            <div class="col-4 col-12-xsmall">
+              <label>Titel</label>
+              <input type="text" name="titel" placeholder="Titel (optional)">
+            </div>
+
+            <!-- Zweite Zeile: 2 Spalten -->
+            <div class="col-6 col-12-xsmall">
+              <label>UKA E-Mail</label>
+              <input type="email" name="email" placeholder="UKA E-Mail" required>
+            </div>
+
+            <div class="col-6 col-12-xsmall">
+              <label>Art der Anfrage</label>
+              <select id="anfragetyp" name="anfragetyp" required>
+                <option value="" disabled selected>--select--</option>
+                <option value="Zugang ins Forschungsnetz">Zugang ins Forschungsnetz</option>
+                <!-- <option value="zertifikat">Zertifikatsaustellung</option> 
+            <option value="sonstiges">Sonstiges</option> -->
+              </select>
+            </div>
+
+            <!-- Dynamische Sektion - erscheint darunter -->
+            <div id="dynamisch" class="col-12"></div>
+
+            <!-- Submit -->
+            <div class="col-12" style="margin-top: 30px;">
+              <ul class="actions special">
+                <li><button type="submit" class="button primary">Download</button></li>
+              </ul>
+            </div>
+
+          </div>
+        </form>
       </div>
+    </section>
+  </div>
+  <!-- ================= ENDE PROJEKTANFRAGE ================= -->
 
-      <div class="footer-bottom">© 2025 Universitätsklinikum Augsburg</div>
+    <!-- Fußzeile mit Kontaktdaten -->
+    <footer class="footer-dark">
+        <div class="footer-container">
+            <div class="footer-section logo-section">
+                <img src="..\assets/images/logo-white.png" alt="UKA Logo" class="footer-logo">
+            </div>
+
+            <div class="footer-section">
+                <h4>Universitätsklinikum Augsburg</h4>
+                <p>Stenglinstraße 2<br>861565 Augsburg, Deutschland</p>
+                <p>+49 821 400-01</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="https://www.uk-augsburg.de/impressum">Impressum</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-right">
+            © 2026 Universitätsklinikum Augsburg
+        </div>
     </footer>
+    <script src="..\assets\js\script.js"></script>
+</body>
 
-    <!-- Modal: Bestätigen / Download Vorschau -->
-    <div id="confirmModal" class="modal-overlay" hidden>
-      <div
-        class="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modalTitle"
-      >
-        <button class="modal-close" aria-label="Schließen" type="button">
-          &times;
-        </button>
-        <h3 id="modalTitle">Bist du zufrieden mit deinen Eingaben?</h3>
-        <div class="modal-content">
-          <pre id="modalText" tabindex="0"></pre>
-        </div>
-        <div class="modal-actions">
-          <button id="downloadBtn" class="button primary" type="button">
-            Download
-          </button>
-          <button id="closeBtn" class="button" type="button">Schließen</button>
-        </div>
+  <!-- Modal: Bestätigen / Download Vorschau -->
+  <div id="confirmModal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Bist du zufrieden mit deinen Eingaben?</h3>
+      <div class="modal-content">
+        <pre id="modalText" tabindex="0"></pre>
+      </div>
+      <div class="modal-actions">
+        <button id="downloadBtn" class="button primary" type="button">Download</button>
+        <button id="closeBtn" class="button" type="button">Schließen</button>
       </div>
     </div>
+  </div>
+  <!-- Skripte mit einbinden-->
+  <script src="script.js"></script>
+</body>
 
-    <script src="../assets/js/script.js"></script>
-  </body>
 </html>

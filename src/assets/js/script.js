@@ -1,109 +1,75 @@
+//skripte Main-Page
+
+// Button scrollt zu Services
 (function () {
-  // smooth scroll from hero button to services
-  const scrollBtn = document.getElementById("scroll-to-services");
-  const scrollTarget = document.getElementById("services");
-  if (scrollBtn && scrollTarget) {
-    scrollBtn.addEventListener("click", function (e) {
+  const btn = document.getElementById('scroll-to-services');
+  const target = document.getElementById('services');
+  if (btn && target) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
-      scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
-// jump from second hero button to contact form
-document.getElementById("go-to-services").addEventListener("click", function () {
-  window.location.href = "pages/anfrage.html";
-});
-  // connector lines between buttons and image
-  (function () {
-    function ensureConnector(id) {
-      let c = document.getElementById(id);
-      if (!c) {
-        c = document.createElement("div");
-        c.id = id;
-        c.className = "connector";
-        document.body.appendChild(c);
-      }
-      return c;
+})();
+
+
+// Erzeugt / aktualisiert eine div.connector, die von der Unterseite des Buttons
+// zur Oberseite des Bildes verbindet. Läuft bei Laden, Scroll und Resize.
+(function () {
+  function ensureConnector() {
+    let c = document.querySelector('.connector');
+    if (!c) {
+      c = document.createElement('div');
+      c.className = 'connector';
+      document.body.appendChild(c);
     }
+    return c;
+  }
 
-    function updateConnector() {
-      const btn1 = document.getElementById("scroll-to-services");
-      const btn2 = document.getElementById("go-to-services");
-      const img = document.querySelector(".image-section img");
-      
-      if (!btn1 || !btn2 || !img) return;
+  function updateConnector() {
+    const btn = document.querySelector('.hero .button');
+    const img = document.querySelector('.image-section img');
+    if (!btn || !img) return;
 
-      const rectBtn1 = btn1.getBoundingClientRect();
-      const rectBtn2 = btn2.getBoundingClientRect();
-      const rectImg = img.getBoundingClientRect();
-      
-      const connHeight = 2; // Fixed height from CSS
+    const rectBtn = btn.getBoundingClientRect();
+    const rectImg = img.getBoundingClientRect();
 
-      // Connector 1: from btn1 bottom to btn2 top
-      const start1X = rectBtn1.left + rectBtn1.width / 2 + window.scrollX;
-      const start1Y = rectBtn1.bottom + window.scrollY;
-      const end1X = rectBtn2.left + rectBtn2.width / 2 + window.scrollX;
-      const end1Y = rectBtn2.top + window.scrollY;
+    // Start an der Unterkante des Buttons (mittig)
+    const startX = rectBtn.left + rectBtn.width / 2 + window.scrollX;
+    const startY = rectBtn.bottom + window.scrollY;
+    // Ende an der Oberkante des Bildes (mittig)
+    const endX = rectImg.left + rectImg.width / 2 + window.scrollX;
+    const endY = rectImg.top + window.scrollY;
 
-      const dx1 = end1X - start1X;
-      const dy1 = end1Y - start1Y;
-      const length1 = Math.hypot(dx1, dy1);
-      const angle1 = (Math.atan2(dy1, dx1) * 180) / Math.PI;
+    const dx = endX - startX;
+    const dy = endY - startY;
+    const length = Math.hypot(dx, dy);
+    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
 
-      const conn1 = ensureConnector("connector-1");
-      conn1.style.width = length1 + "px";
-      conn1.style.left = start1X + "px";
-      conn1.style.top = (start1Y - connHeight / 2) + "px";
-      conn1.style.transform = "rotate(" + angle1 + "deg)";
+    const conn = ensureConnector();
+    conn.style.width = length + 'px';
+    conn.style.left = startX + 'px';
+    // damit die Linie genau an startY zentriert ist, höhe halb abziehen
+    const connHeight = parseFloat(getComputedStyle(conn).height) || 2;
+    conn.style.top = (startY - connHeight / 2) + 'px';
+    conn.style.transform = 'rotate(' + angle + 'deg)';
+  }
 
-      // Connector 2: from btn2 bottom to img top
-      const start2X = rectBtn2.left + rectBtn2.width / 2 + window.scrollX;
-      const start2Y = rectBtn2.bottom + window.scrollY;
-      const end2X = rectImg.left + rectImg.width / 2 + window.scrollX;
-      const end2Y = rectImg.top + window.scrollY;
+  // initial + bei Resize/Scroll (debounced kurz)
+  let timeout;
+  function scheduleUpdate() {
+    clearTimeout(timeout);
+    timeout = setTimeout(updateConnector, 50);
+  }
 
-      const dx2 = end2X - start2X;
-      const dy2 = end2Y - start2Y;
-      const length2 = Math.hypot(dx2, dy2);
-      const angle2 = (Math.atan2(dy2, dx2) * 180) / Math.PI;
+  window.addEventListener('load', updateConnector);
+  window.addEventListener('resize', scheduleUpdate);
+  window.addEventListener('scroll', scheduleUpdate);
+  document.querySelectorAll('.image-section img').forEach(img => {
+    if (!img.complete) img.addEventListener('load', scheduleUpdate);
+  });
+})();
 
-      const conn2 = ensureConnector("connector-2");
-      conn2.style.width = length2 + "px";
-      conn2.style.left = start2X + "px";
-      conn2.style.top = (start2Y - connHeight / 2) + "px";
-      conn2.style.transform = "rotate(" + angle2 + "deg)";
-    }
-
-    let timeout;
-    function scheduleUpdate() {
-      clearTimeout(timeout);
-      timeout = setTimeout(updateConnector, 50);
-    }
-
-    window.addEventListener("load", updateConnector);
-    window.addEventListener("resize", scheduleUpdate);
-    window.addEventListener("scroll", scheduleUpdate);
-    document.querySelectorAll(".image-section img").forEach((img) => {
-      if (!img.complete) img.addEventListener("load", scheduleUpdate);
-    });
-  })();
-
-  // FAQ Accordion
-  (function () {
-    const questions = document.querySelectorAll(".faq-question");
-    if (!questions.length) return;
-
-    questions.forEach((q) => {
-      q.addEventListener("click", () => {
-        const parent = q.parentElement;
-        const answer = parent?.querySelector(".faq-answer");
-        const icon = q.querySelector(".faq-icon");
-        if (!answer || !icon) return;
-
-        answer.classList.toggle("open");
-        icon.textContent = answer.classList.contains("open") ? "" : "+";
-      });
-    });
-  })();
 
   // Anfrage-Formular logique
   (function () {
@@ -230,14 +196,35 @@ document.getElementById("go-to-services").addEventListener("click", function () 
         dyn.innerHTML = "";
 
         const templates = {
-          "fit-ad": `<div class="row"><div class="col-6 col-12-xsmall"><label>Bereich</label><select id="abteilungGroup" required><option value="" disabled selected>Bitte wählen</option></select><label>Abteilung</label><select id="abteilungSelect" name="abteilung" required disabled><option value="" disabled selected>Bitte zuerst Bereich wählen</option></select></div><div class="col-6 col-12-xsmall"><label>Berechtigung auf einen Fileshare</label><input name="berechtigung"><option value="" disabled selected>Fileshare(optional)</option></input></div><div class="col-12"><label>PKZ (optional)</label><input type="text" name="pkz" placeholder="PKZ"></div></div>`,
-          zertifikat: `<div class="row"><div class="col-12"><label>Art der Ausstellung</label><select id="zert-art" name="zert_art" required><option disabled selected>Bitte wählen</option><option value="neu">Neu</option><option value="verlaengerung">Verlängerung</option></select></div><div id="zert-details" class="col-12"></div><div class="col-12" style="color:#666;font-size:0.9em;">Hinweis: Private Schlüssel werden von uns generiert. Fremdschlüssel werden nicht akzeptiert.</div></div>`,
-          sonstiges: `<div class="row"><div class="col-12"><label>Beschreibung</label><textarea name="kommentar" required placeholder="Ihr Anliegen"></textarea></div></div>`,
+          "Zugang ins Forschungsnetz": `
+          <div class="row">
+            <div class="col-6 col-12-xsmall">
+              <label>Bereich</label>
+              <select id="abteilungGroup" required>
+                <option value="" disabled selected>Bitte wählen</option>
+              </select>
+              
+              <label style="margin-top: 1.5rem;">Abteilung</label>
+              <select id="abteilungSelect" name="abteilung" required disabled>
+                <option value="" disabled selected>Bitte zuerst Bereich wählen</option>
+              </select>
+            </div>
+            
+            <div class="col-6 col-12-xsmall">
+              <label>Berechtigung auf einen Fileshare</label>
+              <input type="text" name="berechtigung" placeholder="Fileshare (optional)">
+            </div>
+            
+            <div class="col-12" style="margin-top: 1.5rem;">
+              <label>PKZ (optional)</label>
+              <input type="text" name="pkz" placeholder="PKZ">
+            </div>
+          </div>`
         };
 
         if (templates[typ]) dyn.innerHTML = templates[typ];
 
-        if (typ === "fit-ad") {
+        if (typ === "Zugang ins Forschungsnetz") {
           setupAbteilungenTwoStep();
         }
 
@@ -346,4 +333,54 @@ document.getElementById("go-to-services").addEventListener("click", function () 
       }
     }
   })();
-})();
+// Skript Datenhaltung & Infrastruktur
+
+// FAQ Boxen öffnen und schließen
+const questions = document.querySelectorAll(".faq-question");
+
+questions.forEach(q => {
+  q.addEventListener("click", () => {
+    const parent = q.parentElement;
+    const answer = parent.querySelector(".faq-answer");
+    const icon = q.querySelector(".faq-icon");
+
+    // Prüfen, ob die Box bereits offen ist
+    const isOpen = answer.classList.contains("open");
+
+    // Alle anderen Boxen schließen (Optional, für Ordnung)
+    // document.querySelectorAll('.faq-answer').forEach(el => {
+    //    el.style.maxHeight = null;
+    //    el.classList.remove('open');
+    // });
+
+    if (!isOpen) {
+      answer.classList.add("open");
+      // Setzt die exakte Höhe des Inhalts in Pixeln
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      icon.textContent = "-";
+    } else {
+      answer.classList.remove("open");
+      // Setzt die Höhe zurück auf 0 für ein flüssiges Zuziehen
+      answer.style.maxHeight = null;
+      icon.textContent = "+";
+    }
+  });
+});
+
+
+//Skript About-Us Seite
+
+// Logik für das Scrollen mit den Pfeilen
+const carousel = document.getElementById('carousel');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+const scrollAmount = 245;
+
+nextBtn.addEventListener('click', () => {
+  carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+});
+
+prevBtn.addEventListener('click', () => {
+  carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+});
