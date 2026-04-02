@@ -8,13 +8,17 @@
       scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
-
-  // connector line between hero button and image
+// jump from second hero button to contact form
+document.getElementById("go-to-services").addEventListener("click", function () {
+  window.location.href = "pages/anfrage.html";
+});
+  // connector lines between buttons and image
   (function () {
-    function ensureConnector() {
-      let c = document.querySelector(".connector");
+    function ensureConnector(id) {
+      let c = document.getElementById(id);
       if (!c) {
         c = document.createElement("div");
+        c.id = id;
         c.className = "connector";
         document.body.appendChild(c);
       }
@@ -22,28 +26,51 @@
     }
 
     function updateConnector() {
-      const btn = document.querySelector(".hero .button");
+      const btn1 = document.getElementById("scroll-to-services");
+      const btn2 = document.getElementById("go-to-services");
       const img = document.querySelector(".image-section img");
-      if (!btn || !img) return;
+      
+      if (!btn1 || !btn2 || !img) return;
 
-      const rectBtn = btn.getBoundingClientRect();
+      const rectBtn1 = btn1.getBoundingClientRect();
+      const rectBtn2 = btn2.getBoundingClientRect();
       const rectImg = img.getBoundingClientRect();
-      const startX = rectBtn.left + rectBtn.width / 2 + window.scrollX;
-      const startY = rectBtn.bottom + window.scrollY;
-      const endX = rectImg.left + rectImg.width / 2 + window.scrollX;
-      const endY = rectImg.top + window.scrollY;
+      
+      const connHeight = 2; // Fixed height from CSS
 
-      const dx = endX - startX;
-      const dy = endY - startY;
-      const length = Math.hypot(dx, dy);
-      const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+      // Connector 1: from btn1 bottom to btn2 top
+      const start1X = rectBtn1.left + rectBtn1.width / 2 + window.scrollX;
+      const start1Y = rectBtn1.bottom + window.scrollY;
+      const end1X = rectBtn2.left + rectBtn2.width / 2 + window.scrollX;
+      const end1Y = rectBtn2.top + window.scrollY;
 
-      const conn = ensureConnector();
-      conn.style.width = length + "px";
-      conn.style.left = startX + "px";
-      const connHeight = parseFloat(getComputedStyle(conn).height) || 2;
-      conn.style.top = startY - connHeight / 2 + "px";
-      conn.style.transform = "rotate(" + angle + "deg)";
+      const dx1 = end1X - start1X;
+      const dy1 = end1Y - start1Y;
+      const length1 = Math.hypot(dx1, dy1);
+      const angle1 = (Math.atan2(dy1, dx1) * 180) / Math.PI;
+
+      const conn1 = ensureConnector("connector-1");
+      conn1.style.width = length1 + "px";
+      conn1.style.left = start1X + "px";
+      conn1.style.top = (start1Y - connHeight / 2) + "px";
+      conn1.style.transform = "rotate(" + angle1 + "deg)";
+
+      // Connector 2: from btn2 bottom to img top
+      const start2X = rectBtn2.left + rectBtn2.width / 2 + window.scrollX;
+      const start2Y = rectBtn2.bottom + window.scrollY;
+      const end2X = rectImg.left + rectImg.width / 2 + window.scrollX;
+      const end2Y = rectImg.top + window.scrollY;
+
+      const dx2 = end2X - start2X;
+      const dy2 = end2Y - start2Y;
+      const length2 = Math.hypot(dx2, dy2);
+      const angle2 = (Math.atan2(dy2, dx2) * 180) / Math.PI;
+
+      const conn2 = ensureConnector("connector-2");
+      conn2.style.width = length2 + "px";
+      conn2.style.left = start2X + "px";
+      conn2.style.top = (start2Y - connHeight / 2) + "px";
+      conn2.style.transform = "rotate(" + angle2 + "deg)";
     }
 
     let timeout;
