@@ -1,6 +1,8 @@
 /**
  * @jest-environment jsdom
- * * ==============================================================================
+ */
+ 
+ /* * ==============================================================================
  * TEST SUITE: Formularvalidierung Serviceanfrage (anfrage.html)
  * ==============================================================================
  * Prüft statische HTML5-Validierungen, dynamisches DOM-Rendering sowie 
@@ -54,7 +56,7 @@ describe('Integration Tests: Formularvalidierung der Serviceanfrage', () => {
     `;
         
         // Import der Business-Logik zur Initialisierung der Event-Listener
-        require('./www/assets/js/script');
+        require('../www/assets/js/script');
 
         // Setup: Caching der DOM-Knoten-Referenzen
         form = document.querySelector('form[name="projekt"]');

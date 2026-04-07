@@ -1,13 +1,15 @@
 /**
  * @jest-environment jsdom
- * * ==============================================================================
+ */
+
+/* ==============================================================================
  * TEST SUITE: Core Logic & UI Integration (script.js)
  * ==============================================================================
  * Beinhaltet Unit-Tests für reine Datenverarbeitungsfunktionen (Pure Functions) 
  * sowie Integrationstests für das Projektformular und Modal-Interaktionen im DOM.
  */
 
-const { normalize, cleanDisplayName, categoryFor } = require('./www/assets/js/script');
+const { normalize, cleanDisplayName, categoryFor } = require('../www/assets/js/script');
 
 describe('Unit Tests: Core Business Logik', () => {
 
@@ -113,7 +115,7 @@ describe('Integration Tests: Formularauswertung und Modal UI', () => {
       `;
 
       // Dynamischer Import des Target-Skripts zur Initialisierung der Event-Listener
-      require('./www/assets/js/script');
+      require('../www/assets/js/script');
     });
 
     test('Formular-Submit wertet Daten aus und öffnet das Modal', () => {

@@ -1,6 +1,9 @@
 /**
  * @jest-environment jsdom
- * * TEST SUITE: UI Interaktionen (FAQ und Carousel)
+ */
+
+/* ==============================================================================
+ * TEST SUITE: UI Interaktionen (FAQ und Carousel)
  * ---------------------------------------------------------
  * Prüft die DOM-Manipulationen und Event-Listener der Benutzeroberfläche.
  */
@@ -35,7 +38,7 @@ describe('UI Interaktionen: FAQ und Carousel', () => {
     `;
 
     // Target-Skript importieren, um Event-Listener an die DOM-Elemente zu binden
-    require('./www/assets/js/script');
+    require('../www/assets/js/script');
   });
 
   /* ========================================================================== */
