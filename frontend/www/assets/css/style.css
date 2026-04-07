@@ -174,10 +174,9 @@ nav a:hover {
 }
 
 /* Unterüberschrift */
-.hero p {
+.hero h2 {
   color: #666;
   margin-bottom: 20px;
-  text-align: left;
 }
 
 /* Button */
