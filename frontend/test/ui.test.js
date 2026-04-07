@@ -1,25 +1,26 @@
 /**
  * @jest-environment jsdom
+ * * TEST SUITE: UI Interaktionen (FAQ und Carousel)
+ * ---------------------------------------------------------
+ * Prüft die DOM-Manipulationen und Event-Listener der Benutzeroberfläche.
  */
 
 describe('UI Interaktionen: FAQ und Carousel', () => {
   
   beforeEach(() => {
+    // Zurücksetzen des Modul-Caches, um Seiteneffekte zwischen Tests zu vermeiden
     jest.resetModules();
 
-    // 1. MOCKING: Wir bringen JSDOM bei, wie man "scrollt"
-    // Da JSDOM nicht wirklich scrollen kann, faken wir die Funktion.
-    // jest.fn() ist ein Spion, der sich merkt, ob und mit welchen Werten er aufgerufen wurde.
+    // Setup: Mocking der scrollBy-Methode, da JSDOM keine nativen Scroll-Funktionen implementiert.
     window.HTMLElement.prototype.scrollBy = jest.fn();
 
-    // 2. MOCKING: Wir geben HTML-Elementen eine künstliche Höhe
-    // Damit das FAQ klappt, tun wir so, als wäre der Inhalt 100 Pixel hoch.
+    // Setup: Mocking der scrollHeight-Eigenschaft zur Simulation berechneter Layout-Werte.
     Object.defineProperty(HTMLElement.prototype, 'scrollHeight', { 
       configurable: true, 
       value: 100 
     });
 
-    // 3. Mini-HTML für FAQ und Carousel aufbauen
+    // Setup: DOM-Fixture initialisieren
     document.body.innerHTML = `
       <div class="faq-item">
         <button class="faq-question">
@@ -33,7 +34,7 @@ describe('UI Interaktionen: FAQ und Carousel', () => {
       <button id="nextBtn">Weiter</button>
     `;
 
-    // Skript laden, um Event-Listener an unsere Fake-Elemente zu hängen
+    // Target-Skript importieren, um Event-Listener an die DOM-Elemente zu binden
     require('./www/assets/js/script');
   });
 
@@ -45,22 +46,22 @@ describe('UI Interaktionen: FAQ und Carousel', () => {
       const answer = document.querySelector('.faq-answer');
       const icon = document.querySelector('.faq-icon');
 
-      // Zustand VOR dem Klick: Sollte geschlossen sein
+      // Assert (Initialzustand): Elemente sollten standardmäßig geschlossen sein
       expect(answer.classList.contains('open')).toBe(false);
       expect(icon.textContent).toBe('+');
 
-      // Act: 1. Klick (Öffnen simulieren)
+      // Act: Klick-Event simulieren (Akkordeon öffnen)
       question.dispatchEvent(new window.Event('click'));
       
-      // Assert: Prüfen, ob die Klasse da ist, die Höhe 100px beträgt und das Icon "-" ist
+      // Assert: Überprüfung der Statusänderungen (CSS-Klasse, Höhe aus scrollHeight-Mock, Icon)
       expect(answer.classList.contains('open')).toBe(true);
-      expect(answer.style.maxHeight).toBe('100px'); // Dank unseres scrollHeight-Mocks!
+      expect(answer.style.maxHeight).toBe('100px');
       expect(icon.textContent).toBe('-');
 
-      // Act: 2. Klick (Wieder schließen simulieren)
+      // Act: Erneutes Klick-Event simulieren (Akkordeon schließen)
       question.dispatchEvent(new window.Event('click'));
       
-      // Assert: Alles muss wieder im Ursprungszustand sein
+      // Assert: Überprüfung der Wiederherstellung des Ursprungszustands
       expect(answer.classList.contains('open')).toBe(false);
       expect(answer.style.maxHeight).toBe('');
       expect(icon.textContent).toBe('+');
@@ -74,10 +75,10 @@ describe('UI Interaktionen: FAQ und Carousel', () => {
       const nextBtn = document.getElementById('nextBtn');
       const carousel = document.getElementById('carousel');
 
-      // Act: Auf Weiter klicken
+      // Act: Klick-Event auf 'Weiter'-Button auslösen
       nextBtn.dispatchEvent(new window.Event('click'));
 
-      // Assert: Wir fragen unseren Spion (jest.fn()), ob er mit den richtigen Werten beauftragt wurde!
+      // Assert: Verifizieren, ob die Mock-Funktion 'scrollBy' mit den korrekten Parametern aufgerufen wurde
       expect(carousel.scrollBy).toHaveBeenCalledWith({ left: 245, behavior: 'smooth' });
     });
 
@@ -85,10 +86,10 @@ describe('UI Interaktionen: FAQ und Carousel', () => {
       const prevBtn = document.getElementById('prevBtn');
       const carousel = document.getElementById('carousel');
 
-      // Act: Auf Zurück klicken
+      // Act: Klick-Event auf 'Zurück'-Button auslösen
       prevBtn.dispatchEvent(new window.Event('click'));
 
-      // Assert: Spion abfragen
+      // Assert: Verifizieren der korrekten negativen Scroll-Parameter
       expect(carousel.scrollBy).toHaveBeenCalledWith({ left: -245, behavior: 'smooth' });
     });
   });

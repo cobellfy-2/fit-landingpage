@@ -1,19 +1,29 @@
 /**
  * @jest-environment jsdom
+ * * ==============================================================================
+ * TEST SUITE: Formularvalidierung Serviceanfrage (anfrage.html)
+ * ==============================================================================
+ * Prüft statische HTML5-Validierungen, dynamisches DOM-Rendering sowie 
+ * grundlegende Sicherheitsmechanismen (XSS- und Overflow-Protection).
  */
 
 describe('Integration Tests: Formularvalidierung der Serviceanfrage', () => {
     let form, vorname, nachname, email, anfragetyp;
 
+    /**
+     * Hilfsfunktion: Triggert programmatisch das Change-Event, 
+     * um dynamisch abhängige DOM-Knoten zu generieren.
+     */
     function aktiviereNetzZugang() {
         anfragetyp.value = "Zugang ins Forschungsnetz";
         anfragetyp.dispatchEvent(new window.Event('change'));
     }
 
     beforeEach(() => {
+        // Reset des Modul-Caches zur Vermeidung von Seiteneffekten zwischen Tests
         jest.resetModules();
 
-        // fetch mocken, da JSDOM keine echten Netzwerkanfragen macht
+        // Setup: Mocking der fetch-API zur Isolation von Netzwerkaufrufen im JSDOM
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 ok: true,
@@ -21,7 +31,7 @@ describe('Integration Tests: Formularvalidierung der Serviceanfrage', () => {
             })
         );
 
-        // Minimal nötige HTML-Struktur aufbauen
+        // Setup: Injektion der initialen DOM-Fixture
         document.body.innerHTML = `
       <form name="projekt" method="POST">
         <input type="text" name="vorname" required>
@@ -42,9 +52,11 @@ describe('Integration Tests: Formularvalidierung der Serviceanfrage', () => {
         <pre id="modalText"></pre>
       </div>
     `;
+        
+        // Import der Business-Logik zur Initialisierung der Event-Listener
         require('./www/assets/js/script');
 
-        // DOM-Elemente referenzieren
+        // Setup: Caching der DOM-Knoten-Referenzen
         form = document.querySelector('form[name="projekt"]');
         vorname = document.querySelector('input[name="vorname"]');
         nachname = document.querySelector('input[name="nachname"]');
@@ -52,106 +64,131 @@ describe('Integration Tests: Formularvalidierung der Serviceanfrage', () => {
         anfragetyp = document.querySelector('#anfragetyp');
     });
 
+    /* ========================================================================== */
+
     describe('Basis-Felder (Statische HTML-Validierung)', () => {
         test('Sollte das Formular als ungültig markieren, wenn Pflichtfelder leer sind', () => {
+            // Assert: HTML5 'required' Constraint-Validierung
             expect(form.checkValidity()).toBe(false);
             expect(vorname.validity.valueMissing).toBe(true);
             expect(nachname.validity.valueMissing).toBe(true);
         });
 
         test('Sollte ungültige E-Mail-Formate ablehnen', () => {
+            // Arrange
             email.value = "max.mustermann.ohne.at";
+            
+            // Assert: HTML5 'type' Constraint-Validierung
             expect(email.validity.typeMismatch).toBe(true);
             expect(form.checkValidity()).toBe(false);
         });
 
         test('Sollte korrekte E-Mail-Formate akzeptieren', () => {
+            // Arrange
             email.value = "max.mustermann@uk-augsburg.de";
+            
+            // Assert
             expect(email.validity.typeMismatch).toBe(false);
         });
     });
 
-    describe('Dynamische Formularfelder (PKZ-Logik)', () => {
+    /* ========================================================================== */
 
+    describe('Dynamische Formularfelder (PKZ-Logik)', () => {
         test('Sollte das PKZ-Feld ins DOM rendern', () => {
+            // Act
             aktiviereNetzZugang();
+            
+            // Assert
             expect(document.querySelector('input[name="pkz"]')).not.toBeNull();
         });
 
         test('Sollte PKZ-Eingaben unter 5 Ziffern ablehnen', () => {
+            // Arrange
             aktiviereNetzZugang();
             const pkz = document.querySelector('input[name="pkz"]');
 
+            // Act
             pkz.value = "1234";
+            
+            // Assert: Überprüfung der Regex-Pattern-Vorgaben
             expect(pkz.validity.patternMismatch).toBe(true);
         });
 
         test('Sollte alphabetische Eingaben im PKZ-Feld ablehnen', () => {
+            // Arrange
             aktiviereNetzZugang();
             const pkz = document.querySelector('input[name="pkz"]');
 
+            // Act
             pkz.value = "ABCDE";
+            
+            // Assert: Überprüfung der Typ-Sicherheit (nur numerisch)
             expect(pkz.validity.patternMismatch).toBe(true);
         });
 
         test('Sollte eine exakt 5-stellige numerische PKZ akzeptieren', () => {
+            // Arrange
             aktiviereNetzZugang();
             const pkz = document.querySelector('input[name="pkz"]');
 
+            // Act
             pkz.value = "12345";
+            
+            // Assert
             expect(pkz.validity.patternMismatch).toBe(false);
             expect(pkz.validity.valid).toBe(true);
         });
+    });
 
-        describe('Sicherheits-Tests (Security & XSS)', () => {
-            test('Verhindert HTML/JS-Injection (Cross-Site Scripting) in Eingabefeldern', () => {
-                // Arrange: Ein Angreifer versucht, ausführbaren Code als Vornamen einzugeben
-                const maliciousPayload = "<script>alert('Dein System wurde gehackt!');</script>";
+    /* ========================================================================== */
 
-                vorname.value = maliciousPayload;
-                nachname.value = "Hacker";
-                email.value = "hacker@uk-augsburg.de";
+    describe('Sicherheits-Tests (Security & Resilience)', () => {
+        test('Verhindert HTML/JS-Injection (Cross-Site Scripting) in Eingabefeldern', () => {
+            // Arrange: Setup einer XSS-Payload
+            const maliciousPayload = "<script>alert('Dein System wurde gehackt!');</script>";
 
-                // Act: Formular absenden
-                form.dispatchEvent(new window.Event('submit', { cancelable: true }));
+            vorname.value = maliciousPayload;
+            nachname.value = "Hacker";
+            email.value = "hacker@uk-augsburg.de";
 
-                // Assert: Modal auslesen
-                const modalText = document.getElementById('modalText');
+            // Act: Submit-Event triggern
+            form.dispatchEvent(new window.Event('submit', { cancelable: true }));
 
-                // 1. Wir prüfen, ob der Text exakt als Text ausgegeben wird
-                expect(modalText.textContent).toContain(maliciousPayload);
+            // Assert: Auswertung der DOM-Ausgabe
+            const modalText = document.getElementById('modalText');
 
-                // 2. DER WICHTIGSTE TEST: Wir prüfen das echte HTML des Modals!
-                // Wenn das System sicher ist, muss der Browser die Klammern in "&lt;" (less than) 
-                // und "&gt;" (greater than) umgewandelt haben. 
-                // Wäre das System unsicher, stünde hier ein echtes <script>-Tag.
-                expect(modalText.innerHTML).toContain("&lt;script&gt;alert('Dein System wurde gehackt!');&lt;/script&gt;");
-            });
+            // 1. Verifikation der reinen Textausgabe (ohne Ausführung)
+            expect(modalText.textContent).toContain(maliciousPayload);
+
+            // 2. Verifikation des HTML-Escapings (Umwandlung in HTML-Entitäten)
+            expect(modalText.innerHTML).toContain("&lt;script&gt;alert('Dein System wurde gehackt!');&lt;/script&gt;");
         });
 
-        test('Verkraftet extrem lange Eingaben ohne abzustürzen (Overflow-Schutz)', () => {
-            // Arrange: Wir generieren einen String mit 10.000 "A"s
+        test('Verkraftet extrem lange Eingaben ohne abzustürzen (Boundary / Overflow-Testing)', () => {
+            // Arrange: Generierung eines Boundary-Test-Strings
             const massiveString = "A".repeat(10000);
 
             vorname.value = massiveString;
             nachname.value = "Test";
             email.value = "test@uk-augsburg.de";
 
-            // Act: Wir triggern die Auswertung deines Skripts
-            // Wir packen es in einen try-catch/expect Block. 
-            // Wenn das Skript wegen der Datenmenge abstürzt, schlägt der Test fehl.
+            // Act & Assert: Evaluierung der Laufzeitstabilität unter extremer Last
             expect(() => {
                 form.dispatchEvent(new window.Event('submit', { cancelable: true }));
             }).not.toThrow();
 
-            // Assert: Das Modal sollte sich trotzdem fehlerfrei geöffnet haben
+            // Assert: Verifikation der erfolgreichen Datenverarbeitung
             const modalText = document.getElementById('modalText');
             expect(modalText.textContent).toContain('Test');
         });
     });
 
+    /* ========================================================================== */
+
     describe('End-to-End Formular Status', () => {
         test('Sollte form.checkValidity() als TRUE evaluieren, wenn alle Bedingungen erfüllt sind', () => {
+            // Arrange: Validen Datensatz aufbauen
             vorname.value = "Max";
             nachname.value = "Mustermann";
             email.value = "max.mustermann@uk-augsburg.de";
@@ -162,7 +199,7 @@ describe('Integration Tests: Formularvalidierung der Serviceanfrage', () => {
             const abteilungSelect = document.querySelector('#abteilungSelect');
             const pkz = document.querySelector('input[name="pkz"]');
 
-            // Dropdowns simulieren
+            // Setup: Abhängige Dropdowns mit gültigen Fixture-Werten versehen
             abteilungGroup.innerHTML = '<option value="MIT">MIT</option>';
             abteilungGroup.value = "MIT";
 
@@ -172,6 +209,7 @@ describe('Integration Tests: Formularvalidierung der Serviceanfrage', () => {
 
             pkz.value = "98765";
 
+            // Assert: Finale Constraint-Evaluierung
             expect(form.checkValidity()).toBe(true);
         });
     });
