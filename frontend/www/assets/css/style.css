@@ -64,13 +64,10 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 15px 50px;
-}
-
-/* Restore horizontal navbar layout */
-.navbar {
   flex-direction: row;
   align-items: center;
 }
+
 
 /* Größe Logo */
 .logo img {
@@ -84,16 +81,16 @@ nav ul {
   gap: 25px;
 }
 
+/* Hovereffekt */
+nav a:hover {
+  color: #155582;
+}
+
 /* einzelne Auswahlmöglichkeiten */
 nav a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-}
-
-/* Hovereffekt */
-nav a:hover {
-  color: #155582;
 }
 
 /* Image Forschungs-IT */
@@ -224,12 +221,12 @@ nav a:hover {
 }
 
 /* Text in Karte */
-.card p{
+.card p {
   margin-bottom: 10px;
 }
 
 /* Kleinere Karten auf Mobilgeräten: etwas kompakteres Seitenverhältnis */
-@media (width <= 600px) {
+@media (width <=600px) {
   .card img {
     aspect-ratio: 4/3;
   }
@@ -316,7 +313,7 @@ footer.footer-dark {
 }
 
 /* Mobile Optimierung */
-@media (width <= 840px) {
+@media (width <=840px) {
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -364,9 +361,12 @@ h1 {
 /* ===== Kleinere Header ===== */
 
 h3 {
-  font-size: 2.5rem;     /* größer */
-  margin-top: 2rem;      /* mehr Abstand oben */
-  margin-bottom: 1rem;   /* Abstand unten */
+  font-size: 2.5rem;
+  /* größer */
+  margin-top: 2rem;
+  /* mehr Abstand oben */
+  margin-bottom: 1rem;
+  /* Abstand unten */
 }
 
 h2,
@@ -537,7 +537,7 @@ button:hover {
 }
 
 /* Mobile */
-@media (width <= 800px) {
+@media (width <=800px) {
   .row {
     grid-template-columns: 1fr;
   }
@@ -802,7 +802,7 @@ ol li {
 }
 
 /* kleinerer Abstand auf Mobilgeräten */
-@media (width <= 900px) {
+@media (width <=900px) {
   .site-inner {
     padding: 0 16px;
   }
@@ -817,10 +817,8 @@ ol li {
 
   /* Transform für Firefox und als moderner Standard */
   transform: scale(1.05);
-  transform: scale(1.05);
 
   /* Festlegen des Ursprungs der Skalierung */
-  transform-origin: top center;
   transform-origin: top center;
 }
 
@@ -1076,7 +1074,7 @@ ol li {
 }
 
 /* Mobile Anpassung */
-@media (width <= 800px) {
+@media (width <=800px) {
   .cta-container {
     flex-direction: column;
     gap: 25px;
