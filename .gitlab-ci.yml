@@ -53,11 +53,12 @@ build_frontend:
 # Baut das Node.js-Backend-Image
 build_backend:
   stage: build
-  image: docker:24.0.5
-  services:
-    - docker:24.0.5-dind
-  variables:
-    DOCKER_TLS_CERTDIR: "/certs"
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
   script:
-    - echo "Baue Backend Docker-Image..."
-    - docker build -t mein-projekt-backend ./backend
+    - echo "Baue Backend Docker-Image mit Kaniko..."
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/backend"
+      --dockerfile "${CI_PROJECT_DIR}/backend/Dockerfile"
+      --no-push
