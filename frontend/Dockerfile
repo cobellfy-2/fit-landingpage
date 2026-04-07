@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-COPY src/ /usr/share/nginx/html/
+COPY www/ /usr/share/nginx/html/
 #also:
 #src/index.html wird zu /usr/share/nginx/html/index.html
 #src/assets/... wird zu /usr/share/nginx/html/assets/...
