@@ -63,3 +63,22 @@ build_backend:
       --context "${CI_PROJECT_DIR}/backend"
       --dockerfile "${CI_PROJECT_DIR}/backend/Dockerfile"
       --no-push
+
+
+
+# ==========================================
+# STAGE 3: JEST
+# ==========================================
+
+unit_test_frontend:
+  stage: test
+  image: node:20-alpine
+  script:
+    - cd frontend
+    - npm install
+    - npm test
+  coverage: '/All files\s*\|\s*([\d\.]+)/'
+  artifacts:
+    paths:
+      - frontend/coverage/
+    expire_in: 1 week
