@@ -82,3 +82,19 @@ unit_test_frontend:
     paths:
       - frontend/coverage/
     expire_in: 1 week
+  
+# ==========================================
+# STAGE 4: Security 
+# ==========================================
+
+
+security_audit_frontend:
+  stage: test
+  image: node:20-alpine
+  script:
+    - echo "Starte Sicherheitsprüfung der Abhängigkeiten..."
+    - cd frontend
+    # package-lock.json auslesen und Pakete sauber laden
+    - npm ci
+    # Der eigentliche Sicherheits-Check
+    - npm audit --audit-level=high
