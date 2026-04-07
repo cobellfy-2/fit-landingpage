@@ -9,7 +9,7 @@ stages:
 # Prüft den HTML- und CSS-Code im Frontend
 lint_frontend:
   stage: test
-  image: node:18-alpine
+  image: node:20-alpine
   script:
     - echo "Starte Frontend Linter..."
     - cd frontend
