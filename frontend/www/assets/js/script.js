@@ -142,52 +142,6 @@
       .catch(console.warn);
   }
 
-  function normalize(s) {
-    return String(s ?? "")
-      .replace(/\uFEFF/g, "")
-      .replace(/\x00/g, "")
-      .trim();
-  }
-
-  function cleanDisplayName(id, name) {
-    let n = normalize(name);
-    const i = normalize(id);
-    if (n.startsWith(i)) n = n.slice(i.length).trim();
-    return n.replace(/^\s*-\s*/, "").trim();
-  }
-
-  function categoryFor(id) {
-    const cu = String(id).toUpperCase();
-    if (cu.startsWith("9FL")) return "Lehrstühle";
-
-    const m = cu.match(/^(\d+)/);
-    if (!m) return "Weitere";
-    const n = parseInt(m[1], 10);
-
-    if (n >= 80 && n < 100) return "MIT";
-    if (n >= 801 && n < 806) return "MIT";
-    if (n >= 200 && n < 300) return "Pflege";
-    if (n >= 300 && n < 304) return "Anästhesiologie";
-    if (n === 601) return "Anästhesiologie";
-    if (n >= 304 && n < 310) return "Palliativmedizin";
-    if (n === 320) return "Institut f. Laboratoriumsmed./Mikrob./Umwelth.";
-    if (n === 330) return "Institut für Digitale Medizin (IDM)";
-    if (n === 375) return "Institut für Humangenetik";
-    if (n === 310) return "MVZ Nuklearmed. und Strahlenklinik";
-    if (n === 690) return "Physiotherapie und Ergotherapie";
-    if (n === 340) return "Klinik f. Diagnostische Radiologie u. Neurorad.";
-    if (n === 350) return "Klinik für Strahlentherapie";
-    if (n === 360) return "Klinik für Nuklearmedizin";
-    if (n === 390) return "Institut für Pathologie und molekulare Diagnostik";
-    if (n >= 400 && n < 500) return "Chirurgisches Zentrum";
-    if (n === 550) return "Neurologie";
-    if (n >= 500 && n < 550) return "Allgemeinmedizinische Akutpraxis (AMAP)";
-    if (n >= 630 && n < 632) return "Zentrale Notaufnahme";
-    if (n >= 700 && n < 800) return "Kinderklinik";
-    if (n >= 800 && n < 900) return "MedizinCampus Süd";
-    return "Weitere";
-  }
-
   if (anfragetypSel) {
     const dyn = document.getElementById("dynamisch");
     anfragetypSel.addEventListener("change", function () {
@@ -195,8 +149,8 @@
       const typ = this.value;
       dyn.innerHTML = "";
 
-    const templates = {
-  "Zugang ins Forschungsnetz": `
+      const templates = {
+        "Zugang ins Forschungsnetz": `
     <div class="row">
       <div class="col-6 col-12-xsmall">
         <label>Bereich</label>
@@ -228,7 +182,7 @@
         >
       </div>
     </div>`
-};
+      };
 
       if (templates[typ]) dyn.innerHTML = templates[typ];
 
@@ -341,6 +295,56 @@
     }
   }
 })();
+
+// ==========================================
+  // PURE LOGIK (Für Jest exportiert)
+  // ==========================================
+  function normalize(s) {
+    return String(s ?? "")
+      .replace(/\uFEFF/g, "")
+      .replace(/\x00/g, "")
+      .trim();
+  }
+
+  function cleanDisplayName(id, name) {
+    let n = normalize(name);
+    const i = normalize(id);
+    if (n.startsWith(i)) n = n.slice(i.length).trim();
+    return n.replace(/^\s*-\s*/, "").trim();
+  }
+
+  function categoryFor(id) {
+    const cu = String(id).toUpperCase();
+    if (cu.startsWith("9FL")) return "Lehrstühle";
+
+    const m = cu.match(/^(\d+)/);
+    if (!m) return "Weitere";
+    const n = parseInt(m[1], 10);
+
+    if (n >= 80 && n < 100) return "MIT";
+    if (n >= 801 && n < 806) return "MIT";
+    if (n >= 200 && n < 300) return "Pflege";
+    if (n >= 300 && n < 304) return "Anästhesiologie";
+    if (n === 601) return "Anästhesiologie";
+    if (n >= 304 && n < 310) return "Palliativmedizin";
+    if (n === 320) return "Institut f. Laboratoriumsmed./Mikrob./Umwelth.";
+    if (n === 330) return "Institut für Digitale Medizin (IDM)";
+    if (n === 375) return "Institut für Humangenetik";
+    if (n === 310) return "MVZ Nuklearmed. und Strahlenklinik";
+    if (n === 690) return "Physiotherapie und Ergotherapie";
+    if (n === 340) return "Klinik f. Diagnostische Radiologie u. Neurorad.";
+    if (n === 350) return "Klinik für Strahlentherapie";
+    if (n === 360) return "Klinik für Nuklearmedizin";
+    if (n === 390) return "Institut für Pathologie und molekulare Diagnostik";
+    if (n >= 400 && n < 500) return "Chirurgisches Zentrum";
+    if (n === 550) return "Neurologie";
+    if (n >= 500 && n < 550) return "Allgemeinmedizinische Akutpraxis (AMAP)";
+    if (n >= 630 && n < 632) return "Zentrale Notaufnahme";
+    if (n >= 700 && n < 800) return "Kinderklinik";
+    if (n >= 800 && n < 900) return "MedizinCampus Süd";
+    return "Weitere";
+  }
+
 // Skript Datenhaltung & Infrastruktur
 
 // FAQ Boxen öffnen und schließen
@@ -387,4 +391,9 @@ if (carousel && prevBtn && nextBtn) {
   prevBtn.addEventListener('click', () => {
     carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   });
+}
+
+/* Trick für Jest Kompatibilität */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { normalize, cleanDisplayName, categoryFor };
 }
