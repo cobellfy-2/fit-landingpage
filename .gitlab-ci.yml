@@ -1,0 +1,63 @@
+stages:
+  - test
+  - build
+
+# ==========================================
+# STAGE 1: TESTEN & LINTEN
+# ==========================================
+
+# Prüft den HTML- und CSS-Code im Frontend
+lint_frontend:
+  stage: test
+  image: node:18-alpine
+  script:
+    - echo "Starte Frontend Linter..."
+    - cd frontend
+    # Installiert die Linter (Stylelint, HTMLHint) aus deiner package-lock.json
+    - npm ci 
+    # Führt Stylelint für CSS-Dateien aus
+    - npx stylelint "www/**/*.css"
+    # Führt HTMLHint für HTML-Dateien aus
+    - npx htmlhint "www/**/*.html"
+  # Erlaubt das Weiterlaufen der Pipeline, auch wenn Stil-Fehler gefunden werden
+  allow_failure: true 
+
+# Prüft das Python-Skript
+lint_python:
+  stage: test
+  image: python:3.10-slim
+  script:
+    - echo "Starte Python Linter..."
+    - cd scripts
+    - pip install pylint
+    - pylint filter.py
+  allow_failure: true
+
+
+# ==========================================
+# STAGE 2: DOCKER CONTAINER BAUEN
+# ==========================================
+
+# Baut das Nginx-Frontend-Image
+build_frontend:
+  stage: build
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - echo "Baue Frontend Docker-Image..."
+    - docker build -t mein-projekt-frontend ./frontend
+
+# Baut das Node.js-Backend-Image
+build_backend:
+  stage: build
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - echo "Baue Backend Docker-Image..."
+    - docker build -t mein-projekt-backend ./backend
