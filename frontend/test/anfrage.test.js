@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
- 
- /* * ==============================================================================
+
+/* ==============================================================================
  * TEST SUITE: Formularvalidierung Serviceanfrage (anfrage.html)
  * ==============================================================================
  * Prüft statische HTML5-Validierungen, dynamisches DOM-Rendering sowie 

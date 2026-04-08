@@ -397,3 +397,57 @@ if (carousel && prevBtn && nextBtn) {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { normalize, cleanDisplayName, categoryFor };
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function updateSlider(index) {
+        // Klassen zurücksetzen
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Neues Slide und Dot aktivieren
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+    }
+
+    // Nächste Folie
+    function next() {
+        let newIndex = (currentSlide + 1) % totalSlides;
+        updateSlider(newIndex);
+    }
+
+    // Vorherige Folie
+    function prev() {
+        let newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider(newIndex);
+    }
+
+    // Event Listener für Pfeile
+    if(nextBtn && prevBtn) {
+        nextBtn.addEventListener('click', next);
+        prevBtn.addEventListener('click', prev);
+    }
+
+    // Event Listener für die Punkte
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            updateSlider(index);
+        });
+    });
+
+    // Optional: Den Cyan-Button auf dem ersten Slide direkt mit Slide 2 verknüpfen (da die Services-Section nun Slide 2-5 ist)
+    const btnCyan = document.getElementById('scroll-to-services');
+    if(btnCyan) {
+        btnCyan.addEventListener('click', () => {
+            updateSlider(1); // Springt zum ersten Kernservice (Slide 2)
+        });
+    }
+});
