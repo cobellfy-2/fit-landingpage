@@ -1147,3 +1147,146 @@ button:hover {
     text-align: center;
   }
 }
+
+/* ===== Infrastruktur Seite (Screenshot Layout) ===== */
+
+/* Top-Banner mit Hintergrundbild und Overlay */
+.infra-hero {
+  position: relative;
+  width: 100%;
+  min-height: 350px;
+  background-image: url('../images/Bild_Datenhaltung.jpg'); /* Passe hier den Pfad zu deinem Server-Bild an */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  margin-left: clamp(10px, 15vw, 200px);
+}
+
+.infra-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgb(255 255 255 / 95%) 0%, rgb(255 255 255 / 85%) 50%, rgb(255 255 255 / 10%) 100%);
+  z-index: 1;
+}
+
+.infra-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 50px;
+  margin-left: 5%;
+}
+
+.infra-hero-content h1 {
+  font-size: 2.5rem;
+  text-align: left;
+  color: #333;
+  margin-bottom: 15px;
+  font-family: Outfit, sans-serif;
+}
+
+.infra-hero-content p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Hauptüberschrift Mittlerer Teil */
+.infra-main-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 40px 0 60px 0;
+  color: #333;
+  font-family: Outfit, sans-serif;
+}
+
+/* Flex-Grid Container */
+.infra-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+}
+
+/* Einzelne Reihe (Blauer Box + Graue Box) */
+.infra-row {
+  display: flex;
+  width: 100%;
+  gap: 5px; /* Abstand zwischen der blauen und grauen Box */
+}
+
+/* Dunkelblaue Box (Links) */
+.infra-box-left {
+  background-color: #00569d; 
+  color: #fff;
+  width: 250px;
+  flex-shrink: 0;
+  border-radius: 15px 0 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Hellgraue Text-Box (Rechts) */
+.infra-box-right {
+  background-color: #edf1f4; 
+  border-radius: 0 15px 15px 0;
+  padding: 30px;
+  flex-grow: 1;
+  font-family: Inter, sans-serif;
+  color: #222;
+}
+
+.infra-box-right p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.infra-box-right p:last-child {
+  margin-bottom: 0;
+}
+
+/* Türkisfarbene Verbindungslinie */
+.infra-connector {
+  width: 10px;
+  height: 40px;
+  background-color: #3dc6c6; 
+  margin: 0 auto;
+}
+
+/* Responsive Anpassung für Tablets & Smartphones */
+@media (width <= 768px) {
+  .infra-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .infra-box-left {
+    width: 100%;
+    min-height: 80px;
+  }
+  .infra-connector {
+    margin-left: auto;
+    margin-right: auto;
+    height: 25px;
+  }
+  .infra-hero-content {
+    padding: 0 20px;
+    margin-left: 0;
+  }
+  .infra-hero-content h1 {
+    font-size: 2rem;
+  }
+}
