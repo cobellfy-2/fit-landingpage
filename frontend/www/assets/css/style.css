@@ -1,4 +1,6 @@
 /* !=== Allgemein ===! */
+
+/* Universeller Selektor */
 * {
   margin: 0;
   padding: 0;
@@ -6,26 +8,20 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
-/* Reserviert den Platz für die Scrollbar, damit der Inhalt nicht springt */
-
-
-/* Footer unten am Bildschirm */
+/* Hauptinhalt Container */
 main {
   flex: 1 0 auto;
-
-  /* Nimmt den gesamten verfügbaren Platz ein */
 }
 
+/* Basis für Seitenhöhe */
 html,
 body {
   height: 100%;
-
-  /* Wichtig, damit 100vh eine Basis hat */
   margin: 0;
   padding: 0;
 }
 
-/* Body-Element */
+/* Body-Element Formatierung */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -39,7 +35,9 @@ body {
   flex-direction: column
 }
 
-/* ===== Großer Header ===== */
+/* ===== Typografie ===== */
+
+/* Große Überschrift (H1) */
 h1 {
   font-family: Outfit, sans-serif;
   font-weight: 700;
@@ -48,14 +46,14 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* ===== Kleinere Header ===== */
-
+/* Mittelgroße Überschrift (H3) */
 h3 {
   font-size: 2.5rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
+/* Kleine Überschriften (H2, H4) */
 h2,
 h4 {
   font-family: Inter, sans-serif;
@@ -63,37 +61,39 @@ h4 {
   margin-top: 1.5rem;
 }
 
-/* ===== Fließtext ===== */
+/* Standard-Fließtext */
 p {
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-/* Aussehen Links */
+/* Standard-Links */
 a {
   color: #007aff;
-
-  /* Apple-blau */
   text-decoration: none;
 }
 
+/* Hover-Effekt für Links */
 a:hover {
   text-decoration: underline;
 }
 
-/* Increase list indentation (stronger indent to the right) */
+/* Ungeordnete und geordnete Listen */
 ul,
 ol {
   padding-left: 40px;
   margin-left: 0;
 }
 
+/* Einzelne Listenelemente */
 ul li,
 ol li {
   margin-bottom: 8px;
 }
 
-/* Stil Elemente Unterseiten */
+/* ===== Seitenstruktur ===== */
+
+/* Container für Seiteninhalte */
 .site-inner {
   flex: 1 0 auto;
   max-width: 1800px;
@@ -102,10 +102,19 @@ ol li {
   box-sizing: border-box;
 }
 
+/* Coming-Soon Bereichs-Container */
+.coming-soon {
+  text-align: center;
+}
+
+/* Coming-Soon Fließtext */
+.coming-soon p {
+  font-size: 1.3rem;
+}
 
 /* ===== Navbar ===== */
 
-/* Definition Klasse */
+/* Hauptcontainer Navbar */
 .navbar {
   background: #fff;
   border-bottom: 2px solid #c6d5e1;
@@ -116,68 +125,64 @@ ol li {
   flex-direction: row;
 }
 
-
-/* Größe Logo */
+/* Logo-Bild in der Navbar */
 .logo img {
   height: 80px;
 }
 
-/* Navigationsmöglichkeiten Container */
+/* Container für Navigationspunkte */
 nav ul {
   list-style: none;
   display: flex;
   gap: 25px;
 }
 
-/* einzelne Auswahlmöglichkeiten */
+/* Einzelne Navigationslinks */
 nav a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-
 }
 
-/* Hovereffekt */
+/* Hover-Effekt für Navigationslinks */
 nav a:hover {
   color: #155582;
 }
 
-/* Image Forschungs-IT */
+/* Bildbereich für Forschungs-IT (Links) */
 .image-left .text-big {
   max-width: 400px;
-
-  /* Größe links */
   width: 100%;
   height: auto;
   display: block;
   padding: 15px 12px;
 }
 
-/* ==== Main Page ==== */
+/* ===== Main Page ===== */
 
 /* ===== Hero Section ===== */
 
-/* Definition Klasse */
+/* Hero-Bereich Container */
 .hero {
   text-align: center;
   padding: 30px 20px;
   background: #fff;
 }
 
-/* große Überschrift */
+/* Hero-Bereich Hauptüberschrift */
 .hero h1 {
   font-size: 7.0rem;
   font-weight: 800;
   margin-bottom: 10px;
 }
 
-/* Unterüberschrift */
+/* Hero-Bereich Unterüberschrift */
 .hero h2 {
   color: #666;
   margin-bottom: 20px;
 }
 
-/* Button */
+/* Hero-Bereich Button */
 .hero .button {
   padding: 25px 50px;
   font-size: 1.2rem;
@@ -185,47 +190,45 @@ nav a:hover {
   border-width: 3px;
 }
 
-/* großes Bild */
+/* Bereich für großes Bild */
 .image-section {
   background-color: white;
   text-align: center;
   padding: 80px;
-
 }
 
+/* Formatierung für das große Bild */
 .image-section img {
   width: 80%;
   height: auto;
   display: inline-block;
   border: 2px solid #ccc;
-
-  /* schmaler grauer Rahmen */
   border-radius: 4px;
 }
 
 /* ===== Services ===== */
 
-/* Definition Section */
+/* Services-Bereich Container */
 .services {
   text-align: center;
   padding: 50px 20px;
   background-color: #fff;
 }
 
-/* Überschrift */
+/* Services-Bereich Überschrift */
 .services h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
 
-/* Info-Text */
+/* Services-Bereich Fließtext */
 .services p {
   max-width: 900px;
   margin: 0 auto 40px;
   color: #555;
 }
 
-/* Def. division Service-Karten */
+/* Grid-Container für Service-Karten */
 .service-cards {
   display: flex;
   flex-wrap: wrap;
@@ -235,7 +238,7 @@ nav a:hover {
   margin-bottom: 100px;
 }
 
-/* eigentliche Service-Karten */
+/* Layout der einzelnen Service-Karte */
 .card {
   display: flex;
   flex-direction: column;
@@ -250,12 +253,12 @@ nav a:hover {
   box-sizing: border-box;
 }
 
-/* Hover-Effekt */
+/* Hover-Effekt für die Service-Karte */
 .card:hover {
   transform: translateY(-5px);
 }
 
-/* Image auf Karte */
+/* Bild innerhalb der Service-Karte */
 .card img {
   display: block;
   width: 100%;
@@ -268,21 +271,19 @@ nav a:hover {
   box-sizing: border-box;
 }
 
-/* Text in Karte */
+/* Text innerhalb der Service-Karte */
 .card p {
   margin-bottom: 10px;
 }
 
-/* Kleinere Karten auf Mobilgeräten: etwas kompakteres Seitenverhältnis */
+/* Mobile Anpassung für Service-Karten Bilder */
 @media (width <=600px) {
   .card img {
     aspect-ratio: 4/3;
   }
 }
 
-/* Überschrift auf Karte */
-
-/* Titel-Zentrierung */
+/* Überschrift der Service-Karte */
 .card h3 {
   width: 100%;
   margin-top: 0;
@@ -293,30 +294,26 @@ nav a:hover {
 
 /* ===== Footer ===== */
 
-/* Def. Footer Klasse */
+/* Footer-Basis Container */
 footer.footer-dark {
   flex-shrink: 0;
-
-  /* Verhindert das Stauchen des Footers */
   background-color: #155581;
   color: #fff;
   padding: 20px 0;
   font-family: Inter, sans-serif;
 }
 
-/* Def. Container */
+/* Drei-Spalten-Layout für den Footer */
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
-
-  /* Drei Spalten Layout */
   gap: 40px;
   padding: 0 50px;
 }
 
-/* Überschrift */
+/* Footer Sektions-Überschrift */
 .footer-section h4 {
   color: #fff;
   font-size: 1.1rem;
@@ -325,7 +322,7 @@ footer.footer-dark {
   text-transform: none;
 }
 
-/* Informationen */
+/* Basis-Formatierung für Footer-Texte und Links */
 .footer-section p,
 .footer-section ul li,
 .footer-section a {
@@ -335,24 +332,24 @@ footer.footer-dark {
   text-decoration: none;
 }
 
-/* Liste */
+/* Listen im Footer */
 .footer-section ul {
   list-style: none;
   padding: 0;
 }
 
-/* Hovereffekt */
+/* Hover-Effekt für Footer-Links */
 .footer-section a:hover {
   text-decoration: underline;
 }
 
-/* Logo Anpassung */
+/* Formatierung für das Footer-Logo */
 .footer-logo {
   max-width: 250px;
   height: auto;
 }
 
-/* Copyright unten rechts */
+/* Copyright-Hinweis unten rechts */
 .footer-bottom-right {
   text-align: right;
   padding: 20px 50px 0 0;
@@ -360,7 +357,7 @@ footer.footer-dark {
   opacity: 0.8;
 }
 
-/* Mobile Optimierung */
+/* Mobile Layout-Anpassung für den Footer */
 @media (width <=840px) {
   .footer-container {
     grid-template-columns: 1fr;
@@ -373,9 +370,9 @@ footer.footer-dark {
   }
 }
 
-/* SUBPAGEHEADER */
+/* ===== Subpage Header ===== */
 
-/* Def. Klasse */
+/* Basis-Container für Unterseiten-Header */
 .subpage-header {
   text-align: center;
   padding: 30px 20px;
@@ -383,7 +380,7 @@ footer.footer-dark {
   color: white;
 }
 
-/* Überschrift */
+/* Überschrift im Unterseiten-Header */
 .subpage-header h1 {
   text-align: center;
   margin-bottom: 10px;
@@ -391,54 +388,46 @@ footer.footer-dark {
   font-weight: 700;
 }
 
-/* Info-Text */
+/* Fließtext im Unterseiten-Header */
 .subpage-header p {
   font-size: 1.1rem;
   opacity: 0.9;
 }
 
 /* ===== Buttons ===== */
+
+/* Standard-Design für Buttons */
 button {
   font-family: Inter, sans-serif;
   font-weight: 600;
   letter-spacing: 3.75px;
-
-  /* Abstand zwischen Buchstaben */
   background-color: #fff;
   color: #000;
   padding: 20px 35px;
   border: 2px solid #999;
-
-  /* grauer Rahmen */
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Hover-Effekt */
+/* Hover-Effekt für Standard-Buttons */
 button:hover {
   background-color: #888;
 }
 
-/* Connector (grauer Strich zwischen Button und Bild) */
+/* Verbindungselement (Strich) für Buttons */
 .connector {
   position: absolute;
   height: 2px;
-
-  /* Strichhöhe */
   background: #bdbdbd;
-
-  /* graue Farbe */
   z-index: 9999;
   pointer-events: none;
   transform-origin: 0 50%;
-
-  /* Drehpunkt links mittig */
   transition: width 0.12s, transform 0.12s, left 0.12s, top 0.12s;
 }
 
-/* ===================== FORMULAR STYLES ===================== */
+/* ===== Formular Styles ===== */
 
-/* Einheitliche Inputs */
+/* Standardisierung für Formular-Eingabefelder */
 #projekt input,
 #projekt select,
 #projekt textarea {
@@ -448,38 +437,29 @@ button:hover {
   font-family: Inter, sans-serif;
   background: #fff;
   border: 1px solid #d0d0d0;
-
-  /* dünnerere Linie */
   border-radius: 10px;
-
-  /* schön rund */
-
   outline: none;
   transition: 0.2s ease;
   box-sizing: border-box;
 }
 
-/* Hover */
+/* Hover-Effekt für Eingabefelder */
 #projekt input:hover,
 #projekt select:hover,
 #projekt textarea:hover {
   background: #e2e2e2;
 }
 
-/* Fokus → moderne blaue Glow-Linie */
+/* Fokus-Zustand für Eingabefelder */
 #projekt input:focus,
 #projekt select:focus,
 #projekt textarea:focus {
   border-color: #6b2d77;
   background: #fff;
   box-shadow: 0 0 0 3px rgb(108 36 121 / 20%);
-
-  /* Weicher lila Schatten */
 }
 
-/* Labels etwas moderner */
-
-/* Labels über den Inputs */
+/* Beschriftungen (Labels) für Formulare */
 #projekt label {
   display: block;
   font-weight: 600;
@@ -488,86 +468,73 @@ button:hover {
   margin-bottom: 6px;
 }
 
-/* Weniger Abstand zwischen Inputs */
+/* Reduzierter Abstand innerhalb der Formular-Zeilen */
 .row>* {
   margin-bottom: 10px;
 }
 
+/* ===== Grid Layout ===== */
 
-/* ===================== GRID LAYOUT ===================== */
-
+/* Hauptcontainer für das 12-Spalten-Grid */
 .row {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 20px;
 }
 
-/* Spaltenbreiten */
-.col-1 {
-  grid-column: span 1;
-}
+/* Grid Spalte: Breite 1 */
+.col-1 { grid-column: span 1; }
 
-.col-2 {
-  grid-column: span 2;
-}
+/* Grid Spalte: Breite 2 */
+.col-2 { grid-column: span 2; }
 
-.col-3 {
-  grid-column: span 3;
-}
+/* Grid Spalte: Breite 3 */
+.col-3 { grid-column: span 3; }
 
-.col-4 {
-  grid-column: span 4;
-}
+/* Grid Spalte: Breite 4 */
+.col-4 { grid-column: span 4; }
 
-.col-5 {
-  grid-column: span 5;
-}
+/* Grid Spalte: Breite 5 */
+.col-5 { grid-column: span 5; }
 
-.col-6 {
-  grid-column: span 6;
-}
+/* Grid Spalte: Breite 6 */
+.col-6 { grid-column: span 6; }
 
-.col-7 {
-  grid-column: span 7;
-}
+/* Grid Spalte: Breite 7 */
+.col-7 { grid-column: span 7; }
 
-.col-8 {
-  grid-column: span 8;
-}
+/* Grid Spalte: Breite 8 */
+.col-8 { grid-column: span 8; }
 
-.col-9 {
-  grid-column: span 9;
-}
+/* Grid Spalte: Breite 9 */
+.col-9 { grid-column: span 9; }
 
-.col-10 {
-  grid-column: span 10;
-}
+/* Grid Spalte: Breite 10 */
+.col-10 { grid-column: span 10; }
 
-.col-11 {
-  grid-column: span 11;
-}
+/* Grid Spalte: Breite 11 */
+.col-11 { grid-column: span 11; }
 
-.col-12 {
-  grid-column: span 12;
-}
+/* Grid Spalte: Breite 12 */
+.col-12 { grid-column: span 12; }
 
-/* Mobile */
+/* Grid Layout Mobile Anpassung */
 @media (width <=800px) {
   .row {
     grid-template-columns: 1fr;
   }
 }
 
-/* FAQ Teil */
+/* ===== FAQ Bereich ===== */
 
-/* Def. Klasse */
+/* Hauptcontainer für den FAQ-Bereich */
 .faq-section {
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* Überschrift */
+/* Überschrift des FAQ-Bereichs */
 .faq-section h2 {
   font-size: 32px;
   font-weight: 700;
@@ -575,18 +542,18 @@ button:hover {
   text-align: center;
 }
 
-/* FAQ-Item: Parent-Element */
+/* Basis für einzelne FAQ-Einträge */
 .faq-item {
   border-top: 1px solid #e5e5e5;
   padding: 15px 0;
 }
 
-/* Child-Element */
+/* Abschluss-Linie für den letzten FAQ-Eintrag */
 .faq-item:last-child {
   border-bottom: 1px solid #e5e5e5;
 }
 
-/* Frage */
+/* Button-Formatierung für die FAQ-Frage */
 .faq-question {
   width: 100%;
   background: none;
@@ -602,43 +569,39 @@ button:hover {
   color: #00569d;
 }
 
-/* Farbe der Frage ändern, wenn die Antwort offen ist */
+/* Farbe der FAQ-Frage im geöffneten Zustand */
 .faq-item:has(.faq-answer.open) .faq-question {
   color: #6b2d77 !important;
-
-  /* Dein gewünschtes Blau */
   transition: color 0.3s ease;
-
-  /* Weicher Übergang */
 }
 
-/* Auf/ ZU Symbol */
+/* Plus/Minus Icon neben der FAQ-Frage */
 .faq-icon {
   font-size: 26px;
   font-weight: 400;
   margin-left: 10px;
 }
 
-/* Antwort */
+/* Versteckter Container für die FAQ-Antwort */
 .faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* Text Antwort */
+/* Formatierung des Antworttextes */
 .faq-answer p {
   margin: 0;
   line-height: 1.6;
   font-size: 17px;
 }
 
-/* Abstand offen */
+/* FAQ-Antwort im geöffneten Zustand */
 .faq-answer.open {
   margin-top: 10px;
 }
 
-/* Nimmt allen verfügbaren Platz ein */
+/* Basis-Layout für Content-Bereiche */
 .main-content,
 .site-inner {
   flex: 1 0 auto;
@@ -646,7 +609,7 @@ button:hover {
 
 /* ===== Anfrage Seite ===== */
 
-/* Styling für den Einleitungstext unter "Anfrage starten" */
+/* Hauptüberschrift auf der Anfrage-Seite */
 #projekt header.major h2 {
   font-size: 32px;
   font-weight: 700;
@@ -655,7 +618,7 @@ button:hover {
   margin-top: 0;
 }
 
-/* Info Text */
+/* Infotext unter der Überschrift auf der Anfrage-Seite */
 #projekt header.major>p {
   text-align: left;
   max-width: 1100px;
@@ -666,16 +629,12 @@ button:hover {
   color: #444;
 }
 
-#projekt head
-
-/* reduziert extra abstand */
+/* Abstandskorrektur bei eingebundenem Formular */
 .site-inner:has(#projekt) {
   padding-top: 35px;
-
-  /* Verringert das riesige Standard-Padding von 50px */
 }
 
-/* lila button */
+/* Primärer Aktion-Button (Lila) */
 .button.primary {
   background-color: #6C2479;
   color: white;
@@ -692,14 +651,14 @@ button:hover {
   margin: 0 auto;
 }
 
-/* Hover-Effekt */
+/* Hover-Effekt für den primären Button */
 .button.primary:hover {
   background-color: #551c60;
 }
 
 /* ===== Modal / Popup ===== */
 
-/* Def. Klasse */
+/* Hintergrund-Overlay für Modalfenster */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -711,12 +670,12 @@ button:hover {
   padding: 24px;
 }
 
-/* Ensure elements with the `hidden` attribute are not displayed (explicit author rule) */
+/* Versteckter Zustand des Overlays */
 .modal-overlay[hidden] {
   display: none !important;
 }
 
-/* Def. Unterklasse */
+/* Container des Modalfensters */
 .modal {
   position: relative;
   width: 100%;
@@ -728,13 +687,13 @@ button:hover {
   box-sizing: border-box;
 }
 
-/* Frage: Bist du zufrieden */
+/* Überschrift innerhalb des Modals */
 .modal h3 {
   margin-top: 0;
   margin-bottom: 12px;
 }
 
-/* Grauer Kasten für Vorschau */
+/* Vorschau-/Code-Bereich im Modal */
 .modal-content pre {
   white-space: pre-wrap;
   background: #f7f7f7;
@@ -745,7 +704,7 @@ button:hover {
   font-family: inherit;
 }
 
-/* Kasten für Aktionen */
+/* Aktionsbereich (Buttons) im Modal */
 .modal-actions {
   display: flex;
   gap: 10px;
@@ -753,7 +712,7 @@ button:hover {
   margin-top: 16px;
 }
 
-/* Ensure primary button stands out in modal */
+/* Primärer Button innerhalb des Modals */
 .modal .button.primary {
   background-color: #6C2479;
   color: #fff;
@@ -761,62 +720,51 @@ button:hover {
   padding: 10px 18px;
 }
 
-/* Close-button */
+/* Standard-Button innerhalb des Modals */
 .modal .button {
   padding: 9px 16px;
 }
 
-/* Überschreibt das helle Blau vom Browser-Autofill (Chrome, Edge, Safari) wenn etwas in Feld geschrieben */
+/* Autofill-Style-Korrektur für Webkit-Browser */
 #projekt input:-webkit-autofill,
 #projekt input:-webkit-autofill:hover,
 #projekt input:-webkit-autofill:focus,
 #projekt input:-webkit-autofill:active {
-  /* Setzt den Hintergrund auf Weiß (durch einen inneren Schatten) */
   box-shadow: 0 0 0 30px #fff inset !important;
-
-  /* Behält die schwarze/dunkelgraue Textfarbe bei */
   -webkit-text-fill-color: #333 !important;
-
-  /* Verhindert, dass das Blau auch nur für eine Millisekunde aufblitzt */
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Listen Formatierungen */
-
-/* Entferne Aufzählungszeichen bei Aktions-Listen (z.B. Formular-Buttons) */
+/* Basis für Listen in Aktionsbereichen */
 .actions {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+/* Elemente in Aktions-Listen nebeneinanderreihen */
 .actions li {
   display: inline-block;
   margin-right: 8px;
 }
 
-/* kleinerer Abstand auf Mobilgeräten */
+/* Mobile Abstandsanpassung für Seiteninhalte */
 @media (width <=900px) {
   .site-inner {
     padding: 0 16px;
   }
 }
 
-/* About us Page */
+/* ===== About Us Page ===== */
 
-/* Skaliert den gesamten Inhalt der About-Sektion sauber in allen Browsern */
+/* Globale Skalierung für den About-Us Bereich */
 .about-fit {
-  /* Zoom für Chrome, Safari und Edge */
   zoom: 1.05;
-
-  /* Transform für Firefox und als moderner Standard */
   transform: scale(1.05);
-
-  /* Festlegen des Ursprungs der Skalierung */
   transform-origin: top center;
 }
 
-/* Seiten-Wrapper */
+/* Container für den About-Us Inhalt */
 .about-fit .site-inner-ab {
   max-width: 1900px;
   margin: 0 auto;
@@ -825,7 +773,7 @@ button:hover {
   text-align: center;
 }
 
-/* Info-Text */
+/* Textformatierung für den Info-Bereich in About-Us */
 .about-fit .site-inner>p {
   text-align: left;
   max-width: 1000px;
@@ -836,24 +784,20 @@ button:hover {
   color: #444;
 }
 
-/* Zentriert die "UNSER TEAM"-Überschrift */
+/* Überschrift für den Team-Bereich */
 .about-fit .team-section h2 {
   text-align: center;
   margin-bottom: 0;
   font-size: 30px;
-
 }
 
-/* Team Sektion */
+/* Hauptcontainer für das Team */
 .team-section {
   padding-bottom: 60px;
-
-  /* Erzeugt Platz vor dem Footer */
   text-align: center;
 }
 
-
-/* Container für den gesamten Slider inkl. Pfeile */
+/* Rahmen-Container für den Slider und Pfeile */
 .slider-wrapper {
   display: flex;
   align-items: center;
@@ -864,7 +808,7 @@ button:hover {
   margin-top: 40px;
 }
 
-/* Container für die Karten (blendend den Scrollbalken aus) */
+/* Scrollbarer Container für Profilkarten */
 .carousel-container {
   display: flex;
   gap: 25px;
@@ -874,21 +818,15 @@ button:hover {
   flex-grow: 1;
   max-width: 977px;
   scrollbar-width: none;
-
-  /* Firefox */
   -ms-overflow-style: none;
-
-  /* IE and Edge */
 }
 
-/* entfernt Scrollbar */
+/* Ausblenden des Webkit-Scrollbalkens im Carousel */
 .carousel-container::-webkit-scrollbar {
   display: none;
-
-  /* Chrome, Safari, Opera */
 }
 
-/* Das Design der einzelnen Karte */
+/* Basis-Layout der einzelnen Profilkarte */
 .card-about-us {
   min-width: 220px;
   width: 220px;
@@ -899,13 +837,11 @@ button:hover {
   text-align: center;
   position: relative;
   box-shadow: 0 4px 10px rgb(0 0 0 / 5%);
-
-  /* Leichter Schatten für Tiefe */
   display: flex;
   flex-direction: column;
 }
 
-/* Der blaue obere Bereich */
+/* Oberer farbiger Header-Bereich der Profilkarte */
 .card-about-us-top {
   background-color: #00569d;
   height: 100px;
@@ -916,7 +852,7 @@ button:hover {
   z-index: 1;
 }
 
-/* Der Container Profilbild */
+/* Rahmen und Positionierung für das Profilbild */
 .profile-img-wrapper {
   position: relative;
   z-index: 2;
@@ -931,14 +867,14 @@ button:hover {
   overflow: hidden;
 }
 
-/* eigentliches Bild */
+/* Formatierung des Profilbildes in der Karte */
 .profile-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* unterer Textbereich */
+/* Inhaltsbereich für Text in der Profilkarte */
 .card-about-us-content {
   position: relative;
   z-index: 2;
@@ -948,28 +884,26 @@ button:hover {
   flex-grow: 1;
 }
 
-/* Name Card */
+/* Formatierung des Namens in der Profilkarte */
 .card-about-us-content h3 {
   margin: 10px 0 5px;
   font-size: 19px;
   color: #333;
 }
 
-/* Beschreibung Mitarbeiter */
+/* Formatierung der Stellenbeschreibung in der Profilkarte */
 .card-about-us-content p {
   margin: 0 0 20px;
   font-size: 16px;
   color: #888;
 }
 
+/* Hover-Effekt für den Kontakt-Button (Team-Mitglied) */
 .btn-contact:hover {
   background-color: #003e73;
-
-  /* Dunkleres Blau beim Drüberfahren */
 }
 
-/* Die Navigationspfeile */
-
+/* Button-Styling für Carousel-Navigationspfeile */
 .nav-btn {
   background: none;
   border: none;
@@ -981,28 +915,24 @@ button:hover {
   transition: color 0.3s;
 }
 
-/* Hovereffekt */
+/* Hover-Effekt für Carousel-Navigationspfeile */
 .nav-btn:hover {
   color: #00569d;
 }
 
 /* ===== CTA Banner ===== */
 
-/* Def. Klasse */
+/* Hauptcontainer für den Call-to-Action Banner */
 .cta-banner {
   background-color: #f1f4f7;
-
-  /* Hellgrauer Hintergrund aus dem Bild */
   padding: 20px 0;
   width: 100%;
   margin: 40px 0 100px;
 }
 
-/* Container */
+/* Innere Begrenzung für den Call-to-Action Inhalt */
 .cta-container {
   max-width: 1100px;
-
-  /* Zentrierter Inhaltsbereich */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -1010,24 +940,22 @@ button:hover {
   padding: 0 50px;
 }
 
-/* Wrapper */
+/* Linker Textbereich-Wrapper im Call-to-Action */
 .cta-content-wrapper {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
-/* Der vertikale blaue Strich links */
+/* Blauer Zierstreifen im Call-to-Action Bereich */
 .cta-blue-line {
   width: 10px;
   height: 150px;
   background-color: #00569d;
-
-  /* UKA Blau */
   border-radius: 10px;
 }
 
-/* Frage: Noch nicht gefunden, was Sie suchen */
+/* Hauptüberschrift im Call-to-Action Bereich */
 .cta-text h3 {
   margin: 0;
   font-size: 22px;
@@ -1036,7 +964,7 @@ button:hover {
   text-align: left;
 }
 
-/* Antwort: "Stellen Sie uns eine Serviceanfrage! */
+/* Fließtext im Call-to-Action Bereich */
 .cta-text p {
   margin: 5px 0 0;
   font-size: 18px;
@@ -1044,30 +972,26 @@ button:hover {
   text-align: left;
 }
 
-/* lila Button */
+/* Primärer Button (Lila) im Call-to-Action Bereich */
 .btn-purple {
   background-color: #6b2d77;
-
-  /* Dunkles Lila aus dem Screenshot */
   color: white !important;
   text-decoration: none;
   padding: 12px 30px;
   border-radius: 15px;
-
-  /* Stark abgerundet */
   font-weight: 600;
   font-size: 18px;
   transition: background 0.3s ease;
   white-space: nowrap;
 }
 
-/* Hovereffekt */
+/* Hover-Effekt für den primären Button (Lila) */
 .btn-purple:hover {
   background-color: #55245f;
   text-decoration: none;
 }
 
-/* Mobile Anpassung */
+/* Mobile Layout-Anpassung für den Call-to-Action Banner */
 @media (width <=800px) {
   .cta-container {
     flex-direction: column;
@@ -1082,7 +1006,9 @@ button:hover {
   }
 }
 
-/* --- SLIDER BEREICH --- */
+/* ===== Hauptslider Bereich ===== */
+
+/* Äußerer Wrapper des Hauptsliders */
 .main-slider {
   position: relative;
   width: 100%;
@@ -1094,12 +1020,14 @@ button:hover {
   align-items: center;
 }
 
+/* Wrapper für alle einzelnen Slides */
 .slides-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
+/* Basis-Layout für einen einzelnen Slide */
 .slide {
   position: absolute;
   top: 0;
@@ -1115,12 +1043,13 @@ button:hover {
   align-items: center;
 }
 
+/* Sichtbarkeit für den aktiven Slide */
 .slide.active {
   opacity: 1;
   z-index: 2;
 }
 
-/* Gradient Overlay - exakt wie auf den Screenshots (links deckend weiß, rechts transparent) */
+/* Verlaufshintergrund (Overlay) für verbesserte Lesbarkeit */
 .slide-overlay-light {
   position: absolute;
   top: 0;
@@ -1131,31 +1060,29 @@ button:hover {
   z-index: 1;
 }
 
-/* Inhaltsbereich erzwingen, damit der Text nicht gequetscht wird */
+/* Inhaltscontainer für Text im Slide */
 .slide-content {
   position: relative;
   z-index: 2;
   padding-left: 15%;
-  /* Lässt Platz für die Navigation links */
   width: 100%;
   max-width: 1500px;
-  /* Groß genug, damit nichts umbricht */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-/* --- TYPOGRAFIE --- */
+/* Hauptüberschrift (H1) im Slide */
 .slide h1 {
   font-size: 3.5rem !important;
   color: #1a1a1a !important;
   margin-bottom: 15px !important;
   white-space: nowrap;
-  /* Verhindert das Quetschen in zwei Zeilen */
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
+/* Hero-Untertitel Formatierung im Slide */
 .hero-subtitle {
   font-size: 1.8rem !important;
   color: #333 !important;
@@ -1164,6 +1091,7 @@ button:hover {
   font-weight: 400 !important;
 }
 
+/* Service-Label (kursiver Text) im Slide */
 .service-label {
   font-family: 'Outfit', sans-serif;
   font-style: italic;
@@ -1173,6 +1101,7 @@ button:hover {
   margin-bottom: -20px;
 }
 
+/* Sekundäre Überschrift (H2) im Slide */
 .slide h2 {
   font-size: 3.2rem !important;
   color: #1a1a1a !important;
@@ -1180,6 +1109,7 @@ button:hover {
   font-weight: 700;
 }
 
+/* Standardtext im Slide */
 .slide p {
   font-size: 1.8rem !important;
   color: #222 !important;
@@ -1187,51 +1117,43 @@ button:hover {
   line-height: 1.6 !important;
 }
 
-/* --- BUTTONS & LAYOUT --- */
+/* ===== Slider Buttons & Layout ===== */
+
+/* Container für Buttons im Slide */
 .btn-container {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  /* Schiebt die Buttons nach rechts */
   padding-right: 0;
-  /* Abstand zum rechten Rand anpassen */
   margin-top: 10px;
 }
 
-/* Spezial-Korrektur für den ersten Button (Cyan) */
-/* --- RESPONSIVE ANPASSUNGEN FÜR LAPTOPS UND KLEINERE BILDSCHIRME --- */
-
-/* Für typische Laptops (Bildschirme schmaler als 1440px) */
+/* Slider-Button Positionierung auf Standard-Laptops */
 @media (max-width: 1440px) {
   .btn-container.home-btn-pos {
     transform: translateX(200px) !important;
-    /* Weniger Verschiebung */
   }
 }
 
-/* Für kleine Laptops oder Tablets (Bildschirme schmaler als 1024px) */
+/* Slide-Content Padding auf kleinen Bildschirmen */
 @media (max-width: 1024px) {
   .slide-content {
     padding-left: 10%;
-    /* Text etwas weiter nach links rutschen lassen */
   }
 }
 
+/* Slide-Content Erweiterung für große Bildschirme */
 @media (min-width: 1600px) {
   .slide-content {
-    /* Erhöht die maximale Breite, damit der Inhalt auf großen Monitoren weiter nach rechts wandern kann */
     max-width: 1800px;
   }
 
   .btn-container.home-btn-pos {
-    /* Reduziert den rechten Abstand, damit der Button weiter an den Rand rückt */
     padding-right: 5%;
-
-    /* Falls er noch weiter nach rechts soll, kannst du diese Zeile aktivieren: */
-    /* transform: translateX(50px) !important; */
   }
 }
 
+/* Formatierung für den türkisfarbenen (Cyan) Button */
 .btn-cyan {
   background-color: #3dc6c6 !important;
   color: #000 !important;
@@ -1246,13 +1168,15 @@ button:hover {
   border-radius: 15px;
 }
 
+/* Slider-Button (Lila) Abstand auf großen Bildschirmen */
 @media (min-width: 1600px) {
-  .btn-purple {
+  .btn-purple-main {
     margin-right: 30% !important;
   }
 }
 
-.btn-purple {
+/* Formatierung für den primären lila Slider-Button */
+.btn-purple-main {
   background-color: #79348b !important;
   color: #fff !important;
   padding: 18px 40px !important;
@@ -1262,9 +1186,12 @@ button:hover {
   text-decoration: none;
   display: inline-block;
   letter-spacing: 1px;
+  border-radius: 15px;
 }
 
-/* --- VERTIKALE NAVIGATION (LINKS) --- */
+/* ===== Slider Navigation (Links) ===== */
+
+/* Container für die vertikale Navigation links */
 .slider-nav {
   position: absolute;
   left: 5%;
@@ -1277,7 +1204,7 @@ button:hover {
   gap: 15px;
 }
 
-/* Verhindert, dass globale Button-Styles die Navigations-Buttons zerstören */
+/* Reset für die Navigationspfeil-Buttons */
 .nav-arrow {
   background: transparent !important;
   border: none !important;
@@ -1289,7 +1216,7 @@ button:hover {
   justify-content: center;
 }
 
-/* CSS-Pfeile exakt wie im Screenshot (kleine Winkel) */
+/* Gezeichneter CSS-Pfeil (Rahmenstruktur) */
 .arrow-up,
 .arrow-down {
   display: inline-block;
@@ -1299,21 +1226,22 @@ button:hover {
   border-left: 2px solid #555;
 }
 
+/* Drehung für den Aufwärts-Pfeil */
 .arrow-up {
   transform: rotate(45deg);
 }
 
+/* Drehung für den Abwärts-Pfeil */
 .arrow-down {
   transform: rotate(225deg);
 }
 
+/* Basis-Formatierung für Navigations-Punkte (Dots) */
 .dot {
   width: 8px !important;
   height: 8px !important;
   min-width: 8px !important;
-  /* Wichtig gegen Ovale! */
   min-height: 8px !important;
-  /* Wichtig gegen Ovale! */
   background-color: #a0a0a0 !important;
   border-radius: 50% !important;
   border: none !important;
@@ -1323,6 +1251,7 @@ button:hover {
   transition: all 0.3s ease;
 }
 
+/* Aktiver Zustand für Navigations-Punkte */
 .dot.active {
   background-color: #333 !important;
   transform: scale(1.3) !important;
