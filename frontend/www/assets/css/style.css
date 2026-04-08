@@ -483,40 +483,64 @@ button:hover {
 }
 
 /* Grid Spalte: Breite 1 */
-.col-1 { grid-column: span 1; }
+.col-1 {
+  grid-column: span 1;
+}
 
 /* Grid Spalte: Breite 2 */
-.col-2 { grid-column: span 2; }
+.col-2 {
+  grid-column: span 2;
+}
 
 /* Grid Spalte: Breite 3 */
-.col-3 { grid-column: span 3; }
+.col-3 {
+  grid-column: span 3;
+}
 
 /* Grid Spalte: Breite 4 */
-.col-4 { grid-column: span 4; }
+.col-4 {
+  grid-column: span 4;
+}
 
 /* Grid Spalte: Breite 5 */
-.col-5 { grid-column: span 5; }
+.col-5 {
+  grid-column: span 5;
+}
 
 /* Grid Spalte: Breite 6 */
-.col-6 { grid-column: span 6; }
+.col-6 {
+  grid-column: span 6;
+}
 
 /* Grid Spalte: Breite 7 */
-.col-7 { grid-column: span 7; }
+.col-7 {
+  grid-column: span 7;
+}
 
 /* Grid Spalte: Breite 8 */
-.col-8 { grid-column: span 8; }
+.col-8 {
+  grid-column: span 8;
+}
 
 /* Grid Spalte: Breite 9 */
-.col-9 { grid-column: span 9; }
+.col-9 {
+  grid-column: span 9;
+}
 
 /* Grid Spalte: Breite 10 */
-.col-10 { grid-column: span 10; }
+.col-10 {
+  grid-column: span 10;
+}
 
 /* Grid Spalte: Breite 11 */
-.col-11 { grid-column: span 11; }
+.col-11 {
+  grid-column: span 11;
+}
 
 /* Grid Spalte: Breite 12 */
-.col-12 { grid-column: span 12; }
+.col-12 {
+  grid-column: span 12;
+}
 
 /* Grid Layout Mobile Anpassung */
 @media (width <=800px) {
@@ -1056,7 +1080,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 45%, rgba(255, 255, 255, 0) 80%);
+  background: linear-gradient(to right, rgb(255, 255, 255, 95%) 0%, rgb(255, 255, 255, 80%) 45%, rgb(255, 255, 255, 0%) 80%);
   z-index: 1;
 }
 
@@ -1093,7 +1117,7 @@ button:hover {
 
 /* Service-Label (kursiver Text) im Slide */
 .service-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: Outfit, sans-serif;
   font-style: italic;
   font-size: 2.0rem;
   color: #333;
@@ -1129,21 +1153,21 @@ button:hover {
 }
 
 /* Slider-Button Positionierung auf Standard-Laptops */
-@media (max-width: 1440px) {
+@media (width <= 1440px) {
   .btn-container.home-btn-pos {
     transform: translateX(200px) !important;
   }
 }
 
 /* Slide-Content Padding auf kleinen Bildschirmen */
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .slide-content {
     padding-left: 10%;
   }
 }
 
 /* Slide-Content Erweiterung für große Bildschirme */
-@media (min-width: 1600px) {
+@media (width >= 1600px) {
   .slide-content {
     max-width: 1800px;
   }
@@ -1169,7 +1193,7 @@ button:hover {
 }
 
 /* Slider-Button (Lila) Abstand auf großen Bildschirmen */
-@media (min-width: 1600px) {
+@media (width >= 1600px) {
   .btn-purple-main {
     margin-right: 30% !important;
   }
