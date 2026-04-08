@@ -1157,6 +1157,7 @@ button:hover {
   width: 100%;
   min-height: 350px;
   background-image: url('../images/Bild_Datenhaltung.jpg');
+
   /* Passe hier den Pfad zu deinem Server-Bild an */
   background-size: cover;
   background-position: center;
@@ -1221,6 +1222,7 @@ button:hover {
   display: flex;
   width: 100%;
   gap: 5px;
+  
   /* Abstand zwischen der blauen und grauen Box */
 }
 
