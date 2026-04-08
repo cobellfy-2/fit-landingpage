@@ -10,6 +10,8 @@
  */
 
 const { normalize, cleanDisplayName, categoryFor } = require('../www/assets/js/script');
+const fs = require('fs');
+const path = require('path');
 
 describe('Unit Tests: Core Business Logik', () => {
 
@@ -152,5 +154,94 @@ describe('Integration Tests: Formularauswertung und Modal UI', () => {
       // Assert: Verifikation des UI-Resets (Modal wieder versteckt, Body-Scroll freigegeben)
       expect(modal.hasAttribute('hidden')).toBe(true);
       expect(document.body.style.overflow).toBe('');
+    });
+});
+
+/* ========================================================================== */
+
+describe('Integration Tests: Main Page Slider', () => {
+
+    // Hilfskonstante für den Pfad zur index.html
+    const htmlPath = path.resolve(__dirname, '../www/index.html');
+    const htmlContent = fs.readFileSync(htmlPath, 'utf8');
+
+    beforeEach(() => {
+        // Reset des Modul-Caches
+        jest.resetModules();
+        
+        // Setup: Simuliere das komplette DOM der index.html für Slider-Tests
+        document.documentElement.innerHTML = htmlContent.toString();
+        
+        // Target-Skript laden, um Slider-Event-Listener zu binden
+        require('../www/assets/js/script');
+        
+        // Act: Initialisierungs-Event manuell triggern
+        document.dispatchEvent(new Event('DOMContentLoaded'));
+    });
+
+    test('Initialzustand: Erster Slide und Dot müssen aktiv sein', () => {
+        // Arrange: Slider-Elemente selektieren
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        // Assert: Prüfung der Initial-Klassen
+        expect(slides[0].classList.contains('active')).toBe(true);
+        expect(dots[0].classList.contains('active')).toBe(true);
+        expect(slides[1].classList.contains('active')).toBe(false);
+    });
+
+    test('Navigation: Klick auf "Next" wechselt zum zweiten Slide', () => {
+        // Arrange: Steuerungs-Elemente
+        const nextBtn = document.getElementById('nextSlide');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        // Act: Simulation des Nutzer-Klicks
+        nextBtn.click();
+
+        // Assert: Prüfung der Zustandsänderung
+        expect(slides[1].classList.contains('active')).toBe(true);
+        expect(dots[1].classList.contains('active')).toBe(true);
+        expect(slides[0].classList.contains('active')).toBe(false);
+    });
+
+    test('Navigation: Klick auf Dot springt direkt zum Ziel-Slide', () => {
+        // Arrange: Ziel-Dot selektieren (Index 2 = dritter Slide)
+        const dots = document.querySelectorAll('.dot');
+        const slides = document.querySelectorAll('.slide');
+
+        // Act: Klick auf Pagination-Element
+        dots[2].click();
+
+        // Assert: Korrekte Indizierung prüfen
+        expect(slides[2].classList.contains('active')).toBe(true);
+        expect(dots[2].classList.contains('active')).toBe(true);
+    });
+
+    test('Button-Interaktion: Cyan-Button aktiviert den ersten Kernservice-Slide', () => {
+        // Arrange: Hero-Button Referenz
+        const btnCyan = document.getElementById('scroll-to-services');
+        const slides = document.querySelectorAll('.slide');
+
+        // Act: Klick auf Entdecken-Button
+        btnCyan.click();
+
+        // Assert: Sprung zu Slide 2 (Index 1) verifizieren
+        expect(slides[1].classList.contains('active')).toBe(true);
+    });
+
+    test('Loop-Logik: "Next" am Ende der Slides springt zurück zum Anfang', () => {
+        // Arrange: Zum letzten Slide springen
+        const nextBtn = document.getElementById('nextSlide');
+        const slides = document.querySelectorAll('.slide');
+        const lastDot = document.querySelector(`.dot[data-slide="${slides.length - 1}"]`);
+        
+        lastDot.click();
+        
+        // Act: Letzten Schritt vorwärts ausführen
+        nextBtn.click();
+
+        // Assert: Überlauf-Logik (Modulo) prüfen
+        expect(slides[0].classList.contains('active')).toBe(true);
     });
 });
