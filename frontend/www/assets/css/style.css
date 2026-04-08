@@ -7,9 +7,7 @@
 }
 
 /* Reserviert den Platz für die Scrollbar, damit der Inhalt nicht springt */
-html {
-  scrollbar-gutter: stable;
-}
+
 
 /* Footer unten am Bildschirm */
 main {
@@ -1109,7 +1107,7 @@ button:hover {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: 50% 60%;
+  background-position: center bottom;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
   z-index: 1;
@@ -1137,9 +1135,11 @@ button:hover {
 .slide-content {
   position: relative;
   z-index: 2;
-  padding-left: 15%; /* Lässt Platz für die Navigation links */
+  padding-left: 15%;
+  /* Lässt Platz für die Navigation links */
   width: 100%;
-  max-width: 1500px; /* Groß genug, damit nichts umbricht */
+  max-width: 1500px;
+  /* Groß genug, damit nichts umbricht */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1150,7 +1150,8 @@ button:hover {
   font-size: 3.5rem !important;
   color: #1a1a1a !important;
   margin-bottom: 15px !important;
-  white-space: nowrap; /* Verhindert das Quetschen in zwei Zeilen */
+  white-space: nowrap;
+  /* Verhindert das Quetschen in zwei Zeilen */
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -1190,18 +1191,23 @@ button:hover {
 .btn-container {
   width: 100%;
   display: flex;
-  justify-content: flex-end; /* Schiebt die Buttons nach rechts */
-  padding-right: 0; /* Abstand zum rechten Rand anpassen */
+  justify-content: flex-end;
+  /* Schiebt die Buttons nach rechts */
+  padding-right: 0;
+  /* Abstand zum rechten Rand anpassen */
   margin-top: 10px;
 }
 
 /* Spezial-Korrektur für den ersten Button (Cyan) */
 .btn-container.home-btn-pos {
-  padding-right: 0 !important; /* Entfernt den blockierenden Randabstand */
-  transform: translateX(500px); /* Schiebt NUR diesen Button stur nach rechts */
+  padding-right: 0 !important;
+  /* Entfernt den blockierenden Randabstand */
+  transform: translateX(500px);
+  /* Schiebt NUR diesen Button stur nach rechts */
 }
+
 .btn-cyan {
-  background-color: #3dc6c6 !important; /* Exaktes Cyan */
+  background-color: #3dc6c6 !important;
   color: #000 !important;
   padding: 18px 40px !important;
   border: none !important;
@@ -1211,10 +1217,11 @@ button:hover {
   text-decoration: none;
   display: inline-block;
   letter-spacing: 1px;
+  border-radius: 15px;
 }
 
 .btn-purple {
-  background-color: #79348b !important; /* Exaktes Lila */
+  background-color: #79348b !important;
   color: #fff !important;
   padding: 18px 40px !important;
   border: none !important;
@@ -1251,21 +1258,30 @@ button:hover {
 }
 
 /* CSS-Pfeile exakt wie im Screenshot (kleine Winkel) */
-.arrow-up, .arrow-down {
+.arrow-up,
+.arrow-down {
   display: inline-block;
   width: 8px;
   height: 8px;
   border-top: 2px solid #555;
   border-left: 2px solid #555;
 }
-.arrow-up { transform: rotate(45deg); }
-.arrow-down { transform: rotate(225deg); }
+
+.arrow-up {
+  transform: rotate(45deg);
+}
+
+.arrow-down {
+  transform: rotate(225deg);
+}
 
 .dot {
   width: 8px !important;
   height: 8px !important;
-  min-width: 8px !important; /* Wichtig gegen Ovale! */
-  min-height: 8px !important; /* Wichtig gegen Ovale! */
+  min-width: 8px !important;
+  /* Wichtig gegen Ovale! */
+  min-height: 8px !important;
+  /* Wichtig gegen Ovale! */
   background-color: #a0a0a0 !important;
   border-radius: 50% !important;
   border: none !important;
