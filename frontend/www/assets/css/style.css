@@ -1080,7 +1080,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgb(255 255 255 / 0.95) 0%, rgb(255 255 255 / 0.8) 45%, rgb(255 255 255 / 0) 80%);
+  background: linear-gradient(to right, rgb(255 255 255 / 95%) 0%, rgb(255 255 255 / 80%) 45%, rgb(255 255 255 / 0%) 80%);
   z-index: 1;
 }
 
