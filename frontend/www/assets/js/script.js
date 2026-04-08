@@ -1,75 +1,82 @@
 //skripte Main-Page
 
-// Button scrollt zu Services
-(function () {
-  const btn = document.getElementById('scroll-to-services');
-  const target = document.getElementById('services');
-  if (btn && target) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
-})();
+//Skript About-Us Seite
 
+// Logik für das Scrollen mit den Pfeilen
+const carousel = document.getElementById('carousel');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-// Erzeugt / aktualisiert eine div.connector, die von der Unterseite des Buttons
-// zur Oberseite des Bildes verbindet. Läuft bei Laden, Scroll und Resize.
-(function () {
-  function ensureConnector() {
-    let c = document.querySelector('.connector');
-    if (!c) {
-      c = document.createElement('div');
-      c.className = 'connector';
-      document.body.appendChild(c);
-    }
-    return c;
-  }
+const scrollAmount = 245;
 
-  function updateConnector() {
-    const btn = document.querySelector('.hero .button');
-    const img = document.querySelector('.image-section img');
-    if (!btn || !img) return;
-
-    const rectBtn = btn.getBoundingClientRect();
-    const rectImg = img.getBoundingClientRect();
-
-    // Start an der Unterkante des Buttons (mittig)
-    const startX = rectBtn.left + rectBtn.width / 2 + window.scrollX;
-    const startY = rectBtn.bottom + window.scrollY;
-    // Ende an der Oberkante des Bildes (mittig)
-    const endX = rectImg.left + rectImg.width / 2 + window.scrollX;
-    const endY = rectImg.top + window.scrollY;
-
-    const dx = endX - startX;
-    const dy = endY - startY;
-    const length = Math.hypot(dx, dy);
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-
-    const conn = ensureConnector();
-    conn.style.width = length + 'px';
-    conn.style.left = startX + 'px';
-    // damit die Linie genau an startY zentriert ist, höhe halb abziehen
-    const connHeight = parseFloat(getComputedStyle(conn).height) || 2;
-    conn.style.top = (startY - connHeight / 2) + 'px';
-    conn.style.transform = 'rotate(' + angle + 'deg)';
-  }
-
-  // initial + bei Resize/Scroll (debounced kurz)
-  let timeout;
-  function scheduleUpdate() {
-    clearTimeout(timeout);
-    timeout = setTimeout(updateConnector, 50);
-  }
-
-  window.addEventListener('load', updateConnector);
-  window.addEventListener('resize', scheduleUpdate);
-  window.addEventListener('scroll', scheduleUpdate);
-  document.querySelectorAll('.image-section img').forEach(img => {
-    if (!img.complete) img.addEventListener('load', scheduleUpdate);
+if (carousel && prevBtn && nextBtn) {
+  nextBtn.addEventListener('click', () => {
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   });
-})();
 
+  prevBtn.addEventListener('click', () => {
+    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+}
+
+/* Trick für Jest Kompatibilität */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { normalize, cleanDisplayName, categoryFor };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function updateSlider(index) {
+        // Klassen zurücksetzen
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Neues Slide und Dot aktivieren
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+    }
+
+    // Nächste Folie
+    function next() {
+        let newIndex = (currentSlide + 1) % totalSlides;
+        updateSlider(newIndex);
+    }
+
+    // Vorherige Folie
+    function prev() {
+        let newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider(newIndex);
+    }
+
+    // Event Listener für Pfeile
+    if(nextBtn && prevBtn) {
+        nextBtn.addEventListener('click', next);
+        prevBtn.addEventListener('click', prev);
+    }
+
+    // Event Listener für die Punkte
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            updateSlider(index);
+        });
+    });
+
+    // Optional: Den Cyan-Button auf dem ersten Slide direkt mit Slide 2 verknüpfen (da die Services-Section nun Slide 2-5 ist)
+    const btnCyan = document.getElementById('scroll-to-services');
+    if(btnCyan) {
+        btnCyan.addEventListener('click', () => {
+            updateSlider(1); // Springt zum ersten Kernservice (Slide 2)
+        });
+    }
+});
 
 // Anfrage-Formular logique
 (function () {
@@ -371,83 +378,4 @@ questions.forEach(q => {
       icon.textContent = "+";
     }
   });
-});
-
-
-//Skript About-Us Seite
-
-// Logik für das Scrollen mit den Pfeilen
-const carousel = document.getElementById('carousel');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-const scrollAmount = 245;
-
-if (carousel && prevBtn && nextBtn) {
-  nextBtn.addEventListener('click', () => {
-    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  });
-
-  prevBtn.addEventListener('click', () => {
-    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-}
-
-/* Trick für Jest Kompatibilität */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { normalize, cleanDisplayName, categoryFor };
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.getElementById('prevSlide');
-    const nextBtn = document.getElementById('nextSlide');
-    
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-
-    function updateSlider(index) {
-        // Klassen zurücksetzen
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-
-        // Neues Slide und Dot aktivieren
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentSlide = index;
-    }
-
-    // Nächste Folie
-    function next() {
-        let newIndex = (currentSlide + 1) % totalSlides;
-        updateSlider(newIndex);
-    }
-
-    // Vorherige Folie
-    function prev() {
-        let newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateSlider(newIndex);
-    }
-
-    // Event Listener für Pfeile
-    if(nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', next);
-        prevBtn.addEventListener('click', prev);
-    }
-
-    // Event Listener für die Punkte
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            updateSlider(index);
-        });
-    });
-
-    // Optional: Den Cyan-Button auf dem ersten Slide direkt mit Slide 2 verknüpfen (da die Services-Section nun Slide 2-5 ist)
-    const btnCyan = document.getElementById('scroll-to-services');
-    if(btnCyan) {
-        btnCyan.addEventListener('click', () => {
-            updateSlider(1); // Springt zum ersten Kernservice (Slide 2)
-        });
-    }
 });
