@@ -1199,11 +1199,37 @@ button:hover {
 }
 
 /* Spezial-Korrektur für den ersten Button (Cyan) */
-.btn-container.home-btn-pos {
-  padding-right: 0 !important;
-  /* Entfernt den blockierenden Randabstand */
-  transform: translateX(500px);
-  /* Schiebt NUR diesen Button stur nach rechts */
+/* --- RESPONSIVE ANPASSUNGEN FÜR LAPTOPS UND KLEINERE BILDSCHIRME --- */
+
+/* Für typische Laptops (Bildschirme schmaler als 1440px) */
+@media (max-width: 1440px) {
+  .btn-container.home-btn-pos {
+    transform: translateX(200px) !important;
+    /* Weniger Verschiebung */
+  }
+}
+
+/* Für kleine Laptops oder Tablets (Bildschirme schmaler als 1024px) */
+@media (max-width: 1024px) {
+  .slide-content {
+    padding-left: 10%;
+    /* Text etwas weiter nach links rutschen lassen */
+  }
+}
+
+@media (min-width: 1600px) {
+  .slide-content {
+    /* Erhöht die maximale Breite, damit der Inhalt auf großen Monitoren weiter nach rechts wandern kann */
+    max-width: 1800px;
+  }
+
+  .btn-container.home-btn-pos {
+    /* Reduziert den rechten Abstand, damit der Button weiter an den Rand rückt */
+    padding-right: 5%;
+
+    /* Falls er noch weiter nach rechts soll, kannst du diese Zeile aktivieren: */
+    /* transform: translateX(50px) !important; */
+  }
 }
 
 .btn-cyan {
@@ -1218,6 +1244,12 @@ button:hover {
   display: inline-block;
   letter-spacing: 1px;
   border-radius: 15px;
+}
+
+@media (min-width: 1600px) {
+  .btn-purple {
+    margin-right: 30% !important;
+  }
 }
 
 .btn-purple {
