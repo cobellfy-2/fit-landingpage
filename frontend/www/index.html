@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forschungs-IT | Universitätsklinikum Augsburg</title>
+  <link rel="stylesheet" href=".\assets\css\style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="index.html">
+          <img src=".\assets\images\logo.png" alt="Forschungs-IT Universitätsklinikum Augsburg">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href=".\pages/anfrage.html">Serviceanfrage</a></li>
+          <li><a href=".\pages/faq.html">FAQ</a></li>
+          <li><a href=".\pages/about-us.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="main-slider">
+    <div class="slider-nav">
+      <button class="nav-arrow" id="prevSlide" aria-label="Zurück"><span class="arrow-up"></span></button>
+      <button class="dot active" data-slide="0"></button>
+      <button class="dot" data-slide="1"></button>
+      <button class="dot" data-slide="2"></button>
+      <button class="dot" data-slide="3"></button>
+      <button class="dot" data-slide="4"></button>
+      <button class="nav-arrow" id="nextSlide" aria-label="Weiter"><span class="arrow-down"></span></button>
+    </div>
+
+    <div class="slides-container">
+      
+      <div class="slide active" style="background-image: url('./assets/images/Bild_Main-page_2.jpg');">
+        <div class="slide-overlay-light"></div>
+        <div class="slide-content">
+          <h1>Die Forschungs-IT des Universitätsklinikums</h1>
+          <p class="hero-subtitle">Wir sind die digitale Infrastruktur für klinische<br>Forschung am Universitätsklinikum Augsburg</p>
+          <div class="btn-container home-btn-pos">
+            <button class="btn-cyan" id="scroll-to-services">Entdecken Sie unsere Kernservices</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('./assets/images/Bild_Onboarding.jpg');">
+        <div class="slide-overlay-light"></div>
+        <div class="slide-content">
+          <span class="service-label">Unser Kernservice</span>
+          <h2>FIT-Netz Onboarding</h2>
+          <p>Benutzeranlage, Geräteverwaltung,<br>Berechtigungsmanagement</p>
+          <div class="btn-container">
+            <a href=".\pages\fit-useranlage.html" class="btn-purple-main">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('./assets/images/Bild_Software.jpg');">
+        <div class="slide-overlay-light"></div>
+        <div class="slide-content">
+          <span class="service-label">Unser Kernservice</span>
+          <h2>Software & Tools</h2>
+          <p>Bereitstellung und Anpassung von Analyse- und<br>Visualisierungstools.</p>
+          <div class="btn-container">
+            <a href=".\pages\software-tools.html" class="btn-purple-main">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('./assets/images/Bild_Studienunterstützung.jpg');">
+        <div class="slide-overlay-light"></div>
+        <div class="slide-content">
+          <span class="service-label">Unser Kernservice</span>
+          <h2>Studien- & Projektunterstützung</h2>
+          <p>Wir begleiten Ihr Forschungsprojekt auf der technischen<br>Seite.</p>
+          <div class="btn-container">
+            <a href=".\pages\studien-unterstützung.html" class="btn-purple-main">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" style="background-image: url('./assets/images/Bild_Datenhaltung.jpg');">
+        <div class="slide-overlay-light"></div>
+        <div class="slide-content">
+          <span class="service-label">Unser Kernservice</span>
+          <h2>Datenhaltung & Infrastruktur</h2>
+          <p>Sichere Speicherung und Verwaltung klinischer<br>Forschungsdaten.</p>
+          <div class="btn-container">
+            <a href=".\pages\daten-infra.html" class="btn-purple-main">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer-dark">
+    <div class="footer-container">
+      <div class="footer-section logo-section">
+        <img src="./assets/images/logo-white.png" alt="UKA Logo" class="footer-logo">
+      </div>
+
+      <div class="footer-section">
+        <h4>Universitätsklinikum Augsburg</h4>
+        <p>Stenglinstraße 2<br>861565 Augsburg, Deutschland</p>
+        <p>+49 821 400-01</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="https://www.uk-augsburg.de/impressum">Impressum</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-right">
+      © 2026 Universitätsklinikum Augsburg
+    </div>
+  </footer>
+
+  <script src=".\assets\js\script.js"></script>
+</body>
+
+</html>

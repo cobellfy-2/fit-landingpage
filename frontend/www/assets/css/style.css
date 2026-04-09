@@ -1,0 +1,1301 @@
+/* !=== Allgemein ===! */
+
+/* Universeller Selektor */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Hauptinhalt Container */
+main {
+  flex: 1 0 auto;
+}
+
+/* Basis für Seitenhöhe */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body-Element Formatierung */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column
+}
+
+/* ===== Typografie ===== */
+
+/* Große Überschrift (H1) */
+h1 {
+  font-family: Outfit, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Mittelgroße Überschrift (H3) */
+h3 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Kleine Überschriften (H2, H4) */
+h2,
+h4 {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+/* Standard-Fließtext */
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Standard-Links */
+a {
+  color: #007aff;
+  text-decoration: none;
+}
+
+/* Hover-Effekt für Links */
+a:hover {
+  text-decoration: underline;
+}
+
+/* Ungeordnete und geordnete Listen */
+ul,
+ol {
+  padding-left: 40px;
+  margin-left: 0;
+}
+
+/* Einzelne Listenelemente */
+ul li,
+ol li {
+  margin-bottom: 8px;
+}
+
+/* ===== Seitenstruktur ===== */
+
+/* Container für Seiteninhalte */
+.site-inner {
+  flex: 1 0 auto;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 50px 24px;
+  box-sizing: border-box;
+}
+
+/* Coming-Soon Bereichs-Container */
+.coming-soon {
+  text-align: center;
+}
+
+/* Coming-Soon Fließtext */
+.coming-soon p {
+  font-size: 1.3rem;
+}
+
+/* ===== Navbar ===== */
+
+/* Hauptcontainer Navbar */
+.navbar {
+  background: #fff;
+  border-bottom: 2px solid #c6d5e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  flex-direction: row;
+}
+
+/* Logo-Bild in der Navbar */
+.logo img {
+  height: 80px;
+}
+
+/* Container für Navigationspunkte */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+/* Einzelne Navigationslinks */
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Hover-Effekt für Navigationslinks */
+nav a:hover {
+  color: #155582;
+}
+
+/* Bildbereich für Forschungs-IT (Links) */
+.image-left .text-big {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 15px 12px;
+}
+
+/* ===== Main Page ===== */
+
+/* ===== Hauptslider Bereich ===== */
+
+/* Äußerer Wrapper des Hauptsliders */
+.main-slider {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 150px);
+  min-height: 600px;
+  overflow: hidden;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+}
+
+/* Wrapper für alle einzelnen Slides */
+.slides-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Basis-Layout für einen einzelnen Slide */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center bottom;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Sichtbarkeit für den aktiven Slide */
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Verlaufshintergrund (Overlay) für verbesserte Lesbarkeit */
+.slide-overlay-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgb(255 255 255 / 95%) 0%, rgb(255 255 255 / 80%) 45%, rgb(255 255 255 / 0%) 80%);
+  z-index: 1;
+}
+
+/* Inhaltscontainer für Text im Slide */
+.slide-content {
+  position: relative;
+  z-index: 2;
+  padding-left: 15%;
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Hauptüberschrift (H1) im Slide */
+.slide h1 {
+  font-size: 3.5rem !important;
+  color: #1a1a1a !important;
+  margin-bottom: 15px !important;
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Hero-Untertitel Formatierung im Slide */
+.hero-subtitle {
+  font-size: 1.8rem !important;
+  color: #333 !important;
+  margin-bottom: 30px !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+}
+
+/* Service-Label (kursiver Text) im Slide */
+.service-label {
+  font-family: Outfit, sans-serif;
+  font-style: italic;
+  font-size: 2.0rem;
+  color: #333;
+  display: block;
+  margin-bottom: -20px;
+}
+
+/* Sekundäre Überschrift (H2) im Slide */
+.slide h2 {
+  font-size: 3.2rem !important;
+  color: #1a1a1a !important;
+  margin-bottom: 15px !important;
+  font-weight: 700;
+}
+
+/* Standardtext im Slide */
+.slide p {
+  font-size: 1.8rem !important;
+  color: #222 !important;
+  margin-bottom: 30px !important;
+  line-height: 1.6 !important;
+}
+
+/* ===== Slider Buttons & Layout ===== */
+
+/* Container für Buttons im Slide */
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0;
+  margin-top: 10px;
+}
+
+/* Slider-Button Positionierung auf Standard-Laptops */
+@media (width <=1440px) {
+  .btn-container.home-btn-pos {
+    transform: translateX(200px) !important;
+  }
+}
+
+/* Slide-Content Padding auf kleinen Bildschirmen */
+@media (width <=1024px) {
+  .slide-content {
+    padding-left: 10%;
+  }
+}
+
+/* Slide-Content Erweiterung für große Bildschirme */
+@media (width >=1600px) {
+  .slide-content {
+    max-width: 1800px;
+  }
+
+  .btn-container.home-btn-pos {
+    padding-right: 5%;
+  }
+}
+
+/* Formatierung für den türkisfarbenen (Cyan) Button */
+.btn-cyan {
+  background-color: #3dc6c6 !important;
+  color: #000 !important;
+  padding: 18px 40px !important;
+  border: none !important;
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 1px;
+  border-radius: 15px;
+}
+
+/* Slider-Button (Lila) Abstand auf großen Bildschirmen */
+@media (width >=1600px) {
+  .btn-purple-main {
+    margin-right: 30% !important;
+  }
+}
+
+/* Formatierung für den primären lila Slider-Button */
+.btn-purple-main {
+  background-color: #79348b !important;
+  color: #fff !important;
+  padding: 18px 40px !important;
+  border: none !important;
+  font-size: 1.4rem !important;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 1px;
+  border-radius: 15px;
+}
+
+/* ===== Slider Navigation (Links) ===== */
+
+/* Container für die vertikale Navigation links */
+.slider-nav {
+  position: absolute;
+  left: 5%;
+  top: 47%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Reset für die Navigationspfeil-Buttons */
+.nav-arrow {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 10px !important;
+  min-width: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gezeichneter CSS-Pfeil (Rahmenstruktur) */
+.arrow-up,
+.arrow-down {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #555;
+  border-left: 2px solid #555;
+}
+
+/* Drehung für den Aufwärts-Pfeil */
+.arrow-up {
+  transform: rotate(45deg);
+}
+
+/* Drehung für den Abwärts-Pfeil */
+.arrow-down {
+  transform: rotate(225deg);
+}
+
+/* Basis-Formatierung für Navigations-Punkte (Dots) */
+.dot {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  min-height: 8px !important;
+  background-color: #a0a0a0 !important;
+  border-radius: 50% !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: all 0.3s ease;
+}
+
+/* Aktiver Zustand für Navigations-Punkte */
+.dot.active {
+  background-color: #333 !important;
+  transform: scale(1.3) !important;
+}
+
+/* ===== Footer ===== */
+
+/* Footer-Basis Container */
+footer.footer-dark {
+  flex-shrink: 0;
+  background-color: #155581;
+  color: #fff;
+  padding: 20px 0;
+  font-family: Inter, sans-serif;
+}
+
+/* Drei-Spalten-Layout für den Footer */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 40px;
+  padding: 0 50px;
+}
+
+/* Footer Sektions-Überschrift */
+.footer-section h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-transform: none;
+}
+
+/* Basis-Formatierung für Footer-Texte und Links */
+.footer-section p,
+.footer-section ul li,
+.footer-section a {
+  color: #fff !important;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  text-decoration: none;
+}
+
+/* Listen im Footer */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Hover-Effekt für Footer-Links */
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+/* Formatierung für das Footer-Logo */
+.footer-logo {
+  max-width: 250px;
+  height: auto;
+}
+
+/* Copyright-Hinweis unten rechts */
+.footer-bottom-right {
+  text-align: right;
+  padding: 20px 50px 0 0;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Mobile Layout-Anpassung für den Footer */
+@media (width <=840px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-bottom-right {
+    text-align: center;
+    padding-right: 0;
+  }
+}
+
+/* ===== Subpage Header ===== */
+
+/* Basis-Container für Unterseiten-Header */
+.subpage-header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #05a, #08d);
+  color: white;
+}
+
+/* Überschrift im Unterseiten-Header */
+.subpage-header h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+/* Fließtext im Unterseiten-Header */
+.subpage-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ===== Buttons ===== */
+
+/* Standard-Design für Buttons */
+button {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  letter-spacing: 3.75px;
+  background-color: #fff;
+  color: #000;
+  padding: 20px 35px;
+  border: 2px solid #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover-Effekt für Standard-Buttons */
+button:hover {
+  background-color: #888;
+}
+
+/* Verbindungselement (Strich) für Buttons */
+.connector {
+  position: absolute;
+  height: 2px;
+  background: #bdbdbd;
+  z-index: 9999;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  transition: width 0.12s, transform 0.12s, left 0.12s, top 0.12s;
+}
+
+/* ===== Formular Styles ===== */
+
+/* Standardisierung für Formular-Eingabefelder */
+#projekt input,
+#projekt select,
+#projekt textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Hover-Effekt für Eingabefelder */
+#projekt input:hover,
+#projekt select:hover,
+#projekt textarea:hover {
+  background: #e2e2e2;
+}
+
+/* Fokus-Zustand für Eingabefelder */
+#projekt input:focus,
+#projekt select:focus,
+#projekt textarea:focus {
+  border-color: #6b2d77;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgb(108 36 121 / 20%);
+}
+
+/* Beschriftungen (Labels) für Formulare */
+#projekt label {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+/* Reduzierter Abstand innerhalb der Formular-Zeilen */
+.row>* {
+  margin-bottom: 10px;
+}
+
+/* ===== Grid Layout ===== */
+
+/* Hauptcontainer für das 12-Spalten-Grid */
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* Grid Spalte: Breite 1 */
+.col-1 {
+  grid-column: span 1;
+}
+
+/* Grid Spalte: Breite 2 */
+.col-2 {
+  grid-column: span 2;
+}
+
+/* Grid Spalte: Breite 3 */
+.col-3 {
+  grid-column: span 3;
+}
+
+/* Grid Spalte: Breite 4 */
+.col-4 {
+  grid-column: span 4;
+}
+
+/* Grid Spalte: Breite 5 */
+.col-5 {
+  grid-column: span 5;
+}
+
+/* Grid Spalte: Breite 6 */
+.col-6 {
+  grid-column: span 6;
+}
+
+/* Grid Spalte: Breite 7 */
+.col-7 {
+  grid-column: span 7;
+}
+
+/* Grid Spalte: Breite 8 */
+.col-8 {
+  grid-column: span 8;
+}
+
+/* Grid Spalte: Breite 9 */
+.col-9 {
+  grid-column: span 9;
+}
+
+/* Grid Spalte: Breite 10 */
+.col-10 {
+  grid-column: span 10;
+}
+
+/* Grid Spalte: Breite 11 */
+.col-11 {
+  grid-column: span 11;
+}
+
+/* Grid Spalte: Breite 12 */
+.col-12 {
+  grid-column: span 12;
+}
+
+/* Grid Layout Mobile Anpassung */
+@media (width <=800px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== FAQ Bereich ===== */
+
+/* Hauptcontainer für den FAQ-Bereich */
+.faq-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Überschrift des FAQ-Bereichs */
+.faq-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+/* Basis für einzelne FAQ-Einträge */
+.faq-item {
+  border-top: 1px solid #e5e5e5;
+  padding: 15px 0;
+}
+
+/* Abschluss-Linie für den letzten FAQ-Eintrag */
+.faq-item:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Button-Formatierung für die FAQ-Frage */
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #00569d;
+}
+
+/* Farbe der FAQ-Frage im geöffneten Zustand */
+.faq-item:has(.faq-answer.open) .faq-question {
+  color: #6b2d77 !important;
+  transition: color 0.3s ease;
+}
+
+/* Plus/Minus Icon neben der FAQ-Frage */
+.faq-icon {
+  font-size: 26px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+/* Versteckter Container für die FAQ-Antwort */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Formatierung des Antworttextes */
+.faq-answer p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 17px;
+}
+
+/* FAQ-Antwort im geöffneten Zustand */
+.faq-answer.open {
+  margin-top: 10px;
+}
+
+/* Basis-Layout für Content-Bereiche */
+.main-content,
+.site-inner {
+  flex: 1 0 auto;
+}
+
+/* ===== Anfrage Seite ===== */
+
+/* Hauptüberschrift auf der Anfrage-Seite */
+#projekt header.major h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Infotext unter der Überschrift auf der Anfrage-Seite */
+#projekt header.major>p {
+  text-align: left;
+  max-width: 1100px;
+  margin: 10px auto;
+  font-size: 20px;
+  line-height: 1.8;
+  letter-spacing: 0.1px;
+  color: #444;
+}
+
+/* Abstandskorrektur bei eingebundenem Formular */
+.site-inner:has(#projekt) {
+  padding-top: 35px;
+}
+
+/* Primärer Aktion-Button (Lila) */
+.button.primary {
+  background-color: #6C2479;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Hover-Effekt für den primären Button */
+.button.primary:hover {
+  background-color: #551c60;
+}
+
+/* ===== Modal / Popup ===== */
+
+/* Hintergrund-Overlay für Modalfenster */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 45%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 24px;
+}
+
+/* Versteckter Zustand des Overlays */
+.modal-overlay[hidden] {
+  display: none !important;
+}
+
+/* Container des Modalfensters */
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 20%);
+  box-sizing: border-box;
+}
+
+/* Überschrift innerhalb des Modals */
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* Vorschau-/Code-Bereich im Modal */
+.modal-content pre {
+  white-space: pre-wrap;
+  background: #f7f7f7;
+  padding: 14px;
+  border-radius: 8px;
+  max-height: 360px;
+  overflow: auto;
+  font-family: inherit;
+}
+
+/* Aktionsbereich (Buttons) im Modal */
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* Primärer Button innerhalb des Modals */
+.modal .button.primary {
+  background-color: #6C2479;
+  color: #fff;
+  border-color: #155582;
+  padding: 10px 18px;
+}
+
+/* Standard-Button innerhalb des Modals */
+.modal .button {
+  padding: 9px 16px;
+}
+
+/* Autofill-Style-Korrektur für Webkit-Browser */
+#projekt input:-webkit-autofill,
+#projekt input:-webkit-autofill:hover,
+#projekt input:-webkit-autofill:focus,
+#projekt input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #fff inset !important;
+  -webkit-text-fill-color: #333 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Basis für Listen in Aktionsbereichen */
+.actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Elemente in Aktions-Listen nebeneinanderreihen */
+.actions li {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Mobile Abstandsanpassung für Seiteninhalte */
+@media (width <=900px) {
+  .site-inner {
+    padding: 0 16px;
+  }
+}
+
+/* ===== About Us Page ===== */
+
+/* Globale Skalierung für den About-Us Bereich */
+.about-fit {
+  zoom: 1.05;
+  transform: scale(1.05);
+  transform-origin: top center;
+}
+
+/* Container für den About-Us Inhalt */
+.about-fit .site-inner-ab {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 50px 24px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Textformatierung für den Info-Bereich in About-Us */
+.about-fit .site-inner>p {
+  text-align: left;
+  max-width: 1000px;
+  margin: 40px auto 30px;
+  font-size: 20px;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  color: #444;
+}
+
+/* Überschrift für den Team-Bereich */
+.about-fit .team-section h2 {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 30px;
+}
+
+/* Hauptcontainer für das Team */
+.team-section {
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+/* Rahmen-Container für den Slider und Pfeile */
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Scrollbarer Container für Profilkarten */
+.carousel-container {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 10px;
+  flex-grow: 1;
+  max-width: 977px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Ausblenden des Webkit-Scrollbalkens im Carousel */
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Basis-Layout der einzelnen Profilkarte */
+.card-about-us {
+  min-width: 220px;
+  width: 220px;
+  flex-shrink: 0;
+  background-color: #f4f4f4;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 5%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Oberer farbiger Header-Bereich der Profilkarte */
+.card-about-us-top {
+  background-color: #00569d;
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Rahmen und Positionierung für das Profilbild */
+.profile-img-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-top: 35px;
+  width: 130px;
+  height: 130px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Formatierung des Profilbildes in der Karte */
+.profile-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Inhaltsbereich für Text in der Profilkarte */
+.card-about-us-content {
+  position: relative;
+  z-index: 2;
+  padding: 15px 15px 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Formatierung des Namens in der Profilkarte */
+.card-about-us-content h3 {
+  margin: 10px 0 5px;
+  font-size: 19px;
+  color: #333;
+}
+
+/* Formatierung der Stellenbeschreibung in der Profilkarte */
+.card-about-us-content p {
+  margin: 0 0 20px;
+  font-size: 16px;
+  color: #888;
+}
+
+/* Hover-Effekt für den Kontakt-Button (Team-Mitglied) */
+.btn-contact:hover {
+  background-color: #003e73;
+}
+
+/* Button-Styling für Carousel-Navigationspfeile */
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: color 0.3s;
+}
+
+/* Hover-Effekt für Carousel-Navigationspfeile */
+.nav-btn:hover {
+  color: #00569d;
+}
+
+/* ===== CTA Banner ===== */
+
+/* Hauptcontainer für den Call-to-Action Banner */
+.cta-banner {
+  background-color: #f1f4f7;
+  padding: 20px 0;
+  width: 100%;
+  margin: 40px 0 100px;
+}
+
+/* Innere Begrenzung für den Call-to-Action Inhalt */
+.cta-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+}
+
+/* Linker Textbereich-Wrapper im Call-to-Action */
+.cta-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Blauer Zierstreifen im Call-to-Action Bereich */
+.cta-blue-line {
+  width: 10px;
+  height: 150px;
+  background-color: #00569d;
+  border-radius: 10px;
+}
+
+/* Hauptüberschrift im Call-to-Action Bereich */
+.cta-text h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+  text-align: left;
+}
+
+/* Fließtext im Call-to-Action Bereich */
+.cta-text p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  color: #333;
+  text-align: left;
+}
+
+/* Primärer Button (Lila) im Call-to-Action Bereich */
+.btn-purple {
+  background-color: #6b2d77;
+  color: white !important;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 18px;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Hover-Effekt für den primären Button (Lila) */
+.btn-purple:hover {
+  background-color: #55245f;
+  text-decoration: none;
+}
+
+/* Mobile Layout-Anpassung für den Call-to-Action Banner */
+@media (width <=800px) {
+  .cta-container {
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .cta-button-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ===== Infrastruktur Seite (Screenshot Layout) ===== */
+
+/* Top-Banner mit Hintergrundbild und Overlay */
+.infra-hero {
+  position: relative;
+  width: 100%;
+  min-height: 350px;
+  background-image: url('../images/Bild_Datenhaltung.jpg');
+
+  /* Passe hier den Pfad zu deinem Server-Bild an */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  margin-left: clamp(10px, 15vw, 200px);
+}
+
+.infra-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgb(255 255 255 / 95%) 0%, rgb(255 255 255 / 85%) 50%, rgb(255 255 255 / 10%) 100%);
+  z-index: 1;
+}
+
+.infra-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 50px;
+  margin-left: 5%;
+}
+
+.infra-hero-content h1 {
+  font-size: 2.5rem;
+  text-align: left;
+  color: #333;
+  margin-bottom: 15px;
+  font-family: Outfit, sans-serif;
+}
+
+.infra-hero-content p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Hauptüberschrift Mittlerer Teil */
+.infra-main-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 40px 0 60px;
+  color: #333;
+  font-family: Outfit, sans-serif;
+}
+
+/* Flex-Grid Container */
+.infra-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+/* Einzelne Reihe (Blauer Box + Graue Box) */
+.infra-row {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  
+  /* Abstand zwischen der blauen und grauen Box */
+}
+
+/* Dunkelblaue Box (Links) */
+.infra-box-left {
+  background-color: #00569d;
+  color: #fff;
+  width: 250px;
+  flex-shrink: 0;
+  border-radius: 15px 0 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Hellgraue Text-Box (Rechts) */
+.infra-box-right {
+  background-color: #edf1f4;
+  border-radius: 0 15px 15px 0;
+  padding: 30px;
+  flex-grow: 1;
+  font-family: Inter, sans-serif;
+  color: #222;
+}
+
+.infra-box-right p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.infra-box-right p:last-child {
+  margin-bottom: 0;
+}
+
+/* Türkisfarbene Verbindungslinie */
+.infra-connector {
+  width: 10px;
+  height: 40px;
+  background-color: #3dc6c6;
+  margin: 0 auto;
+}
+
+/* Responsive Anpassung für Tablets & Smartphones */
+@media (width <=768px) {
+  .infra-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .infra-box-left {
+    width: 100%;
+    min-height: 80px;
+  }
+
+  .infra-connector {
+    margin-left: auto;
+    margin-right: auto;
+    height: 25px;
+  }
+
+  .infra-hero-content {
+    padding: 0 20px;
+    margin-left: 0;
+  }
+
+  .infra-hero-content h1 {
+    font-size: 2rem;
+  }
+}

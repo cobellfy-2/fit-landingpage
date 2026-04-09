@@ -1,0 +1,100 @@
+stages:
+  - test
+  - build
+
+# ==========================================
+# STAGE 1: TESTEN & LINTEN
+# ==========================================
+
+# Prüft den HTML- und CSS-Code im Frontend
+lint_frontend:
+  stage: test
+  image: node:20-alpine
+  script:
+    - echo "Starte Frontend Linter..."
+    - cd frontend
+    # Installiert die Linter (Stylelint, HTMLHint) aus deiner package-lock.json
+    - npm ci 
+    # Führt Stylelint für CSS-Dateien aus
+    - npx stylelint "www/**/*.css"
+    # Führt HTMLHint für HTML-Dateien aus
+    - npx htmlhint "www/**/*.html"
+  # Erlaubt das Weiterlaufen der Pipeline, auch wenn Stil-Fehler gefunden werden
+  allow_failure: true 
+
+# Prüft das Python-Skript
+lint_python:
+  stage: test
+  image: python:3.10-slim
+  script:
+    - echo "Starte Python Linter..."
+    - cd scripts
+    - pip install pylint
+    - pylint filter.py
+  allow_failure: true
+
+
+# ==========================================
+# STAGE 2: DOCKER CONTAINER BAUEN (MIT KANIKO)
+# ==========================================
+
+# Baut das Nginx-Frontend-Image mit Kaniko
+build_frontend:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - echo "Baue Frontend Docker-Image mit Kaniko..."
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/frontend"
+      --dockerfile "${CI_PROJECT_DIR}/frontend/Dockerfile"
+      --no-push
+
+# Baut das Node.js-Backend-Image mit Kaniko
+build_backend:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - echo "Baue Backend Docker-Image mit Kaniko..."
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/backend"
+      --dockerfile "${CI_PROJECT_DIR}/backend/Dockerfile"
+      --no-push
+
+
+
+# ==========================================
+# STAGE 3: JEST
+# ==========================================
+
+unit_test_frontend:
+  stage: test
+  image: node:20-alpine
+  script:
+    - cd frontend
+    - npm install
+    - npm test
+  coverage: '/All files\s*\|\s*([\d\.]+)/'
+  artifacts:
+    paths:
+      - frontend/coverage/
+    expire_in: 1 week
+  
+# ==========================================
+# STAGE 4: Security 
+# ==========================================
+
+
+security_audit_frontend:
+  stage: test
+  image: node:20-alpine
+  script:
+    - echo "Starte Sicherheitsprüfung der Abhängigkeiten..."
+    - cd frontend
+    # package-lock.json auslesen und Pakete sauber laden
+    - npm ci
+    # Der eigentliche Sicherheits-Check
+    - npm audit --audit-level=high
